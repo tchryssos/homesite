@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+body, #app {
+	background-color: #4f2d35;
+	font-family: 'VT323', monospace;
+}

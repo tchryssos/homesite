@@ -1,7 +1,7 @@
 {
-  "name": "react_template",
-  "version": "2.0.0",
-  "description": "A website by Troy Chryssos",
+  "name": "troy_chryssos_homesite",
+  "version": "3.0.0",
+  "description": "The homepage for Troy Chryssos",
   "main": "app.js",
   "repository": "",
   "author": "<troychryssos@gmail.com>",
