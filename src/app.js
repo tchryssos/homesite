@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from 'pages/Home'
+import FourOhFour from 'pages/FourOhFour'
 import NavBar from 'components/NavBar'
 
 render(
