@@ -1,8 +1,10 @@
 import React from 'react'
+import { CANE } from 'constants/sprites'
+import PixelContent from 'components/PixelContent'
 
 const Home = () => (
 	<>
-		<div>Whoa cool website</div>
+		<PixelContent objectSprite={CANE} />
 	</>
 )
 

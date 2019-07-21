@@ -24,7 +24,7 @@ const styles = {
 	},
 }
 
-const spriteSwitch = ({ type }) => {
+const spriteSwitch = (type) => {
 	switch (type) {
 		case TROY:
 			return troy
