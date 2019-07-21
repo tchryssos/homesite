@@ -3,10 +3,10 @@ import injectSheet from 'react-jss'
 
 import { QUESTIONMAN } from 'constants/sprites'
 import { xlFont } from 'constants/styles/fonts'
-import Sprite from 'components/Sprite'
+import PixelContent from 'components/PixelContent'
 
 const styles = {
-	container: {
+	fourOhFourContainer: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -18,8 +18,8 @@ const styles = {
 
 const FourOhFour = ({ classes }) => (
 	<>
-		<Sprite type={QUESTIONMAN} />
-		<div className={classes.container}>
+		<PixelContent objectSprite={QUESTIONMAN} />
+		<div className={classes.fourOhFourContainer}>
 			<span className={classes.fourOhFour}>404</span>
 		</div>
 	</>

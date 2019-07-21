@@ -9,6 +9,7 @@ const styles = {
 	artContainer: {
 		width: '100%',
 		position: 'relative',
+		marginBottom: '48px',
 	},
 	spriteContainer: {
 		display: 'flex',
