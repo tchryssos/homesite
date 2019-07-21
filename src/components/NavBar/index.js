@@ -2,26 +2,40 @@ import React from 'react'
 import injectSheet from 'react-jss'
 import { NavLink } from 'react-router-dom'
 import { black } from 'constants/styles/colors'
-import { lgFont, mdFont } from 'constants/styles/fonts'
+import { lgFont, mdFont, smFont, xsFont } from 'constants/styles/fonts'
+import { MD_MIN_STRING } from 'constants/styles/breakpoints'
 
 const styles = {
 	nameWrapper: {
-		...lgFont,
+		...xsFont,
 		margin: '16px',
 		fontStyle: 'italic',
-		textShadow: `2px -4px ${black}`,
+		textShadow: `1px -2px ${black}`,
 	},
 	navWrapper: {
-		margin: '16px',
-		textShadow: `2px -2px ${black}`,
+		textShadow: `1px -1px ${black}`,
+		display: 'flex',
+		justifyContent: 'space-around',
+		width: '100%',
+		marginBottom: '16px',
 	},
 	link: {
-		...mdFont,
+		...smFont,
 		textDecoration: 'none',
-		marginRight: '16px',
 	},
 	navActive: {
 		textDecoration: [['underline'], '!important'],
+	},
+	[MD_MIN_STRING]: {
+		nameWrapper: {
+			...lgFont,
+			textShadow: `2px -4px ${black}`,
+		},
+		navWrapper: {
+			justifyContent: 'flex-start',
+			marginLeft: '16px',
+			textShadow: `2px -2px ${black}`,
+		},
 	},
 }
 
