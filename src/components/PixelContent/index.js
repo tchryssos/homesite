@@ -1,11 +1,11 @@
 import React from 'react'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 
 import Sprite from 'components/Sprite'
 import { TROY } from 'constants/sprites'
 import street from 'static/street_purp.png'
 
-const styles = {
+const useStyles = createUseStyles({
 	artContainer: {
 		width: '100%',
 		position: 'relative',
@@ -31,16 +31,17 @@ const styles = {
 		background: `url('${street}')`,
 		backgroundSize: 'contain',
 	},
-}
+})
 
-const PixelContent = ({ objectSprite, classes }) => (
-	<div className={classes.artContainer}>
-		<div className={classes.spriteContainer}>
-			<Sprite type={TROY} className={classes.troySprite} />
-			<Sprite type={objectSprite} className={classes.objectSprite} />
+export default ({ objectSprite }) => {
+	const classes = useStyles()
+	return (
+		<div className={classes.artContainer}>
+			<div className={classes.spriteContainer}>
+				<Sprite type={TROY} className={classes.troySprite} />
+				<Sprite type={objectSprite} className={classes.objectSprite} />
+			</div>
+			<div className={classes.sidewalk} />
 		</div>
-		<div className={classes.sidewalk} />
-	</div>
-)
-
-export default injectSheet(styles)(PixelContent)
+	)	
+}

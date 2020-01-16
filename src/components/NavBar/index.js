@@ -1,11 +1,11 @@
 import React from 'react'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import { NavLink } from 'react-router-dom'
 import { black } from 'constants/styles/colors'
 import { lgFont, mdFont, smFont, xsFont } from 'constants/styles/fonts'
 import { MD_MIN_STRING } from 'constants/styles/breakpoints'
 
-const styles = {
+const useStyles = createUseStyles({
 	nameWrapper: {
 		...xsFont,
 		margin: '16px',
@@ -37,40 +37,41 @@ const styles = {
 			textShadow: `2px -2px ${black}`,
 		},
 	},
+})
+
+export default () => {
+	const styles = useStyles()
+	return (
+		<>
+			<div className={classes.nameWrapper}>
+				Troy Chryssos
+			</div>
+			<div className={classes.navWrapper}>
+				<NavLink
+					exact
+					style={styles.link}
+					activeClassName={classes.navActive}
+					to="/"
+				>
+					Home
+				</NavLink>
+				<NavLink
+					exact
+					style={styles.link}
+					activeClassName={classes.navActive}
+					to="/code"
+				>
+					Code
+				</NavLink>
+				<NavLink
+					exact
+					style={styles.link}
+					activeClassName={classes.navActive}
+					to="/audio"
+				>
+					Audio
+				</NavLink>
+			</div>
+		</>
+	)
 }
-
-const NavBar = ({ classes }) => (
-	<>
-		<div className={classes.nameWrapper}>
-			Troy Chryssos
-		</div>
-		<div className={classes.navWrapper}>
-			<NavLink
-				exact
-				style={styles.link}
-				activeClassName={classes.navActive}
-				to="/"
-			>
-				Home
-			</NavLink>
-			<NavLink
-				exact
-				style={styles.link}
-				activeClassName={classes.navActive}
-				to="/code"
-			>
-				Code
-			</NavLink>
-			<NavLink
-				exact
-				style={styles.link}
-				activeClassName={classes.navActive}
-				to="/audio"
-			>
-				Audio
-			</NavLink>
-		</div>
-	</>
-)
-
-export default injectSheet(styles)(NavBar)

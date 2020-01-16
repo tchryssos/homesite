@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import injectSheet from 'react-jss'
+import { createUseStyles } from 'react-jss'
 
 import {
 	TROY, TROY_RIGHT, JUKEBOX, LAPTOP, CANE,
@@ -13,16 +13,16 @@ import questionMan from 'static/questionman.gif'
 import troy from 'static/troy.gif'
 import troyRight from 'static/troy_right.gif'
 
-const styles = {
+const useStyles = createUseStyles({
 	spriteContainer: {
-		maxWidth: ({ maxWidth = 128 }) => `${maxWidth}px`,
+		maxWidth: 128,
 		display: 'flex',
 		alignItems: 'flex-end',
 	},
 	sprite: {
 		width: '100%',
 	},
-}
+})
 
 const spriteSwitch = (type) => {
 	switch (type) {
@@ -41,21 +41,22 @@ const spriteSwitch = (type) => {
 	}
 }
 
-const Sprite = ({ type, className, classes }) => (
-	<div
-		className={
-			classNames(
-				classes.spriteContainer,
-				className,
-			)
-		}
-	>
-		<img
-			src={spriteSwitch(type)}
-			className={classes.sprite}
-			alt={`A sprite of ${type}`}
-		/>
-	</div>
-)
-
-export default injectSheet(styles)(Sprite)
+export default ({ type, className }) => {
+	const classes = useStyles()
+	return (
+		<div
+			className={
+				classNames(
+					classes.spriteContainer,
+					className,
+				)
+			}
+		>
+			<img
+				src={spriteSwitch(type)}
+				className={classes.sprite}
+				alt={`A sprite of ${type}`}
+			/>
+		</div>
+	)
+}
