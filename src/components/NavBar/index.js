@@ -10,6 +10,7 @@ import { MD_MIN_STRING } from 'constants/styles/breakpoints'
 const linkStyles = {
 	...smFont,
 	textDecoration: 'none',
+	marginRight: 8,
 }
 
 const useStyles = createUseStyles({
