@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { createUseStyles } from 'react-jss'
 
 import {
@@ -46,7 +46,7 @@ export default ({ type, className }) => {
 	return (
 		<div
 			className={
-				classNames(
+				clsx(
 					classes.spriteContainer,
 					className,
 				)

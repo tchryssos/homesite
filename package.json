@@ -12,7 +12,7 @@
     "lint": "eslint src --fix"
   },
   "engines": {
-    "node" : ">= 13.0.0"
+    "node": ">= 13.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.2.0",

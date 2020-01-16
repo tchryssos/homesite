@@ -43,5 +43,5 @@ export default ({ objectSprite }) => {
 			</div>
 			<div className={classes.sidewalk} />
 		</div>
-	)	
+	)
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import { NavLink } from 'react-router-dom'
 import { black } from 'constants/styles/colors'
-import { lgFont, mdFont, smFont, xsFont } from 'constants/styles/fonts'
+import {
+	lgFont, smFont, xsFont,
+} from 'constants/styles/fonts'
 import { MD_MIN_STRING } from 'constants/styles/breakpoints'
 
 const useStyles = createUseStyles({
@@ -40,7 +42,7 @@ const useStyles = createUseStyles({
 })
 
 export default () => {
-	const styles = useStyles()
+	const classes = useStyles()
 	return (
 		<>
 			<div className={classes.nameWrapper}>
@@ -49,7 +51,7 @@ export default () => {
 			<div className={classes.navWrapper}>
 				<NavLink
 					exact
-					style={styles.link}
+					style={classes.link}
 					activeClassName={classes.navActive}
 					to="/"
 				>
@@ -57,7 +59,7 @@ export default () => {
 				</NavLink>
 				<NavLink
 					exact
-					style={styles.link}
+					style={classes.link}
 					activeClassName={classes.navActive}
 					to="/code"
 				>
@@ -65,7 +67,7 @@ export default () => {
 				</NavLink>
 				<NavLink
 					exact
-					style={styles.link}
+					style={classes.link}
 					activeClassName={classes.navActive}
 					to="/audio"
 				>
