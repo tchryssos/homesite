@@ -7,6 +7,11 @@ import {
 } from 'constants/styles/fonts'
 import { MD_MIN_STRING } from 'constants/styles/breakpoints'
 
+const linkStyles = {
+	...smFont,
+	textDecoration: 'none',
+}
+
 const useStyles = createUseStyles({
 	nameWrapper: {
 		...xsFont,
@@ -21,10 +26,7 @@ const useStyles = createUseStyles({
 		width: '100%',
 		marginBottom: '16px',
 	},
-	link: {
-		...smFont,
-		textDecoration: 'none',
-	},
+	link: linkStyles,
 	navActive: {
 		textDecoration: [['underline'], '!important'],
 	},
@@ -51,7 +53,7 @@ export default () => {
 			<div className={classes.navWrapper}>
 				<NavLink
 					exact
-					style={classes.link}
+					style={linkStyles}
 					activeClassName={classes.navActive}
 					to="/"
 				>
@@ -59,7 +61,7 @@ export default () => {
 				</NavLink>
 				<NavLink
 					exact
-					style={classes.link}
+					style={linkStyles}
 					activeClassName={classes.navActive}
 					to="/code"
 				>
@@ -67,7 +69,7 @@ export default () => {
 				</NavLink>
 				<NavLink
 					exact
-					style={classes.link}
+					style={linkStyles}
 					activeClassName={classes.navActive}
 					to="/audio"
 				>

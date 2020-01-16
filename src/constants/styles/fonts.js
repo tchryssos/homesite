@@ -1,26 +1,31 @@
 import { white } from 'constants/styles/colors'
 
+const baseFont = {
+	fontFamily: "'VT323', monospace",
+	color: white,
+}
+
 export const xsFont = {
 	fontSize: '12px',
-	color: white,
+	...baseFont,
 }
 
 export const smFont = {
 	fontSize: '24px',
-	color: white,
+	...baseFont,
 }
 
 export const mdFont = {
 	fontSize: '48px',
-	color: white,
+	...baseFont,
 }
 
 export const lgFont = {
 	fontSize: '72px',
-	color: white,
+	...baseFont,
 }
 
 export const xlFont = {
 	fontSize: '160px',
-	color: white,
+	...baseFont,
 }
