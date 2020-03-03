@@ -5,10 +5,16 @@
 		"node": true,
 		"es6": true
 	},
+	"globals": {
+		"React": true
+	},
 	"plugins": [
 		"react"
 	],
-	"extends": "airbnb",
+	"extends": [
+		"eslint:recommended",
+		"airbnb"
+	],
 
 	"rules": {
 		"max-len": 0,
@@ -22,12 +28,9 @@
 		"no-mixed-spaces-and-tabs": "error",
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"semi": [2, "never"],
-		"no-return-assign": 0,
 
 		"import/no-named-as-default": 0,
-		"import/no-unresolved": [2, { "ignore": ["constants", "components"] } ],
-		"import/no-extraneous-dependencies": 0,
-		"import/extensions": ["never"],
+		"import/extensions": 0,
 		"import/prefer-default-export": 0,
 
 		"jsx-a11y/href-no-hash": 0,
@@ -37,7 +40,7 @@
 
 		"react/jsx-indent": [2, "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
-		"react/jsx-filename-extension": 0,
+		"react/jsx-filename-extension": 1,
 		"react/jsx-no-bind": 1,
 		"react/require-default-props": 0,
 		"react/prop-types": 0

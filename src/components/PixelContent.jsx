@@ -16,6 +16,10 @@ const useStyles = createUseStyles({
 		justifyContent: 'center',
 		width: '100%',
 	},
+	spriteWrapper: {
+		display: 'flex',
+		minWidth: 256,
+	},
 	troySprite: {
 		zIndex: 3,
 	},
@@ -38,8 +42,10 @@ export default ({ objectSprite }) => {
 	return (
 		<div className={classes.artContainer}>
 			<div className={classes.spriteContainer}>
-				<Sprite type={TROY} className={classes.troySprite} />
-				<Sprite type={objectSprite} className={classes.objectSprite} />
+				<div className={classes.spriteWrapper}>
+					<Sprite type={TROY} className={classes.troySprite} />
+					<Sprite type={objectSprite} className={classes.objectSprite} />
+				</div>
 			</div>
 			<div className={classes.sidewalk} />
 		</div>

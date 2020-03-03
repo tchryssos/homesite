@@ -15,12 +15,12 @@ module.exports = (env, argv) => {
 		},
 		devtool: isProd ? '' : 'inline-source-map',
 		entry: [
-			'./app.js',
+			'./app.jsx',
 		],
 		module: {
 			rules: [
 				{
-					test: /\.js$/,
+					test: /\.jsx?$/,
 					exclude: /node_modules/,
 					use: [
 						{
@@ -83,6 +83,7 @@ module.exports = (env, argv) => {
 			// new BundleAnalyzerPlugin(),
 		],
 		resolve: {
+			extensions: ['*', '.jsx', '.js'],
 			modules: [
 				'node_modules',
 			],
