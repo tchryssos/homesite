@@ -68,14 +68,6 @@ export default () => {
 				>
 					Code
 				</NavLink>
-				<NavLink
-					exact
-					style={linkStyles}
-					activeClassName={classes.navActive}
-					to="/audio"
-				>
-					Audio
-				</NavLink>
 			</div>
 		</>
 	)
