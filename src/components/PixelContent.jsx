@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
 	artContainer: {
 		width: '100%',
 		position: 'relative',
-		marginBottom: '48px',
+		marginBottom: 48,
 	},
 	spriteContainer: {
 		display: 'flex',
@@ -25,13 +25,13 @@ const useStyles = createUseStyles({
 	},
 	objectSprite: {
 		zIndex: 2,
-		marginBottom: '20px',
+		marginBottom: 20,
 	},
 	sidewalk: {
 		position: 'absolute',
-		top: '130px',
+		top: 130,
 		width: '100%',
-		height: '150px',
+		height: 150,
 		background: `url('${street}')`,
 		backgroundSize: 'contain',
 	},

@@ -10,16 +10,16 @@ import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 const useStyles = createUseStyles({
 	nameWrapper: {
 		...xsFont,
-		margin: '16px',
+		margin: 16,
 		fontStyle: 'italic',
-		textShadow: `1px -2px ${black}`,
+		textShadow: [[1, -2, black]],
 	},
 	navWrapper: {
-		textShadow: `1px -1px ${black}`,
+		textShadow: [[1, -1, black]],
 		display: 'flex',
 		justifyContent: 'space-around',
 		width: '100%',
-		marginBottom: '16px',
+		marginBottom: 16,
 	},
 	link: {
 		...mdFont,
@@ -33,17 +33,17 @@ const useStyles = createUseStyles({
 			marginRight: 16,
 		},
 		navWrapper: {
-			marginLeft: '16px',
+			paddingLeft: 16,
 			justifyContent: 'flex-start',
 		},
 	},
 	[MD_MIN_STRING]: {
 		nameWrapper: {
 			...lgFont,
-			textShadow: `2px -4px ${black}`,
+			textShadow: [[2, -4, black]],
 		},
 		navWrapper: {
-			textShadow: `2px -2px ${black}`,
+			textShadow: [[2, -2, black]],
 		},
 	},
 })
