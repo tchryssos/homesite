@@ -3,15 +3,9 @@ import { createUseStyles } from 'react-jss'
 import { NavLink } from 'react-router-dom'
 import { black } from 'constants/styles/colors'
 import {
-	lgFont, smFont, xsFont,
+	lgFont, mdFont, xsFont,
 } from 'constants/styles/fonts'
-import { MD_MIN_STRING } from 'constants/styles/breakpoints'
-
-const linkStyles = {
-	...smFont,
-	textDecoration: 'none',
-	marginRight: 8,
-}
+import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 
 const useStyles = createUseStyles({
 	nameWrapper: {
@@ -27,9 +21,21 @@ const useStyles = createUseStyles({
 		width: '100%',
 		marginBottom: '16px',
 	},
-	link: linkStyles,
+	link: {
+		...mdFont,
+		textDecoration: 'none',
+	},
 	navActive: {
 		textDecoration: [['underline'], '!important'],
+	},
+	[SM_MIN_STRING]: {
+		link: {
+			marginRight: 16,
+		},
+		navWrapper: {
+			marginLeft: '16px',
+			justifyContent: 'flex-start',
+		},
 	},
 	[MD_MIN_STRING]: {
 		nameWrapper: {
@@ -37,8 +43,6 @@ const useStyles = createUseStyles({
 			textShadow: `2px -4px ${black}`,
 		},
 		navWrapper: {
-			justifyContent: 'flex-start',
-			marginLeft: '16px',
 			textShadow: `2px -2px ${black}`,
 		},
 	},
@@ -54,7 +58,7 @@ export default () => {
 			<div className={classes.navWrapper}>
 				<NavLink
 					exact
-					style={linkStyles}
+					className={classes.link}
 					activeClassName={classes.navActive}
 					to="/"
 				>
@@ -62,7 +66,7 @@ export default () => {
 				</NavLink>
 				<NavLink
 					exact
-					style={linkStyles}
+					className={classes.link}
 					activeClassName={classes.navActive}
 					to="/code"
 				>
