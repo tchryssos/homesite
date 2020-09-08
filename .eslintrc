@@ -40,8 +40,8 @@
 
 		"react/jsx-indent": [2, "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
-		"react/jsx-filename-extension": 1,
 		"react/jsx-no-bind": 1,
+		"react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
 		"react/require-default-props": 0,
 		"react/prop-types": 0
 	},
@@ -55,7 +55,8 @@
 	"settings": {
 		"import/resolver": {
 			"node": {
-				"paths": ["src"]
+				"paths": ["src"],
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
 			}
 		}
 	}
