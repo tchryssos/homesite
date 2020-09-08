@@ -48,7 +48,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default () => {
+const NavBar: React.FC = () => {
 	const classes = useStyles()
 	return (
 		<>
@@ -76,3 +76,5 @@ export default () => {
 		</>
 	)
 }
+
+export default NavBar
