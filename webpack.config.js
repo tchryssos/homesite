@@ -15,22 +15,16 @@ module.exports = (env, argv) => {
 		},
 		devtool: isProd ? '' : 'inline-source-map',
 		entry: [
-			'./app.jsx',
+			'./app.tsx',
 		],
 		module: {
 			rules: [
 				{
-					test: /\.jsx?$/,
+					test: /\.tsx?$/,
 					exclude: /node_modules/,
 					use: [
 						{
-							loader: 'babel-loader',
-							options: {
-								presets: [
-									'@babel/react',
-									'@babel/preset-env',
-								],
-							},
+							loader: 'ts-loader',
 						},
 					],
 				},
@@ -83,7 +77,7 @@ module.exports = (env, argv) => {
 			// new BundleAnalyzerPlugin(),
 		],
 		resolve: {
-			extensions: ['*', '.jsx', '.js'],
+			extensions: ['*', '.jsx', '.js', '.ts', '.tsx'],
 			modules: [
 				'node_modules',
 			],

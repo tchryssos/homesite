@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-const LittleTitle: React.FC<Props> = ({ children, className }: Props) => {
+const LittleTitle: React.FC<Props> = ({ children, className }) => {
 	const classes = useStyles()
 	return (
 		<h3 className={clsx(classes.h3, className)}>{children}</h3>

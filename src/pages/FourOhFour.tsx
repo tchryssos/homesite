@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default () => {
+const FourOhFour = () => {
 	const classes = useStyles()
 	return (
 		<>
@@ -28,3 +28,4 @@ export default () => {
 	)
 }
 
+export default FourOhFour

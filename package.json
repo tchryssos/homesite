@@ -46,6 +46,7 @@
     "react-jss": "^10.4.0",
     "react-router-dom": "^5.2.0",
     "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.3",
     "typescript": "^4.0.2",
     "url-loader": "^0.6.2",
     "webpack": "^4.44.1",

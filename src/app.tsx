@@ -11,7 +11,7 @@ import NavBar from 'components/NavBar'
 
 import { purple } from 'constants/styles/colors'
 
-const useStyles = createUseStyles(() => {
+const useStyles = () => {
 	const marPadZero = {
 		margin: 0,
 		padding: 0,
@@ -22,8 +22,7 @@ const useStyles = createUseStyles(() => {
 		backgroundColor: purple,
 		...marPadZero,
 	}
-
-	return {
+	return createUseStyles({
 		'@import': [
 			"url('https://fonts.googleapis.com/css?family=VT323')",
 		],
@@ -42,10 +41,15 @@ const useStyles = createUseStyles(() => {
 			h2: marPadZero,
 			h3: marPadZero,
 		},
-	}
-})
+	})
+}
 
-const App = ({ location }) => {
+interface AppProps {
+	location: object,
+}
+
+const App: React.FC<AppProps> = ({ location }) => {
+	console.log(location)
 	// Create global effects or state here
 	// with access to router location
 	useStyles()
