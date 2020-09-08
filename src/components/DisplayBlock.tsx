@@ -6,6 +6,13 @@ import LittleTitle from 'components/LittleTitle'
 
 import { black, white, darkPurple } from 'constants/styles/colors'
 
+interface Props {
+	title: string,
+	text: string,
+	altText: string,
+	imageSrc: string,
+}
+
 const useStyles = createUseStyles({
 	block: {
 		borderRadius: 4,
@@ -30,15 +37,23 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({ title, text, imageSrc }) => {
+const DisplayBlock: React.FC<Props> = ({
+	title, text, altText, imageSrc,
+}) => {
 	const classes = useStyles()
 	return (
 		<div className={classes.block}>
 			<div className={classes.header}>
-				<img src={imageSrc} className={classes.image} />
+				<img
+					src={imageSrc}
+					alt={altText}
+					className={classes.image}
+				/>
 				<LittleTitle>{title}</LittleTitle>
 			</div>
 			<Body>{text}</Body>
 		</div>
 	)
 }
+
+export default DisplayBlock

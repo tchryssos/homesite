@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss'
 import { smFont } from 'constants/styles/fonts'
 
 interface Props {
-	className: string,
+	className?: string,
 	children: React.ReactNode,
 }
 
