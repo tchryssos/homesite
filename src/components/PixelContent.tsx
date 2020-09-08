@@ -5,6 +5,10 @@ import Sprite from 'components/Sprite'
 import { TROY } from 'constants/sprites'
 import street from 'static/street_purp.png'
 
+interface Props {
+	objectSprite: string,
+}
+
 const useStyles = createUseStyles({
 	artContainer: {
 		width: '100%',
@@ -37,7 +41,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({ objectSprite }) => {
+const PixelContent: React.FC<Props> = ({ objectSprite }) => {
 	const classes = useStyles()
 	return (
 		<div className={classes.artContainer}>
@@ -51,3 +55,5 @@ export default ({ objectSprite }) => {
 		</div>
 	)
 }
+
+export default PixelContent

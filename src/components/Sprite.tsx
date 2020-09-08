@@ -11,6 +11,11 @@ import laptop from 'static/laptop.gif'
 import questionMan from 'static/questionman.gif'
 import troy from 'static/troy.gif'
 
+interface Props {
+	type: string,
+	className?: string,
+}
+
 const useStyles = createUseStyles({
 	spriteContainer: {
 		maxWidth: 128,
@@ -22,7 +27,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-const spriteSwitch = (type) => {
+const spriteSwitch = (type: string) => {
 	switch (type) {
 		case TROY:
 			return troy
@@ -35,7 +40,7 @@ const spriteSwitch = (type) => {
 	}
 }
 
-export default ({ type, className }) => {
+const Sprite: React.FC<Props> = ({ type, className }) => {
 	const classes = useStyles()
 	return (
 		<div
@@ -54,3 +59,5 @@ export default ({ type, className }) => {
 		</div>
 	)
 }
+
+export default Sprite

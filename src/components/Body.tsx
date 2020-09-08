@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-const Body: React.FC<Props> = ({ children, className }: Props) => {
+const Body: React.FC<Props> = ({ children, className }) => {
 	const classes = useStyles()
 	return (
 		<p className={clsx(classes.body, className)}>{children}</p>
