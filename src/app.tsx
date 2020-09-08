@@ -23,9 +23,7 @@ const useStyles = () => {
 		...marPadZero,
 	}
 	return createUseStyles({
-		'@import': [
-			"url('https://fonts.googleapis.com/css?family=VT323')",
-		],
+		'@import': "url('https://fonts.googleapis.com/css?family=VT323')",
 		'@global': {
 			html: baseStyle,
 			body: {
@@ -45,7 +43,7 @@ const useStyles = () => {
 }
 
 interface AppProps {
-	location: object,
+	location: {},
 }
 
 const App: React.FC<AppProps> = ({ location }) => {
@@ -65,7 +63,7 @@ const App: React.FC<AppProps> = ({ location }) => {
 	)
 }
 
-const RouterApp = withRouter((props) => <App {...props} />)
+const RouterApp = withRouter(({ location }) => <App location={location} />)
 
 render(
 	<BrowserRouter>
