@@ -16,6 +16,10 @@ const useStyles = createUseStyles({
 		margin: 16,
 		fontStyle: 'italic',
 		textShadow: [[1, -2, black]],
+		[MD_MIN_STRING]: {
+			...lgFont,
+			textShadow: [[2, -4, black]],
+		},
 	},
 	navWrapper: {
 		textShadow: [[1, -1, black]],
@@ -23,10 +27,20 @@ const useStyles = createUseStyles({
 		justifyContent: 'space-around',
 		width: '100%',
 		marginBottom: 16,
+		[SM_MIN_STRING]: {
+			paddingLeft: 16,
+			justifyContent: 'flex-start',
+		},
+		[MD_MIN_STRING]: {
+			textShadow: [[2, -2, black]],
+		},
 	},
 	link: {
 		...mdFont,
 		textDecoration: 'none',
+		[SM_MIN_STRING]: {
+			marginRight: 16,
+		},
 	},
 	navActive: {
 		textDecoration: [['underline'], '!important'],
@@ -35,24 +49,6 @@ const useStyles = createUseStyles({
 		opacity: 0.6,
 		'&:hover': {
 			cursor: 'wait',
-		},
-	},
-	[SM_MIN_STRING]: {
-		link: {
-			marginRight: 16,
-		},
-		navWrapper: {
-			paddingLeft: 16,
-			justifyContent: 'flex-start',
-		},
-	},
-	[MD_MIN_STRING]: {
-		nameWrapper: {
-			...lgFont,
-			textShadow: [[2, -4, black]],
-		},
-		navWrapper: {
-			textShadow: [[2, -2, black]],
 		},
 	},
 })
