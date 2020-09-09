@@ -31,10 +31,12 @@ const Code = () => {
 				<DisplayBlock
 					title="Banjo MTG"
 					text="Banjo kazooie reads you mtg card text"
+					to="https://tchryssos.github.io/banjo-mtg/"
 				/>
 				<DisplayBlock
 					title="caseybradford.club"
 					text="Portfolio website for graphic &amp; UX designer Casey Bradford"
+					to="https://caseybradford.club/"
 				/>
 			</div>
 		</div>

@@ -11,10 +11,15 @@ interface Props {
 	text: string,
 	altText?: string,
 	imageSrc?: string,
+	to: string,
 }
 
 const useStyles = createUseStyles({
+	blockLink: {
+		textDecoration: 'none',
+	},
 	block: {
+		height: '100%',
 		borderRadius: 4,
 		backgroundColor: black,
 		border: [[1, 'solid', white]],
@@ -23,6 +28,10 @@ const useStyles = createUseStyles({
 		padding: 8,
 		boxShadow: [[4, 4, darkPurple]],
 		wordBreak: 'break-word',
+		'&:hover': {
+			transform: 'translate(-4px, -4px)',
+			boxShadow: [[8, 8, darkPurple]],
+		},
 	},
 	header: {
 		display: 'flex',
@@ -36,21 +45,28 @@ const useStyles = createUseStyles({
 })
 
 const DisplayBlock: React.FC<Props> = ({
-	title, text, altText, imageSrc,
+	title, text, altText, imageSrc, to,
 }) => {
 	const classes = useStyles()
 	return (
-		<div className={classes.block}>
-			<div className={classes.header}>
-				<img
-					src={imageSrc}
-					alt={altText}
-					className={classes.image}
-				/>
-				<LittleTitle>{title}</LittleTitle>
+		<a
+			href={to}
+			target="_blank"
+			rel="noreferrer"
+			className={classes.blockLink}
+		>
+			<div className={classes.block}>
+				<div className={classes.header}>
+					<img
+						src={imageSrc}
+						alt={altText}
+						className={classes.image}
+					/>
+					<LittleTitle>{title}</LittleTitle>
+				</div>
+				<Body>{text}</Body>
 			</div>
-			<Body>{text}</Body>
-		</div>
+		</a>
 	)
 }
 
