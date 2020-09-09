@@ -20,11 +20,9 @@ const useStyles = createUseStyles({
 		border: [[1, 'solid', white]],
 		display: 'flex',
 		flexDirection: 'column',
-		maxWidth: 256,
 		padding: 8,
 		boxShadow: [[4, 4, darkPurple]],
 		wordBreak: 'break-word',
-		marginRight: 16,
 	},
 	header: {
 		display: 'flex',

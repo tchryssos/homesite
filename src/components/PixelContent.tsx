@@ -84,8 +84,13 @@ const PixelContent: React.FC = () => {
 	const classes = useStyles()
 	const animatingClasses = useAnimatingStyles()
 	const { pathname } = useLocation()
+
 	const { isAnimating } = useContext(AnimationContext)
 	const { windowSize } = useContext(WindowContext)
+
+	const [currentSprite, setCurrentSprite] = useState(pathToSprite(pathname))
+	const [prevSprite, setPrevSprite] = useState('')
+
 	const setInlineTransform = (translate: number) => {
 		if (isAnimating) {
 			return {
@@ -94,8 +99,6 @@ const PixelContent: React.FC = () => {
 		}
 		return {}
 	}
-	const [currentSprite, setCurrentSprite] = useState(pathToSprite(pathname))
-	const [prevSprite, setPrevSprite] = useState('')
 
 	useEffect(() => {
 		setPrevSprite(currentSprite)
