@@ -59,15 +59,14 @@ const useStyles = createUseStyles({
 const useAnimatingStyles = createUseStyles({
 	// transforms are set as an inline style
 	scrollerAnimated: {
-		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
+		transition: `transform ${PAGE_TRANSITION_TIME}ms linear`,
 	},
 	currSprite: {
 		position: 'absolute',
-		top: -20, // copies marginBottom 20
 		height: '100%',
 	},
 	animatedTroy: {
-		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
+		transition: `transform ${PAGE_TRANSITION_TIME}ms linear`,
 	},
 })
 

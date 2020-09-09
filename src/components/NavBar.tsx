@@ -1,11 +1,14 @@
-import React from 'react'
-import { createUseStyles } from 'react-jss'
-import { NavLink } from 'react-router-dom'
-import { black } from 'constants/styles/colors'
+import React, { useContext, useState } from 'react'
+import { createUseStyles, WithStylesProps } from 'react-jss'
+import { NavLink, useLocation } from 'react-router-dom'
+import { black, lightGrey } from 'constants/styles/colors'
 import {
 	lgFont, mdFont, xsFont,
 } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
+import { HOME_PATH, CODE_PATH } from 'constants/routes'
+import AnimationContext from 'logic/contexts/animation'
+import clsx from 'clsx'
 
 const useStyles = createUseStyles({
 	nameWrapper: {
@@ -28,6 +31,9 @@ const useStyles = createUseStyles({
 	navActive: {
 		textDecoration: [['underline'], '!important'],
 	},
+	disabledLink: {
+		opacity: 0.6,
+	},
 	[SM_MIN_STRING]: {
 		link: {
 			marginRight: 16,
@@ -47,6 +53,38 @@ const useStyles = createUseStyles({
 		},
 	},
 })
+interface Props extends WithStylesProps<typeof useStyles> {
+	to: string,
+	children: React.ReactNode,
+}
+
+const NavText: React.FC<Props> = ({ to, classes, children }) => {
+	const { pathname } = useLocation()
+	const { isAnimating } = useContext(AnimationContext)
+	if (isAnimating) {
+		return (
+			<p
+				className={clsx(
+					classes.link,
+					classes.disabledLink,
+					{ [classes.navActive]: pathname === to },
+				)}
+			>
+				{children}
+			</p>
+		)
+	}
+	return (
+		<NavLink
+			exact
+			className={classes.link}
+			activeClassName={classes.navActive}
+			to={to}
+		>
+			{children}
+		</NavLink>
+	)
+}
 
 const NavBar: React.FC = () => {
 	const classes = useStyles()
@@ -56,22 +94,12 @@ const NavBar: React.FC = () => {
 				Troy Chryssos
 			</div>
 			<div className={classes.navWrapper}>
-				<NavLink
-					exact
-					className={classes.link}
-					activeClassName={classes.navActive}
-					to="/"
-				>
+				<NavText to={HOME_PATH} classes={classes}>
 					Home
-				</NavLink>
-				<NavLink
-					exact
-					className={classes.link}
-					activeClassName={classes.navActive}
-					to="/code"
-				>
+				</NavText>
+				<NavText to={CODE_PATH} classes={classes}>
 					Code
-				</NavLink>
+				</NavText>
 			</div>
 		</>
 	)
