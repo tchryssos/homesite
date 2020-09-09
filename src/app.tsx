@@ -43,14 +43,15 @@ const useStyles = () => {
 }
 
 interface AppProps {
-	location: {},
+	location: {
+		pathname: string,
+	},
 }
 
 const App: React.FC<AppProps> = ({ location }) => {
-	console.log(location)
 	// Create global effects or state here
 	// with access to router location
-	useStyles()
+	useStyles()()
 	return (
 		<>
 			<NavBar />

@@ -9,8 +9,8 @@ import { black, white, darkPurple } from 'constants/styles/colors'
 interface Props {
 	title: string,
 	text: string,
-	altText: string,
-	imageSrc: string,
+	altText?: string,
+	imageSrc?: string,
 }
 
 const useStyles = createUseStyles({
