@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import { useLocation } from 'react-router-dom'
+import clsx from 'clsx'
 
 import AnimationContext from 'logic/contexts/animation'
 
@@ -10,6 +11,7 @@ import {
 	TROY, QUESTIONMAN, LAPTOP, CANE, TROY_RIGHT,
 } from 'constants/sprites'
 import { HOME_PATH, CODE_PATH } from 'constants/routes'
+import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
 import street from 'static/street_purp.png'
 
@@ -45,6 +47,23 @@ const useStyles = createUseStyles({
 	},
 })
 
+const useAnimatingStyles = createUseStyles({
+	prevSprite: {
+		transform: 'translateX(-1000px)',
+		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
+	},
+	currSprite: {
+		animation: `$currSpriteSlide ${PAGE_TRANSITION_TIME}ms`,
+		position: 'absolute',
+		top: -20,
+		height: '100%',
+	},
+	'@keyframes currSpriteSlide': {
+		from: { transform: 'translateX(1000px)' },
+		to: { transform: 'translateX(128px)' }, // 128px avoids troy sprite
+	},
+})
+
 const pathToSprite = (path: string) => {
 	switch (path) {
 		case HOME_PATH:
@@ -58,6 +77,7 @@ const pathToSprite = (path: string) => {
 
 const PixelContent: React.FC = () => {
 	const classes = useStyles()
+	const animatingClasses = useAnimatingStyles()
 	const { pathname } = useLocation()
 	const { isAnimating } = useContext(AnimationContext)
 	const [currentSprite, setCurrentSprite] = useState(pathToSprite(pathname))
@@ -73,11 +93,20 @@ const PixelContent: React.FC = () => {
 			<div className={classes.spriteContainer}>
 				<div className={classes.spriteWrapper}>
 					<Sprite type={isAnimating ? TROY_RIGHT : TROY} className={classes.troySprite} />
-					<Sprite type={currentSprite} className={classes.objectSprite} />
+					<Sprite
+						type={isAnimating ? prevSprite : currentSprite}
+						className={clsx(
+							classes.objectSprite,
+							{ [animatingClasses.prevSprite]: isAnimating },
+						)}
+					/>
 					{isAnimating && (
 						<Sprite
-							type={prevSprite}
-							className={classes.objectSprite}
+							type={currentSprite}
+							className={clsx(
+								classes.objectSprite,
+								animatingClasses.currSprite,
+							)}
 						/>
 					)}
 				</div>
