@@ -32,6 +32,10 @@ const useStyles = createUseStyles({
 			transform: 'translate(-4px, -4px)',
 			boxShadow: [[8, 8, darkPurple]],
 		},
+		'&:active': {
+			transform: 'translate(-4px, -4px)',
+			boxShadow: [[8, 8, darkPurple]],
+		},
 	},
 	header: {
 		display: 'flex',
