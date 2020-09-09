@@ -16,6 +16,8 @@ import {
 import { HOME_PATH, CODE_PATH } from 'constants/routes'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
+import { streetDisplayHeight, getWalkAnimationDistance } from 'logic/util/animation'
+
 import street from 'static/street_purp_sm.png'
 
 const useStyles = createUseStyles({
@@ -26,7 +28,6 @@ const useStyles = createUseStyles({
 	},
 	animationScroller: {
 		display: 'flex',
-		justifyContent: 'center',
 		height: 240,
 	},
 	spriteContainer: {
@@ -49,9 +50,11 @@ const useStyles = createUseStyles({
 		position: 'absolute',
 		width: '300%',
 		top: 124,
-		height: 104,
+		height: streetDisplayHeight,
 		background: `url('${street}')`,
 		backgroundSize: 'contain',
+		backgroundRepeat: 'repeat',
+		justifySelf: 'flex-start',
 	},
 })
 
@@ -112,7 +115,7 @@ const PixelContent: React.FC = () => {
 					classes.animationScroller,
 					{ [animatingClasses.scrollerAnimated]: isAnimating },
 				)}
-				style={setInlineTransform(windowSize * -1)}
+				style={setInlineTransform(getWalkAnimationDistance(windowSize) * -1)}
 			>
 				<div className={classes.spriteContainer}>
 					<div className={classes.spriteWrapper}>
@@ -122,7 +125,7 @@ const PixelContent: React.FC = () => {
 								classes.troySprite,
 								{ [animatingClasses.animatedTroy]: isAnimating },
 							)}
-							style={setInlineTransform(windowSize)}
+							style={setInlineTransform(getWalkAnimationDistance(windowSize))}
 						/>
 						<Sprite
 							type={isAnimating ? prevSprite : currentSprite}
@@ -135,7 +138,7 @@ const PixelContent: React.FC = () => {
 									classes.objectSprite,
 									animatingClasses.currSprite,
 								)}
-								style={setInlineTransform(windowSize + 128)}
+								style={setInlineTransform(getWalkAnimationDistance(windowSize) + 128)}
 							/>
 						)}
 					</div>
