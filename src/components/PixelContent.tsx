@@ -65,6 +65,10 @@ const useAnimatingStyles = createUseStyles({
 		top: -20, // copies marginBottom 20
 		height: '100%',
 	},
+	troy: {
+		transform: `translateX(${animationDistance}px)`,
+		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
+	},
 })
 
 const pathToSprite = (path: string) => {
@@ -103,7 +107,10 @@ const PixelContent: React.FC = () => {
 					<div className={classes.spriteWrapper}>
 						<Sprite
 							type={isAnimating ? TROY_RIGHT : TROY}
-							className={classes.troySprite}
+							className={clsx(
+								classes.troySprite,
+								{ [animatingClasses.troy]: isAnimating },
+							)}
 						/>
 						<Sprite
 							type={isAnimating ? prevSprite : currentSprite}
