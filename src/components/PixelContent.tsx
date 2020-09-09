@@ -13,7 +13,7 @@ import Sprite from 'components/Sprite'
 import {
 	TROY, QUESTIONMAN, LAPTOP, CANE, TROY_RIGHT,
 } from 'constants/sprites'
-import { HOME_PATH, CODE_PATH } from 'constants/routes'
+import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
 import { streetDisplayHeight, getWalkAnimationDistance } from 'logic/util/animation'
@@ -41,7 +41,7 @@ const useStyles = createUseStyles({
 	},
 	objectSprite: {
 		zIndex: 2,
-		paddingBottom: 20,
+		paddingBottom: 16,
 	},
 	sidewalk: {
 		position: 'absolute',
@@ -73,7 +73,7 @@ const pathToSprite = (path: string) => {
 	switch (path) {
 		case HOME_PATH:
 			return CANE
-		case CODE_PATH:
+		case PORTFOLIO_PATH:
 			return LAPTOP
 		default:
 			return QUESTIONMAN

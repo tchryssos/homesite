@@ -10,7 +10,7 @@ import AnimationContext from 'logic/contexts/animation'
 import WindowContext from 'logic/contexts/window'
 
 import Home from 'pages/Home'
-import Code from 'pages/Code'
+import Portfolio from 'pages/Portfolio'
 import FourOhFour from 'pages/FourOhFour'
 
 import NavBar from 'components/NavBar'
@@ -73,7 +73,7 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 				<PixelContent />
 				<Switch>
 					<Route path="/" exact component={Home} />
-					<Route path="/code" component={Code} />
+					<Route path="/portfolio" component={Portfolio} />
 					<Route component={FourOhFour} />
 				</Switch>
 			</WindowContext.Provider>

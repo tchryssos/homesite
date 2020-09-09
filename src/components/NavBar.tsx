@@ -6,7 +6,7 @@ import {
 	lgFont, mdFont, smFont,
 } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
-import { HOME_PATH, CODE_PATH } from 'constants/routes'
+import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 import AnimationContext from 'logic/contexts/animation'
 import clsx from 'clsx'
 
@@ -98,8 +98,8 @@ const NavBar: React.FC = () => {
 				<NavText to={HOME_PATH} classes={classes}>
 					Home
 				</NavText>
-				<NavText to={CODE_PATH} classes={classes}>
-					Code
+				<NavText to={PORTFOLIO_PATH} classes={classes}>
+					Portfolio
 				</NavText>
 			</div>
 		</>

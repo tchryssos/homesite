@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-const Code = () => {
+const Portfolio = () => {
 	const classes = useStyles()
 	return (
 		<div className={classes.pageWrapper}>
@@ -43,4 +43,4 @@ const Code = () => {
 	)
 }
 
-export default Code
+export default Portfolio

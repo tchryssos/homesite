@@ -1,2 +1,2 @@
 export const HOME_PATH: string = '/'
-export const CODE_PATH: string = '/code'
+export const PORTFOLIO_PATH: string = '/portfolio'
