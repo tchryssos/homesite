@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import { useLocation } from 'react-router-dom'
 
+import AnimationContext from 'logic/contexts/animation'
+
 import Sprite from 'components/Sprite'
+
 import {
-	TROY, QUESTIONMAN, LAPTOP, CANE,
+	TROY, QUESTIONMAN, LAPTOP, CANE, TROY_RIGHT,
 } from 'constants/sprites'
 import { HOME_PATH, CODE_PATH } from 'constants/routes'
+
 import street from 'static/street_purp.png'
 
 const useStyles = createUseStyles({
@@ -55,25 +59,20 @@ const pathToSprite = (path: string) => {
 const PixelContent: React.FC = () => {
 	const classes = useStyles()
 	const { pathname } = useLocation()
-	const [currentSprite, setCurrentSprite] = useState('')
+	const { isAnimating } = useContext(AnimationContext)
+	const [currentSprite, setCurrentSprite] = useState(pathToSprite(pathname))
 	const [prevSprite, setPrevSprite] = useState('')
-	const initializedRef = useRef(false)
 
 	useEffect(() => {
-		if (initializedRef.current) {
-			setPrevSprite(currentSprite)
-			setCurrentSprite(pathToSprite(pathname))
-		} else {
-			initializedRef.current = true
-			setCurrentSprite(pathToSprite(pathname))
-		}
+		setPrevSprite(currentSprite)
+		setCurrentSprite(pathToSprite(pathname))
 	}, [pathname])
 
 	return (
 		<div className={classes.artContainer}>
 			<div className={classes.spriteContainer}>
 				<div className={classes.spriteWrapper}>
-					<Sprite type={TROY} className={classes.troySprite} />
+					<Sprite type={isAnimating ? TROY_RIGHT : TROY} className={classes.troySprite} />
 					<Sprite type={currentSprite} className={classes.objectSprite} />
 					{prevSprite && (
 						<Sprite

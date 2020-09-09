@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { render } from 'react-dom'
 import {
 	BrowserRouter, Route, Switch, withRouter,
 } from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
+
+import AnimationContext from 'logic/contexts/animation'
+
 import Home from 'pages/Home'
 import Code from 'pages/Code'
 import FourOhFour from 'pages/FourOhFour'
+
 import NavBar from 'components/NavBar'
 import PixelContent from 'components/PixelContent'
 
@@ -49,12 +53,21 @@ interface AppProps {
 	},
 }
 
-const App: React.FC<AppProps> = ({ location }) => {
-	// Create global effects or state here
-	// with access to router location
+const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 	useStyles()()
+	const initializedRef = useRef(false)
+	const [isAnimating, setIsAnimating] = useState(false)
+
+	useEffect(() => {
+		if (initializedRef.current) {
+			setIsAnimating(true)
+		} else {
+			initializedRef.current = true
+		}
+	}, [pathname])
+
 	return (
-		<>
+		<AnimationContext.Provider value={{ isAnimating }}>
 			<NavBar />
 			<PixelContent />
 			<Switch>
@@ -62,7 +75,7 @@ const App: React.FC<AppProps> = ({ location }) => {
 				<Route path="/code" component={Code} />
 				<Route component={FourOhFour} />
 			</Switch>
-		</>
+		</AnimationContext.Provider>
 	)
 }
 
