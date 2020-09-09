@@ -33,6 +33,9 @@ const useStyles = createUseStyles({
 	},
 	disabledLink: {
 		opacity: 0.6,
+		'&:hover': {
+			cursor: 'wait',
+		},
 	},
 	[SM_MIN_STRING]: {
 		link: {

@@ -47,8 +47,7 @@ const useStyles = createUseStyles({
 	},
 	sidewalk: {
 		position: 'absolute',
-		width: '100%',
-		minWidth: 5000,
+		width: '300%',
 		top: 130,
 		height: 150,
 		background: `url('${street}')`,
