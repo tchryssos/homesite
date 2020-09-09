@@ -4,8 +4,10 @@ import {
 	BrowserRouter, Route, Switch, withRouter,
 } from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
+import debounce from 'lodash.debounce'
 
 import AnimationContext from 'logic/contexts/animation'
+import WindowContext from 'logic/contexts/window'
 
 import Home from 'pages/Home'
 import Code from 'pages/Code'
@@ -58,6 +60,10 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 	useStyles()()
 	const initializedRef = useRef(false)
 	const [isAnimating, setIsAnimating] = useState(false)
+	const [windowSize, setWindowSize] = useState(window.innerWidth)
+	const dSetWindowSize = debounce(() => {
+		setWindowSize(window.innerWidth)
+	}, 500)
 
 	useEffect(() => {
 		if (initializedRef.current) {
@@ -68,15 +74,21 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 		}
 	}, [pathname])
 
+	useEffect(() => {
+		window.addEventListener('resize', dSetWindowSize)
+	}, [])
+
 	return (
 		<AnimationContext.Provider value={{ isAnimating }}>
-			<NavBar />
-			<PixelContent />
-			<Switch>
-				<Route path="/" exact component={Home} />
-				<Route path="/code" component={Code} />
-				<Route component={FourOhFour} />
-			</Switch>
+			<WindowContext.Provider value={{ windowSize }}>
+				<NavBar />
+				<PixelContent />
+				<Switch>
+					<Route path="/" exact component={Home} />
+					<Route path="/code" component={Code} />
+					<Route component={FourOhFour} />
+				</Switch>
+			</WindowContext.Provider>
 		</AnimationContext.Provider>
 	)
 }

@@ -1,9 +1,12 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, {
+	useEffect, useContext, useState,
+} from 'react'
 import { createUseStyles } from 'react-jss'
 import { useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 
 import AnimationContext from 'logic/contexts/animation'
+import WindowContext from 'logic/contexts/window'
 
 import Sprite from 'components/Sprite'
 
@@ -53,20 +56,17 @@ const useStyles = createUseStyles({
 	},
 })
 
-const animationDistance = 1000
 const useAnimatingStyles = createUseStyles({
+	// transforms are set as an inline style
 	scrollerAnimated: {
-		transform: `translateX(-${animationDistance}px)`,
 		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
 	},
 	currSprite: {
-		transform: `translateX(${animationDistance + 128}px)`, // +128 avoids troy sprite
 		position: 'absolute',
 		top: -20, // copies marginBottom 20
 		height: '100%',
 	},
 	troy: {
-		transform: `translateX(${animationDistance}px)`,
 		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
 	},
 })
@@ -87,6 +87,15 @@ const PixelContent: React.FC = () => {
 	const animatingClasses = useAnimatingStyles()
 	const { pathname } = useLocation()
 	const { isAnimating } = useContext(AnimationContext)
+	const { windowSize } = useContext(WindowContext)
+	const setInlineTransform = (translate: number) => {
+		if (isAnimating) {
+			return {
+				transform: `translateX(${translate}px)`,
+			}
+		}
+		return {}
+	}
 	const [currentSprite, setCurrentSprite] = useState(pathToSprite(pathname))
 	const [prevSprite, setPrevSprite] = useState('')
 
@@ -102,6 +111,7 @@ const PixelContent: React.FC = () => {
 					classes.animationScroller,
 					{ [animatingClasses.scrollerAnimated]: isAnimating },
 				)}
+				style={setInlineTransform(windowSize * -1)}
 			>
 				<div className={classes.spriteContainer}>
 					<div className={classes.spriteWrapper}>
@@ -111,6 +121,7 @@ const PixelContent: React.FC = () => {
 								classes.troySprite,
 								{ [animatingClasses.troy]: isAnimating },
 							)}
+							style={setInlineTransform(windowSize)}
 						/>
 						<Sprite
 							type={isAnimating ? prevSprite : currentSprite}
@@ -123,6 +134,7 @@ const PixelContent: React.FC = () => {
 									classes.objectSprite,
 									animatingClasses.currSprite,
 								)}
+								style={setInlineTransform(windowSize + 128)}
 							/>
 						)}
 					</div>

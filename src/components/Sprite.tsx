@@ -14,6 +14,7 @@ import troyRight from 'static/troy_right.gif'
 
 interface Props {
 	type: string,
+	style?: {},
 	className?: string,
 }
 
@@ -48,7 +49,7 @@ const spriteSwitch = (type: string) => {
 	}
 }
 
-const Sprite: React.FC<Props> = ({ type, className }) => {
+const Sprite: React.FC<Props> = ({ type, style = {}, className }) => {
 	const classes = useStyles()
 	return (
 		<div
@@ -66,6 +67,7 @@ const Sprite: React.FC<Props> = ({ type, className }) => {
 					{ [classes.troySprite]: type === TROY || type === TROY_RIGHT },
 				)}
 				alt={`A sprite of ${type}`}
+				style={style}
 			/>
 		</div>
 	)
