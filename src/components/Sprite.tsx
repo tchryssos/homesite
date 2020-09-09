@@ -59,6 +59,7 @@ const Sprite: React.FC<Props> = ({ type, style = {}, className }) => {
 					className,
 				)
 			}
+			style={style}
 		>
 			<img
 				src={spriteSwitch(type)}
@@ -67,7 +68,6 @@ const Sprite: React.FC<Props> = ({ type, style = {}, className }) => {
 					{ [classes.troySprite]: type === TROY || type === TROY_RIGHT },
 				)}
 				alt={`A sprite of ${type}`}
-				style={style}
 			/>
 		</div>
 	)

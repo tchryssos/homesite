@@ -66,7 +66,7 @@ const useAnimatingStyles = createUseStyles({
 		top: -20, // copies marginBottom 20
 		height: '100%',
 	},
-	troy: {
+	animatedTroy: {
 		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
 	},
 })
@@ -119,7 +119,7 @@ const PixelContent: React.FC = () => {
 							type={isAnimating ? TROY_RIGHT : TROY}
 							className={clsx(
 								classes.troySprite,
-								{ [animatingClasses.troy]: isAnimating },
+								{ [animatingClasses.animatedTroy]: isAnimating },
 							)}
 							style={setInlineTransform(windowSize)}
 						/>
