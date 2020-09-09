@@ -34,9 +34,6 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		justifyContent: 'center',
 		width: '100%',
-	},
-	spriteWrapper: {
-		display: 'flex',
 		minWidth: 256,
 	},
 	troySprite: {
@@ -44,7 +41,7 @@ const useStyles = createUseStyles({
 	},
 	objectSprite: {
 		zIndex: 2,
-		marginBottom: 20,
+		paddingBottom: 20,
 	},
 	sidewalk: {
 		position: 'absolute',
@@ -119,30 +116,28 @@ const PixelContent: React.FC = () => {
 				style={setInlineTransform(animationDistance * -1)}
 			>
 				<div className={classes.spriteContainer}>
-					<div className={classes.spriteWrapper}>
-						<Sprite
-							type={isAnimating ? TROY_RIGHT : TROY}
-							className={clsx(
-								classes.troySprite,
-								{ [animatingClasses.animatedTroy]: isAnimating },
-							)}
-							style={setInlineTransform(animationDistance)}
-						/>
-						<Sprite
-							type={isAnimating ? prevSprite : currentSprite}
-							className={classes.objectSprite}
-						/>
-						{isAnimating && (
-							<Sprite
-								type={currentSprite}
-								className={clsx(
-									classes.objectSprite,
-									animatingClasses.currSprite,
-								)}
-								style={setInlineTransform(animationDistance + 128)}
-							/>
+					<Sprite
+						type={isAnimating ? TROY_RIGHT : TROY}
+						className={clsx(
+							classes.troySprite,
+							{ [animatingClasses.animatedTroy]: isAnimating },
 						)}
-					</div>
+						style={setInlineTransform(animationDistance)}
+					/>
+					<Sprite
+						type={isAnimating ? prevSprite : currentSprite}
+						className={classes.objectSprite}
+					/>
+					{isAnimating && (
+						<Sprite
+							type={currentSprite}
+							className={clsx(
+								classes.objectSprite,
+								animatingClasses.currSprite,
+							)}
+							style={setInlineTransform(animationDistance + 64)}
+						/>
+					)}
 				</div>
 				<div className={classes.sidewalk} />
 			</div>
