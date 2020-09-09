@@ -8,6 +8,7 @@ import Home from 'pages/Home'
 import Code from 'pages/Code'
 import FourOhFour from 'pages/FourOhFour'
 import NavBar from 'components/NavBar'
+import PixelContent from 'components/PixelContent'
 
 import { purple } from 'constants/styles/colors'
 
@@ -55,6 +56,7 @@ const App: React.FC<AppProps> = ({ location }) => {
 	return (
 		<>
 			<NavBar />
+			<PixelContent />
 			<Switch>
 				<Route path="/" exact component={Home} />
 				<Route path="/code" component={Code} />
