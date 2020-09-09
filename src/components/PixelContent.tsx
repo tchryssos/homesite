@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import { useLocation } from 'react-router-dom'
 
@@ -55,17 +55,17 @@ const pathToSprite = (path: string) => {
 const PixelContent: React.FC = () => {
 	const classes = useStyles()
 	const { pathname } = useLocation()
-	const currentSpriteRef = useRef('')
-	const prevSpriteRef = useRef('')
+	const [currentSprite, setCurrentSprite] = useState('')
+	const [prevSprite, setPrevSprite] = useState('')
 	const initializedRef = useRef(false)
 
 	useEffect(() => {
 		if (initializedRef.current) {
-			prevSpriteRef.current = currentSpriteRef.current
-			currentSpriteRef.current = pathToSprite(pathname)
+			setPrevSprite(currentSprite)
+			setCurrentSprite(pathToSprite(pathname))
 		} else {
 			initializedRef.current = true
-			currentSpriteRef.current = pathToSprite(pathname)
+			setCurrentSprite(pathToSprite(pathname))
 		}
 	}, [pathname])
 
@@ -74,10 +74,10 @@ const PixelContent: React.FC = () => {
 			<div className={classes.spriteContainer}>
 				<div className={classes.spriteWrapper}>
 					<Sprite type={TROY} className={classes.troySprite} />
-					<Sprite type={currentSpriteRef.current} className={classes.objectSprite} />
-					{prevSpriteRef.current && (
+					<Sprite type={currentSprite} className={classes.objectSprite} />
+					{prevSprite && (
 						<Sprite
-							type={prevSpriteRef.current}
+							type={prevSprite}
 							className={classes.objectSprite}
 						/>
 					)}
