@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { createUseStyles, WithStylesProps } from 'react-jss'
 import { NavLink, useLocation } from 'react-router-dom'
-import { black, lightGrey } from 'constants/styles/colors'
+import { black } from 'constants/styles/colors'
 import {
 	lgFont, mdFont, xsFont,
 } from 'constants/styles/fonts'

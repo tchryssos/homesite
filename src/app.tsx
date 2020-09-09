@@ -16,39 +16,27 @@ import FourOhFour from 'pages/FourOhFour'
 import NavBar from 'components/NavBar'
 import PixelContent from 'components/PixelContent'
 
-import { purple } from 'constants/styles/colors'
+import { marPadZero, baseStyle } from 'constants/styles/base'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
-const useStyles = () => {
-	const marPadZero = {
-		margin: 0,
-		padding: 0,
-	}
-	const baseStyle = {
-		height: '100%',
-		width: '100%',
-		backgroundColor: purple,
-		...marPadZero,
-	}
-	return createUseStyles({
-		'@import': "url('https://fonts.googleapis.com/css?family=VT323')",
-		'@global': {
-			html: baseStyle,
-			body: {
-				...baseStyle,
-				position: 'relative',
-			},
-			'#app': baseStyle,
-			div: {
-				boxSizing: 'border-box',
-			},
-			p: marPadZero,
-			h1: marPadZero,
-			h2: marPadZero,
-			h3: marPadZero,
+const useStyles = createUseStyles({
+	'@import': "url('https://fonts.googleapis.com/css?family=VT323')",
+	'@global': {
+		html: baseStyle,
+		body: {
+			...baseStyle,
+			position: 'relative',
 		},
-	})
-}
+		'#app': baseStyle,
+		div: {
+			boxSizing: 'border-box',
+		},
+		p: marPadZero,
+		h1: marPadZero,
+		h2: marPadZero,
+		h3: marPadZero,
+	},
+})
 
 interface AppProps {
 	location: {
@@ -57,7 +45,7 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = ({ location: { pathname } }) => {
-	useStyles()()
+	useStyles()
 	const initializedRef = useRef(false)
 	const [isAnimating, setIsAnimating] = useState(false)
 	const [windowSize, setWindowSize] = useState(window.innerWidth)
