@@ -90,6 +90,7 @@ const PixelContent: React.FC = () => {
 
 	const { isAnimating } = useContext(AnimationContext)
 	const { windowSize } = useContext(WindowContext)
+	const animationDistance = getWalkAnimationDistance(windowSize)
 
 	const [currentSprite, setCurrentSprite] = useState(pathToSprite(pathname))
 	const [prevSprite, setPrevSprite] = useState('')
@@ -115,7 +116,7 @@ const PixelContent: React.FC = () => {
 					classes.animationScroller,
 					{ [animatingClasses.scrollerAnimated]: isAnimating },
 				)}
-				style={setInlineTransform(getWalkAnimationDistance(windowSize) * -1)}
+				style={setInlineTransform(animationDistance * -1)}
 			>
 				<div className={classes.spriteContainer}>
 					<div className={classes.spriteWrapper}>
@@ -125,7 +126,7 @@ const PixelContent: React.FC = () => {
 								classes.troySprite,
 								{ [animatingClasses.animatedTroy]: isAnimating },
 							)}
-							style={setInlineTransform(getWalkAnimationDistance(windowSize))}
+							style={setInlineTransform(animationDistance)}
 						/>
 						<Sprite
 							type={isAnimating ? prevSprite : currentSprite}
@@ -138,7 +139,7 @@ const PixelContent: React.FC = () => {
 									classes.objectSprite,
 									animatingClasses.currSprite,
 								)}
-								style={setInlineTransform(getWalkAnimationDistance(windowSize) + 128)}
+								style={setInlineTransform(animationDistance + 128)}
 							/>
 						)}
 					</div>
