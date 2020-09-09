@@ -37,11 +37,16 @@ const useStyles = createUseStyles({
 		zIndex: 2,
 		marginBottom: 20,
 	},
-	sidewalk: {
+	sidewalkWrapper: {
+		width: '100%',
+		overflow: 'hidden',
 		position: 'absolute',
 		top: 130,
-		width: '100%',
 		height: 150,
+	},
+	sidewalk: {
+		width: '200%',
+		height: '100%',
 		background: `url('${street}')`,
 		backgroundSize: 'contain',
 	},
@@ -55,12 +60,16 @@ const useAnimatingStyles = createUseStyles({
 	currSprite: {
 		animation: `$currSpriteSlide ${PAGE_TRANSITION_TIME}ms`,
 		position: 'absolute',
-		top: -20,
+		top: -20, // copies marginBottom 20
 		height: '100%',
 	},
 	'@keyframes currSpriteSlide': {
 		from: { transform: 'translateX(1000px)' },
 		to: { transform: 'translateX(128px)' }, // 128px avoids troy sprite
+	},
+	sidewalk: {
+		transform: 'translateX(-50%)',
+		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
 	},
 })
 
@@ -92,7 +101,10 @@ const PixelContent: React.FC = () => {
 		<div className={classes.artContainer}>
 			<div className={classes.spriteContainer}>
 				<div className={classes.spriteWrapper}>
-					<Sprite type={isAnimating ? TROY_RIGHT : TROY} className={classes.troySprite} />
+					<Sprite
+						type={isAnimating ? TROY_RIGHT : TROY}
+						className={classes.troySprite}
+					/>
 					<Sprite
 						type={isAnimating ? prevSprite : currentSprite}
 						className={clsx(
@@ -111,7 +123,14 @@ const PixelContent: React.FC = () => {
 					)}
 				</div>
 			</div>
-			<div className={classes.sidewalk} />
+			<div className={classes.sidewalkWrapper}>
+				<div
+					className={clsx(
+						classes.sidewalk,
+						{ [animatingClasses.sidewalk]: isAnimating },
+					)}
+				/>
+			</div>
 		</div>
 	)
 }
