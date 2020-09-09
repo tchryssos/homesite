@@ -15,6 +15,7 @@ import NavBar from 'components/NavBar'
 import PixelContent from 'components/PixelContent'
 
 import { purple } from 'constants/styles/colors'
+import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
 const useStyles = () => {
 	const marPadZero = {
@@ -61,6 +62,7 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 	useEffect(() => {
 		if (initializedRef.current) {
 			setIsAnimating(true)
+			setTimeout(() => setIsAnimating(false), PAGE_TRANSITION_TIME)
 		} else {
 			initializedRef.current = true
 		}

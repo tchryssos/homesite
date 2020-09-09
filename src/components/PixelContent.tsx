@@ -74,7 +74,7 @@ const PixelContent: React.FC = () => {
 				<div className={classes.spriteWrapper}>
 					<Sprite type={isAnimating ? TROY_RIGHT : TROY} className={classes.troySprite} />
 					<Sprite type={currentSprite} className={classes.objectSprite} />
-					{prevSprite && (
+					{isAnimating && (
 						<Sprite
 							type={prevSprite}
 							className={classes.objectSprite}
