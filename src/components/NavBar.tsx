@@ -3,7 +3,7 @@ import { createUseStyles, WithStylesProps } from 'react-jss'
 import { NavLink, useLocation } from 'react-router-dom'
 import { black } from 'constants/styles/colors'
 import {
-	lgFont, mdFont, xsFont,
+	lgFont, mdFont, smFont,
 } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 import { HOME_PATH, CODE_PATH } from 'constants/routes'
@@ -12,8 +12,10 @@ import clsx from 'clsx'
 
 const useStyles = createUseStyles({
 	nameWrapper: {
-		...xsFont,
+		...smFont,
 		margin: 16,
+		marginTop: 0,
+		paddingTop: 16,
 		fontStyle: 'italic',
 		textShadow: [[1, -2, black]],
 		[MD_MIN_STRING]: {
@@ -24,7 +26,7 @@ const useStyles = createUseStyles({
 	navWrapper: {
 		textShadow: [[1, -1, black]],
 		display: 'flex',
-		justifyContent: 'space-around',
+		justifyContent: 'space-evenly',
 		width: '100%',
 		marginBottom: 16,
 		[SM_MIN_STRING]: {
