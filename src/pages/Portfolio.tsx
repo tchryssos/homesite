@@ -30,7 +30,7 @@ const Portfolio = () => {
 			<div className={classes.codeBlockWrapper}>
 				<DisplayBlock
 					title="Banjo MTG"
-					text="Banjo kazooie reads you mtg card text"
+					text="Enter the name of a Magic the Gathering card and have Banjo from Banjo Kazooie read you the rules text"
 					to="https://tchryssos.github.io/banjo-mtg/"
 				/>
 				<DisplayBlock
