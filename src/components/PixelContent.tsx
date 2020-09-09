@@ -13,13 +13,18 @@ import {
 import { HOME_PATH, CODE_PATH } from 'constants/routes'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
-import street from 'static/street_purp.png'
+import street from 'static/street_purp_sm.png'
 
 const useStyles = createUseStyles({
 	artContainer: {
 		width: '100%',
 		position: 'relative',
-		marginBottom: 48,
+		overflow: 'hidden',
+	},
+	animationScroller: {
+		display: 'flex',
+		justifyContent: 'center',
+		height: 240,
 	},
 	spriteContainer: {
 		display: 'flex',
@@ -37,39 +42,28 @@ const useStyles = createUseStyles({
 		zIndex: 2,
 		marginBottom: 20,
 	},
-	sidewalkWrapper: {
-		width: '100%',
-		overflow: 'hidden',
+	sidewalk: {
 		position: 'absolute',
+		width: '100%',
+		minWidth: 5000,
 		top: 130,
 		height: 150,
-	},
-	sidewalk: {
-		width: '200%',
-		height: '100%',
 		background: `url('${street}')`,
 		backgroundSize: 'contain',
 	},
 })
 
+const animationDistance = 1000
 const useAnimatingStyles = createUseStyles({
-	prevSprite: {
-		transform: 'translateX(-1000px)',
+	scrollerAnimated: {
+		transform: `translateX(-${animationDistance}px)`,
 		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
 	},
 	currSprite: {
-		animation: `$currSpriteSlide ${PAGE_TRANSITION_TIME}ms`,
+		transform: `translateX(${animationDistance + 128}px)`, // +128 avoids troy sprite
 		position: 'absolute',
 		top: -20, // copies marginBottom 20
 		height: '100%',
-	},
-	'@keyframes currSpriteSlide': {
-		from: { transform: 'translateX(1000px)' },
-		to: { transform: 'translateX(128px)' }, // 128px avoids troy sprite
-	},
-	sidewalk: {
-		transform: 'translateX(-50%)',
-		transition: `transform ${PAGE_TRANSITION_TIME}ms`,
 	},
 })
 
@@ -99,37 +93,34 @@ const PixelContent: React.FC = () => {
 
 	return (
 		<div className={classes.artContainer}>
-			<div className={classes.spriteContainer}>
-				<div className={classes.spriteWrapper}>
-					<Sprite
-						type={isAnimating ? TROY_RIGHT : TROY}
-						className={classes.troySprite}
-					/>
-					<Sprite
-						type={isAnimating ? prevSprite : currentSprite}
-						className={clsx(
-							classes.objectSprite,
-							{ [animatingClasses.prevSprite]: isAnimating },
-						)}
-					/>
-					{isAnimating && (
+			<div
+				className={clsx(
+					classes.animationScroller,
+					{ [animatingClasses.scrollerAnimated]: isAnimating },
+				)}
+			>
+				<div className={classes.spriteContainer}>
+					<div className={classes.spriteWrapper}>
 						<Sprite
-							type={currentSprite}
-							className={clsx(
-								classes.objectSprite,
-								animatingClasses.currSprite,
-							)}
+							type={isAnimating ? TROY_RIGHT : TROY}
+							className={classes.troySprite}
 						/>
-					)}
+						<Sprite
+							type={isAnimating ? prevSprite : currentSprite}
+							className={classes.objectSprite}
+						/>
+						{isAnimating && (
+							<Sprite
+								type={currentSprite}
+								className={clsx(
+									classes.objectSprite,
+									animatingClasses.currSprite,
+								)}
+							/>
+						)}
+					</div>
 				</div>
-			</div>
-			<div className={classes.sidewalkWrapper}>
-				<div
-					className={clsx(
-						classes.sidewalk,
-						{ [animatingClasses.sidewalk]: isAnimating },
-					)}
-				/>
+				<div className={classes.sidewalk} />
 			</div>
 		</div>
 	)
