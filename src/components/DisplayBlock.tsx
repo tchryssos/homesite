@@ -1,10 +1,12 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
+import clsx from 'clsx'
 
 import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
 
-import { black, white, darkPurple } from 'constants/styles/colors'
+import { black, white } from 'constants/styles/colors'
+import { useShadowStyles } from 'constants/styles/shadow'
 
 interface Props {
 	title: string,
@@ -26,16 +28,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		flexDirection: 'column',
 		padding: 8,
-		boxShadow: [[4, 4, darkPurple]],
 		wordBreak: 'break-word',
-		'&:hover': {
-			transform: 'translate(-4px, -4px)',
-			boxShadow: [[8, 8, darkPurple]],
-		},
-		'&:active': {
-			transform: 'translate(-4px, -4px)',
-			boxShadow: [[8, 8, darkPurple]],
-		},
 	},
 	header: {
 		display: 'flex',
@@ -52,6 +45,7 @@ const DisplayBlock: React.FC<Props> = ({
 	title, text, altText, imageSrc, to,
 }) => {
 	const classes = useStyles()
+	const shadowClasses = useShadowStyles()
 	return (
 		<a
 			href={to}
@@ -59,7 +53,13 @@ const DisplayBlock: React.FC<Props> = ({
 			rel="noreferrer"
 			className={classes.blockLink}
 		>
-			<div className={classes.block}>
+			<div
+				className={clsx(
+					classes.block,
+					shadowClasses.shadow,
+					shadowClasses.hoverShadow,
+				)}
+			>
 				<div className={classes.header}>
 					<img
 						src={imageSrc}

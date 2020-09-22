@@ -1,7 +1,7 @@
 import { createUseStyles } from 'react-jss'
 import { darkPurple } from 'constants/styles/colors'
 
-export const useShadowStyle = createUseStyles({
+export const useShadowStyles = createUseStyles({
 	shadow: {
 		boxShadow: [[4, 4, darkPurple]],
 	},
