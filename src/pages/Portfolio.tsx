@@ -1,14 +1,10 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 import DisplayBlock from 'components/DisplayBlock'
+import PageWrapper from 'components/PageWrapper'
 import { SM_MIN_STRING, LG_MIN_STRING } from 'constants/styles/breakpoints'
 
 const useStyles = createUseStyles({
-	pageWrapper: {
-		display: 'flex',
-		flexDirection: 'column',
-		width: '100%',
-	},
 	codeBlockWrapper: {
 		padding: [[0, 16]],
 		display: 'grid',
@@ -26,7 +22,7 @@ const useStyles = createUseStyles({
 const Portfolio = () => {
 	const classes = useStyles()
 	return (
-		<div className={classes.pageWrapper}>
+		<PageWrapper>
 			<div className={classes.codeBlockWrapper}>
 				<DisplayBlock
 					title="Banjo MTG"
@@ -39,7 +35,7 @@ const Portfolio = () => {
 					to="https://caseybradford.club/"
 				/>
 			</div>
-		</div>
+		</PageWrapper>
 	)
 }
 
