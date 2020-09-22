@@ -19,7 +19,7 @@ const useStyles = createUseStyles({
 		border: [[2, 'solid', white]],
 		borderRadius: 4,
 		textDecoration: 'none',
-		padding: 8,
+		padding: [[8, 16]],
 		width: '100%',
 		marginBottom: 24,
 		backgroundColor: dimmed,
