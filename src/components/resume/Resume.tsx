@@ -1,5 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
+import clsx from 'clsx'
 
 import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
@@ -8,7 +9,8 @@ import ResumeExperience from 'components/resume/ResumeExperience'
 
 import resumePdf from 'static/chryssos_resume.pdf'
 
-import { white, dimmedWhite } from 'constants/styles/colors'
+import { white, dimmed } from 'constants/styles/colors'
+import { useShadowStyle } from 'constants/styles/shadow'
 import { experience, skills } from 'constants/resume'
 
 const useStyles = createUseStyles({
@@ -20,10 +22,7 @@ const useStyles = createUseStyles({
 		padding: 4,
 		width: 'fit-content',
 		marginBottom: 24,
-		'&:hover': {
-			borderColor: dimmedWhite,
-			color: dimmedWhite,
-		},
+		backgroundColor: dimmed,
 	},
 	downloadText: {
 		color: 'inherit',
@@ -33,7 +32,7 @@ const useStyles = createUseStyles({
 		borderRadius: 4,
 		padding: 8,
 		marginBottom: 16,
-		backgroundColor: 'rgba(0, 0, 0, 0.2)',
+		backgroundColor: dimmed,
 		display: 'flex',
 	},
 	main: {
@@ -52,13 +51,27 @@ const useStyles = createUseStyles({
 
 const Resume = () => {
 	const classes = useStyles()
+	const shadowClasses = useShadowStyle()
 	return (
 		<>
-			<a href={resumePdf} download className={classes.download}>
-				<Body className={classes.downloadText}>Download Resume</Body>
+			<a
+				href={resumePdf}
+				download
+				className={clsx(
+					classes.download,
+					shadowClasses.shadow,
+					shadowClasses.hoverShadow,
+				)}
+			>
+				<Body className={classes.downloadText}>Download Full Resume</Body>
 			</a>
 
-			<div className={classes.resumeContainer}>
+			<div
+				className={clsx(
+					classes.resumeContainer,
+					shadowClasses.shadow,
+				)}
+			>
 
 				<div className={classes.main}>
 					{experience.map(
