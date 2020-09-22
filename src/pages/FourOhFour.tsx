@@ -1,6 +1,7 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import { xlFont } from 'constants/styles/fonts'
+import { monoFont } from 'constants/styles/fonts'
+import { white } from 'constants/styles/colors'
 
 const useStyles = createUseStyles({
 	fourOhFourContainer: {
@@ -9,7 +10,9 @@ const useStyles = createUseStyles({
 		justifyContent: 'center',
 	},
 	fourOhFour: {
-		...xlFont,
+		color: white,
+		fontSize: 72,
+		fontFamily: monoFont,
 	},
 })
 

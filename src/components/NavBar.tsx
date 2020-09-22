@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
 import { createUseStyles, WithStylesProps } from 'react-jss'
 import { NavLink, useLocation } from 'react-router-dom'
-import { black } from 'constants/styles/colors'
-import {
-	lgFont, mdFont, smFont,
-} from 'constants/styles/fonts'
+import { black, white } from 'constants/styles/colors'
+import { sansFont, monoFont } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 import AnimationContext from 'logic/contexts/animation'
@@ -12,14 +10,16 @@ import clsx from 'clsx'
 
 const useStyles = createUseStyles({
 	nameWrapper: {
-		...smFont,
+		fontFamily: monoFont,
+		color: white,
+		fontSize: 18,
 		margin: 16,
 		marginTop: 0,
 		paddingTop: 16,
 		fontStyle: 'italic',
 		textShadow: [[1, -2, black]],
 		[MD_MIN_STRING]: {
-			...lgFont,
+			fontSize: 48,
 			textShadow: [[2, -4, black]],
 		},
 	},
@@ -38,7 +38,9 @@ const useStyles = createUseStyles({
 		},
 	},
 	link: {
-		...mdFont,
+		fontFamily: sansFont,
+		color: white,
+		fontSize: 28,
 		textDecoration: 'none',
 		[SM_MIN_STRING]: {
 			marginRight: 16,

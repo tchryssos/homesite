@@ -2,7 +2,8 @@ import React from 'react'
 import clsx from 'clsx'
 import { createUseStyles } from 'react-jss'
 
-import { mdFont } from 'constants/styles/fonts'
+import { monoFont } from 'constants/styles/fonts'
+import { white } from 'constants/styles/colors'
 
 interface Props {
 	className?: string,
@@ -11,7 +12,9 @@ interface Props {
 
 const useStyles = createUseStyles({
 	h3: {
-		...mdFont,
+		color: white,
+		fontSize: 36,
+		fontFamily: monoFont,
 	},
 })
 

@@ -20,7 +20,7 @@ import { marPadZero, baseStyle } from 'constants/styles/base'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
 const useStyles = createUseStyles({
-	'@import': "url('https://fonts.googleapis.com/css?family=VT323')",
+	'@import': "url('https://fonts.googleapis.com/css2?family=PT+Sans&family=VT323&display=swap')",
 	'@global': {
 		html: baseStyle,
 		body: {

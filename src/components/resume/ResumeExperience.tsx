@@ -35,7 +35,7 @@ const ResumeExperience: React.FC<ExperienceProps> = ({
 			<SubText className={classes.dates}>{dates}</SubText>
 			{highlights.map(
 				(h) => (
-					<SubText>
+					<SubText key={h}>
 						+&nbsp;
 						{h}
 					</SubText>

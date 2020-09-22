@@ -35,7 +35,7 @@ const useStyles = createUseStyles({
 	resumeContainer: {
 		border: [[2, 'solid', white]],
 		borderRadius: 4,
-		padding: 8,
+		padding: 16,
 		marginBottom: 16,
 		backgroundColor: dimmed,
 		display: 'flex',
@@ -61,7 +61,7 @@ const useStyles = createUseStyles({
 		},
 	},
 	sectionLabel: {
-		marginBottom: 8,
+		marginBottom: 16,
 		textDecoration: 'underline',
 	},
 })
@@ -80,7 +80,7 @@ const Resume = () => {
 					shadowClasses.hoverShadow,
 				)}
 			>
-				<Body className={classes.downloadText}>Download Full Resume</Body>
+				<LittleTitle className={classes.downloadText}>Download Full Resume</LittleTitle>
 			</a>
 
 			<div
@@ -101,6 +101,7 @@ const Resume = () => {
 								title={title}
 								dates={dates}
 								highlights={highlights}
+								key={`${company}-${title}`}
 							/>
 						),
 					)}
@@ -109,7 +110,7 @@ const Resume = () => {
 				<div className={classes.sidebar}>
 					<LittleTitle className={classes.sectionLabel}>Skills</LittleTitle>
 					{skills.map(
-						(s) => <SubText>{s}</SubText>,
+						(s) => <SubText key={s}>{s}</SubText>,
 					)}
 				</div>
 			</div>
