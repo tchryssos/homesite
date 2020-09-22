@@ -33,6 +33,7 @@ const useStyles = createUseStyles({
 	header: {
 		display: 'flex',
 		alignItems: 'center',
+		marginBottom: 8,
 	},
 	image: {
 		height: 40,
