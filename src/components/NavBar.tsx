@@ -9,6 +9,7 @@ import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 
 import AnimationContext from 'logic/contexts/animation'
+import { useShadowStyles } from 'logic/util/styles/shadow'
 
 import Body from 'components/typography/Body'
 
@@ -19,10 +20,8 @@ const useStyles = createUseStyles({
 		marginTop: 0,
 		paddingTop: 16,
 		fontStyle: 'italic',
-		textShadow: [[1, -2, black]],
 	},
 	navWrapper: {
-		textShadow: [[1, -1, black]],
 		display: 'flex',
 		justifyContent: 'space-evenly',
 		width: '100%',
@@ -89,9 +88,10 @@ const NavText: React.FC<Props> = ({ to, classes, children }) => {
 
 const NavBar: React.FC = () => {
 	const classes = useStyles()
+	const shadowClasses = useShadowStyles()
 	return (
 		<>
-			<Body decorative className={classes.nameWrapper}>
+			<Body decorative className={clsx(classes.nameWrapper, shadowClasses.textShadow)}>
 				Troy Chryssos
 			</Body>
 			<div className={classes.navWrapper}>
