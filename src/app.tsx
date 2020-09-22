@@ -31,6 +31,9 @@ const useStyles = createUseStyles({
 		div: {
 			boxSizing: 'border-box',
 		},
+		a: {
+			boxSizing: 'border-box',
+		},
 		p: marPadZero,
 		h1: marPadZero,
 		h2: marPadZero,

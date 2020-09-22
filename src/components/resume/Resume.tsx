@@ -10,6 +10,7 @@ import ResumeExperience from 'components/resume/ResumeExperience'
 import resumePdf from 'static/chryssos_resume.pdf'
 
 import { white, dimmed } from 'constants/styles/colors'
+import { SM_MIN_STRING } from 'constants/styles/breakpoints'
 import { useShadowStyles } from 'logic/util/styles/shadow'
 import { experience, skills } from 'constants/resume'
 
@@ -20,10 +21,13 @@ const useStyles = createUseStyles({
 		borderRadius: 4,
 		textDecoration: 'none',
 		padding: 8,
-		width: 'fit-content',
+		width: '100%',
 		marginBottom: 24,
 		backgroundColor: dimmed,
 		display: 'flex',
+		[SM_MIN_STRING]: {
+			width: 'fit-content',
+		},
 	},
 	downloadText: {
 		color: 'inherit',
@@ -35,18 +39,30 @@ const useStyles = createUseStyles({
 		marginBottom: 16,
 		backgroundColor: dimmed,
 		display: 'flex',
+		flexWrap: 'wrap',
 	},
 	main: {
-		width: '80%',
-	},
-	sidebar: {
-		width: '20%',
 		display: 'flex',
 		flexDirection: 'column',
-		textAlign: 'right',
+		width: '100%',
+		marginBottom: 16,
+		[SM_MIN_STRING]: {
+			width: '80%',
+			marginBottom: 0,
+		},
 	},
-	skillsLabel: {
+	sidebar: {
+		width: '100%',
+		display: 'flex',
+		flexDirection: 'column',
+		[SM_MIN_STRING]: {
+			width: '20%',
+			textAlign: 'right',
+		},
+	},
+	sectionLabel: {
 		marginBottom: 8,
+		textDecoration: 'underline',
 	},
 })
 
@@ -75,6 +91,7 @@ const Resume = () => {
 			>
 
 				<div className={classes.main}>
+					<LittleTitle className={classes.sectionLabel}>Experience</LittleTitle>
 					{experience.map(
 						({
 							company, title, dates, highlights,
@@ -90,7 +107,7 @@ const Resume = () => {
 				</div>
 
 				<div className={classes.sidebar}>
-					<LittleTitle className={classes.skillsLabel}>Skills</LittleTitle>
+					<LittleTitle className={classes.sectionLabel}>Skills</LittleTitle>
 					{skills.map(
 						(s) => <SubText>{s}</SubText>,
 					)}
