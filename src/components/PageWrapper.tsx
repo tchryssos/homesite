@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		width: '100%',
 		justifyContent: 'space-around',
+		padding: [[0, 16]],
 	},
 	pageContainer: {
 		display: 'flex',
