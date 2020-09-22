@@ -3,7 +3,7 @@ import { createUseStyles, WithStylesProps } from 'react-jss'
 import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 
-import { black, white } from 'constants/styles/colors'
+import { black, white, dimmedWhite } from 'constants/styles/colors'
 import { sansFont } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
@@ -37,7 +37,7 @@ const useStyles = createUseStyles({
 	},
 	link: {
 		fontFamily: sansFont,
-		color: white,
+		color: dimmedWhite,
 		fontSize: 28,
 		textDecoration: 'none',
 		[SM_MIN_STRING]: {
@@ -46,9 +46,9 @@ const useStyles = createUseStyles({
 	},
 	navActive: {
 		textDecoration: [['underline'], '!important'],
+		color: white,
 	},
 	disabledLink: {
-		opacity: 0.6,
 		'&:hover': {
 			cursor: 'wait',
 		},
