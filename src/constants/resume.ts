@@ -1,9 +1,11 @@
-export const experience: {
+export interface ExperienceProps {
 	company: string,
 	title: string,
 	dates: string,
 	highlights: string[],
-}[] = [
+}
+
+export const experience: ExperienceProps[] = [
 	{
 		company: 'Quadio Media',
 		title: 'Software Engineer',
@@ -26,11 +28,25 @@ export const experience: {
 	},
 	{
 		company: 'Reelio',
-		title: 'Front-end Developer',
+		title: 'Front-End Developer',
 		dates: "January '17 - April '18",
 		highlights: [
 			'Worked as part of a small team to facilitate a full codebase refactor from Angular to React/Redux',
 			'Helped build and maintain webhooks that allowed automated workflow communication between GitHub and Jira',
 		],
 	},
+]
+
+export const skills: string[] = [
+	'React',
+	'Redux',
+	'React Native',
+	'Javascript',
+	'Node',
+	'Python',
+	'Django',
+	'HTML',
+	'CSS/SCSS/CSS in JS',
+	'Git',
+	'Cooking/Baking',
 ]

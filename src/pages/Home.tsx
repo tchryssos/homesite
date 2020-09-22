@@ -1,7 +1,7 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
-import Body from 'components/Body'
+import Body from 'components/typography/Body'
 import PageWrapper from 'components/PageWrapper'
 import Resume from 'components/resume/Resume'
 

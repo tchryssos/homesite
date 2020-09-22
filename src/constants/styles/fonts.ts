@@ -15,7 +15,7 @@ const baseFont: {
 }
 
 export const xsFont: fontType = {
-	fontSize: '12px',
+	fontSize: '16px',
 	...baseFont,
 }
 
@@ -25,16 +25,16 @@ export const smFont: fontType = {
 }
 
 export const mdFont: fontType = {
-	fontSize: '48px',
+	fontSize: '36px',
 	...baseFont,
 }
 
 export const lgFont: fontType = {
-	fontSize: '72px',
+	fontSize: '48px',
 	...baseFont,
 }
 
 export const xlFont: fontType = {
-	fontSize: '160px',
+	fontSize: '72px',
 	...baseFont,
 }

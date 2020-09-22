@@ -1,8 +1,8 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
-import Body from 'components/Body'
-import LittleTitle from 'components/LittleTitle'
+import Body from 'components/typography/Body'
+import LittleTitle from 'components/typography/LittleTitle'
 
 import { black, white, darkPurple } from 'constants/styles/colors'
 
