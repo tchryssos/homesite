@@ -24,7 +24,7 @@ const useStyles = createUseStyles({
 		height: '100%',
 		borderRadius: 4,
 		backgroundColor: black,
-		border: [[1, 'solid', white]],
+		border: [[2, 'solid', white]],
 		display: 'flex',
 		flexDirection: 'column',
 		padding: 8,

@@ -19,10 +19,11 @@ const useStyles = createUseStyles({
 		border: [[2, 'solid', white]],
 		borderRadius: 4,
 		textDecoration: 'none',
-		padding: 4,
+		padding: 8,
 		width: 'fit-content',
 		marginBottom: 24,
 		backgroundColor: dimmed,
+		display: 'flex',
 	},
 	downloadText: {
 		color: 'inherit',
