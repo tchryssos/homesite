@@ -2,7 +2,6 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
 
-import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
 import SubText from 'components/typography/SubText'
 import ResumeExperience from 'components/resume/ResumeExperience'
@@ -24,7 +23,7 @@ const useStyles = createUseStyles({
 		width: '100%',
 		marginBottom: 24,
 		backgroundColor: dimmed,
-		display: 'flex',
+		textAlign: 'center',
 		[SM_MIN_STRING]: {
 			width: 'fit-content',
 		},

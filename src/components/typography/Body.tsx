@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
 		fontFamily: sansFont,
 	},
 	decorative: {
-		fontSize: 18,
+		fontSize: 20,
 		fontFamily: monoFont,
 	},
 })
