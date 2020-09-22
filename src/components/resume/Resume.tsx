@@ -1,7 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
-import Button from 'components/Button'
 import Body from 'components/Body'
 
 import resumePdf from 'static/chryssos_resume.pdf'
@@ -31,6 +30,7 @@ const Resume = () => {
 			<a href={resumePdf} download className={classes.download}>
 				<Body>Download Resume</Body>
 			</a>
+
 			<div className={classes.resumeContainer}>
 				Resume
 			</div>
