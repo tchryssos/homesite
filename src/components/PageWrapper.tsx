@@ -10,8 +10,14 @@ interface Props {
 const useStyles = createUseStyles({
 	pageWrapper: {
 		display: 'flex',
+		width: '100%',
+		justifyContent: 'space-around',
+	},
+	pageContainer: {
+		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
+		maxWidth: 960,
 	},
 })
 
@@ -19,7 +25,9 @@ const PageWrapper: React.FC<Props> = ({ children, className }) => {
 	const classes = useStyles()
 	return (
 		<div className={clsx(classes.pageWrapper, className)}>
-			{children}
+			<div className={classes.pageContainer}>
+				{children}
+			</div>
 		</div>
 	)
 }

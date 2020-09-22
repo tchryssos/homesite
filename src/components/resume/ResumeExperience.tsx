@@ -1,7 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
-import Body from 'components/typography/Body'
 import SubText from 'components/typography/SubText'
 import LittleTitle from 'components/typography/LittleTitle'
 
