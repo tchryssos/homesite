@@ -23,28 +23,42 @@ const useStyles = createUseStyles({
 	},
 })
 
-const Portfolio = () => {
+interface SectionProps {
+	title: string,
+	children: React.ReactNode,
+}
+
+const PortfolioSection: React.FC<SectionProps> = ({
+	title, children,
+}) => {
 	const classes = useStyles()
 	return (
-		<PageWrapper>
-			<Title className={classes.title}>Work</Title>
+		<>
+			<Title className={classes.title}>{title}</Title>
 			<div className={classes.codeBlockWrapper}>
-				<DisplayBlock
-					title="caseybradford.club"
-					text="Portfolio website for graphic &amp; UX designer Casey Bradford"
-					to="https://caseybradford.club/"
-				/>
+				{children}
 			</div>
-			<Title className={classes.title}>Experiments</Title>
-			<div className={classes.codeBlockWrapper}>
-				<DisplayBlock
-					title="Banjo MTG"
-					text="Enter the name of a Magic the Gathering card and have Banjo from Banjo Kazooie read you the rules text"
-					to="https://tchryssos.github.io/banjo-mtg/"
-				/>
-			</div>
-		</PageWrapper>
+		</>
 	)
 }
+
+const Portfolio = () => (
+	<PageWrapper>
+		<PortfolioSection title="Work">
+			<DisplayBlock
+				title="caseybradford.club"
+				text="Portfolio website for graphic &amp; UX designer Casey Bradford"
+				to="https://caseybradford.club/"
+			/>
+		</PortfolioSection>
+		<PortfolioSection title="Experiments">
+			<DisplayBlock
+				title="Banjo MTG"
+				text="Enter the name of a Magic the Gathering card and have Banjo from Banjo Kazooie read you the rules text"
+				to="https://tchryssos.github.io/banjo-mtg/"
+			/>
+		</PortfolioSection>
+	</PageWrapper>
+)
 
 export default Portfolio
