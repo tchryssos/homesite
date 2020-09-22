@@ -10,7 +10,7 @@ import ResumeExperience from 'components/resume/ResumeExperience'
 import resumePdf from 'static/chryssos_resume.pdf'
 
 import { white, dimmed } from 'constants/styles/colors'
-import { useShadowStyles } from 'constants/styles/shadow'
+import { useShadowStyles } from 'logic/util/styles/shadow'
 import { experience, skills } from 'constants/resume'
 
 const useStyles = createUseStyles({

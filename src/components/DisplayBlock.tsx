@@ -6,7 +6,7 @@ import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
 
 import { black, white } from 'constants/styles/colors'
-import { useShadowStyles } from 'constants/styles/shadow'
+import { useShadowStyles } from 'logic/util/styles/shadow'
 
 interface Props {
 	title: string,
