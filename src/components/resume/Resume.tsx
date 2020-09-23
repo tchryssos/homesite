@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import LittleTitle from 'components/typography/LittleTitle'
 import SubText from 'components/typography/SubText'
 import ResumeExperience from 'components/resume/ResumeExperience'
+import ExtLink from 'components/ExtLink'
 
 import resumePdf from 'static/chryssos_resume.pdf'
 
@@ -15,10 +16,8 @@ import { experience, skills } from 'constants/resume'
 
 const useStyles = createUseStyles({
 	download: {
-		color: white,
 		border: [[2, 'solid', white]],
 		borderRadius: 4,
-		textDecoration: 'none',
 		padding: [[8, 16]],
 		width: '100%',
 		marginBottom: 24,
@@ -70,8 +69,8 @@ const Resume = () => {
 	const shadowClasses = useShadowStyles()
 	return (
 		<>
-			<a
-				href={resumePdf}
+			<ExtLink
+				to={resumePdf}
 				download
 				className={clsx(
 					classes.download,
@@ -80,15 +79,9 @@ const Resume = () => {
 				)}
 			>
 				<LittleTitle className={classes.downloadText}>Download Full Resume</LittleTitle>
-			</a>
+			</ExtLink>
 
-			<div
-				className={clsx(
-					classes.resumeContainer,
-					shadowClasses.shadow,
-				)}
-			>
-
+			<div className={classes.resumeContainer}>
 				<div className={classes.main}>
 					<LittleTitle className={classes.sectionLabel}>Experience</LittleTitle>
 					{experience.map(

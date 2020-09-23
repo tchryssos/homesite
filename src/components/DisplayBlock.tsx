@@ -4,6 +4,8 @@ import clsx from 'clsx'
 
 import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
+import Github from 'components/icons/Github'
+import ExtLink from 'components/ExtLink'
 
 import { black, white } from 'constants/styles/colors'
 import { useShadowStyles } from 'logic/util/styles/shadow'
@@ -17,9 +19,6 @@ interface Props {
 }
 
 const useStyles = createUseStyles({
-	blockLink: {
-		textDecoration: 'none',
-	},
 	block: {
 		height: '100%',
 		borderRadius: 4,
@@ -34,11 +33,17 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		alignItems: 'center',
 		marginBottom: 8,
+		width: '100%',
 	},
 	image: {
 		height: 40,
 		width: 40,
 		marginRight: 16,
+	},
+	github: {
+		alignSelf: 'flex-end',
+		height: 28,
+		width: 28,
 	},
 })
 
@@ -48,12 +53,7 @@ const DisplayBlock: React.FC<Props> = ({
 	const classes = useStyles()
 	const shadowClasses = useShadowStyles()
 	return (
-		<a
-			href={to}
-			target="_blank"
-			rel="noreferrer"
-			className={classes.blockLink}
-		>
+		<ExtLink to={to}>
 			<div
 				className={clsx(
 					classes.block,
@@ -68,10 +68,12 @@ const DisplayBlock: React.FC<Props> = ({
 						className={classes.image}
 					/>
 					<LittleTitle>{title}</LittleTitle>
+
+					<Github className={classes.github} />
 				</div>
 				<Body>{text}</Body>
 			</div>
-		</a>
+		</ExtLink>
 	)
 }
 
