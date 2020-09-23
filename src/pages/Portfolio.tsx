@@ -49,6 +49,7 @@ const Portfolio = () => (
 				title="caseybradford.club"
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford"
 				to="https://caseybradford.club/"
+				toRepo="https://github.com/tchryssos/casey-site"
 			/>
 		</PortfolioSection>
 		<PortfolioSection title="Experiments">
@@ -56,6 +57,7 @@ const Portfolio = () => (
 				title="Banjo MTG"
 				text="Enter the name of a Magic the Gathering card and have Banjo from Banjo Kazooie read you the rules text"
 				to="https://tchryssos.github.io/banjo-mtg/"
+				toRepo="https://github.com/tchryssos/banjo-mtg"
 			/>
 		</PortfolioSection>
 	</PageWrapper>

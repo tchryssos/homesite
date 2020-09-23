@@ -9,6 +9,7 @@ import ExtLink from 'components/ExtLink'
 
 import { black, white } from 'constants/styles/colors'
 import { useShadowStyles } from 'logic/util/styles/shadow'
+import orNull from 'logic/util/orNull'
 
 interface Props {
 	title: string,
@@ -16,6 +17,7 @@ interface Props {
 	altText?: string,
 	imageSrc?: string,
 	to: string,
+	toRepo?: string,
 }
 
 const useStyles = createUseStyles({
@@ -32,16 +34,27 @@ const useStyles = createUseStyles({
 	header: {
 		display: 'flex',
 		alignItems: 'center',
+		justifyContent: 'space-between',
 		marginBottom: 8,
 		width: '100%',
+	},
+	headerLeft: {
+		display: 'flex',
+		alignItems: 'center',
 	},
 	image: {
 		height: 40,
 		width: 40,
 		marginRight: 16,
 	},
+	githubLink: {
+		height: 40,
+		width: 40,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+	},
 	github: {
-		alignSelf: 'flex-end',
 		height: 28,
 		width: 28,
 	},
@@ -49,6 +62,7 @@ const useStyles = createUseStyles({
 
 const DisplayBlock: React.FC<Props> = ({
 	title, text, altText, imageSrc, to,
+	toRepo,
 }) => {
 	const classes = useStyles()
 	const shadowClasses = useShadowStyles()
@@ -62,14 +76,20 @@ const DisplayBlock: React.FC<Props> = ({
 				)}
 			>
 				<div className={classes.header}>
-					<img
-						src={imageSrc}
-						alt={altText}
-						className={classes.image}
-					/>
-					<LittleTitle>{title}</LittleTitle>
-
-					<Github className={classes.github} />
+					<div className={classes.headerLeft}>
+						<img
+							src={imageSrc}
+							alt={altText}
+							className={classes.image}
+						/>
+						<LittleTitle>{title}</LittleTitle>
+					</div>
+					{orNull(
+						Boolean(toRepo),
+						<ExtLink to={toRepo} className={classes.githubLink}>
+							<Github className={classes.github} />
+						</ExtLink>,
+					)}
 				</div>
 				<Body>{text}</Body>
 			</div>
