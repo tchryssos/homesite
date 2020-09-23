@@ -4,7 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 
 import { black, white, dimmedWhite } from 'constants/styles/colors'
-import { sansFont } from 'constants/styles/fonts'
+import { monoFont } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
 import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 
@@ -35,9 +35,9 @@ const useStyles = createUseStyles({
 		},
 	},
 	link: {
-		fontFamily: sansFont,
+		fontFamily: monoFont,
 		color: dimmedWhite,
-		fontSize: 28,
+		fontSize: 32,
 		textDecoration: 'none',
 		[SM_MIN_STRING]: {
 			marginRight: 16,
