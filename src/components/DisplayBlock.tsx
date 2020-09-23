@@ -7,7 +7,7 @@ import LittleTitle from 'components/typography/LittleTitle'
 import Github from 'components/icons/Github'
 import ExtLink from 'components/ExtLink'
 
-import { black, white } from 'constants/styles/colors'
+import { black, white, dimmedWhite } from 'constants/styles/colors'
 import { useShadowStyles } from 'logic/util/styles/shadow'
 import orNull from 'logic/util/orNull'
 
@@ -53,11 +53,18 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
+		'&:hover $githubColor': {
+			fill: dimmedWhite,
+		},
+		'&:active $githubColor': {
+			fill: dimmedWhite,
+		},
 	},
 	github: {
 		height: 28,
 		width: 28,
 	},
+	githubColor: {}, // modified by .githubLink
 })
 
 const DisplayBlock: React.FC<Props> = ({
@@ -87,7 +94,7 @@ const DisplayBlock: React.FC<Props> = ({
 					{orNull(
 						Boolean(toRepo),
 						<ExtLink to={toRepo} className={classes.githubLink}>
-							<Github className={classes.github} />
+							<Github className={classes.github} colorClassName={classes.githubColor} />
 						</ExtLink>,
 					)}
 				</div>
