@@ -59,7 +59,7 @@ const Portfolio = () => (
 		</PortfolioSection>
 		<PortfolioSection title="Experiments">
 			<DisplayBlock
-				title="Banjo MTG"
+				title="Banjo MtG"
 				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the rules text"
 				to="https://tchryssos.github.io/banjo-mtg/"
 				toRepo="https://github.com/tchryssos/banjo-mtg"

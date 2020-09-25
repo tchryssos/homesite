@@ -30,6 +30,12 @@ const useStyles = createUseStyles({
 		flexDirection: 'column',
 		padding: 8,
 		wordBreak: 'break-word',
+		position: 'relative',
+	},
+	siteLink: {
+		position: 'absolute',
+		height: '100%',
+		width: '100%',
 	},
 	header: {
 		display: 'flex',
@@ -48,6 +54,7 @@ const useStyles = createUseStyles({
 		marginRight: 16,
 	},
 	githubLink: {
+		zIndex: 2,
 		height: 40,
 		width: 40,
 		display: 'flex',
@@ -74,33 +81,32 @@ const ProjectBlock: React.FC<Props> = ({
 	const classes = useStyles()
 	const shadowClasses = useShadowStyles()
 	return (
-		<ExtLink to={to}>
-			<div
-				className={clsx(
-					classes.block,
-					shadowClasses.shadow,
-					shadowClasses.hoverShadow,
-				)}
-			>
-				<div className={classes.header}>
-					<div className={classes.headerLeft}>
-						<img
-							src={imageSrc}
-							alt={altText}
-							className={classes.image}
-						/>
-						<LittleTitle>{title}</LittleTitle>
-					</div>
-					{orNull(
-						Boolean(toRepo),
-						<ExtLink to={toRepo} className={classes.githubLink}>
-							<Github className={classes.github} colorClassName={classes.githubColor} />
-						</ExtLink>,
-					)}
+		<div
+			className={clsx(
+				classes.block,
+				shadowClasses.shadow,
+				shadowClasses.hoverShadow,
+			)}
+		>
+			<ExtLink to={to} className={classes.siteLink} />
+			<div className={classes.header}>
+				<div className={classes.headerLeft}>
+					<img
+						src={imageSrc}
+						alt={altText}
+						className={classes.image}
+					/>
+					<LittleTitle>{title}</LittleTitle>
 				</div>
-				<Body>{text}</Body>
+				{orNull(
+					Boolean(toRepo),
+					<ExtLink to={toRepo} className={classes.githubLink}>
+						<Github className={classes.github} colorClassName={classes.githubColor} />
+					</ExtLink>,
+				)}
 			</div>
-		</ExtLink>
+			<Body>{text}</Body>
+		</div>
 	)
 }
 

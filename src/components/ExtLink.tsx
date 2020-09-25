@@ -10,7 +10,7 @@ interface Props {
 	to: string | undefined,
 	download?: boolean,
 	className?: string,
-	children: React.ReactNode,
+	children?: React.ReactNode,
 }
 
 const useStyles = createUseStyles({
