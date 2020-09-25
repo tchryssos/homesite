@@ -15,7 +15,7 @@ interface Props {
 	title: string,
 	text: string,
 	altText?: string,
-	imageSrc?: string,
+	imageSrc: string,
 	to: string,
 	toRepo?: string,
 }
@@ -67,7 +67,7 @@ const useStyles = createUseStyles({
 	githubColor: {}, // modified by .githubLink
 })
 
-const DisplayBlock: React.FC<Props> = ({
+const ProjectBlock: React.FC<Props> = ({
 	title, text, altText, imageSrc, to,
 	toRepo,
 }) => {
@@ -104,4 +104,4 @@ const DisplayBlock: React.FC<Props> = ({
 	)
 }
 
-export default DisplayBlock
+export default ProjectBlock

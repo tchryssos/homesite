@@ -1,9 +1,13 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import DisplayBlock from 'components/DisplayBlock'
+import DisplayBlock from 'components/ProjectBlock'
 import PageWrapper from 'components/PageWrapper'
 import Title from 'components/typography/Title'
 import { SM_MIN_STRING, LG_MIN_STRING } from 'constants/styles/breakpoints'
+
+import BanjoIcon from 'static/banjo.ico'
+import BaseballIcon from 'static/baseball.ico'
+import SparkleIcon from 'static/sparkle.ico'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -50,14 +54,23 @@ const Portfolio = () => (
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford"
 				to="https://caseybradford.club/"
 				toRepo="https://github.com/tchryssos/casey-site"
+				imageSrc={SparkleIcon}
 			/>
 		</PortfolioSection>
 		<PortfolioSection title="Experiments">
 			<DisplayBlock
 				title="Banjo MTG"
-				text="Enter the name of a Magic the Gathering card and have Banjo from Banjo Kazooie read you the rules text"
+				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the rules text"
 				to="https://tchryssos.github.io/banjo-mtg/"
 				toRepo="https://github.com/tchryssos/banjo-mtg"
+				imageSrc={BanjoIcon}
+			/>
+			<DisplayBlock
+				title="Home Run!"
+				text="Step up to the plate as a procedurally generated baseball player in this odd &quot;game&quot;"
+				to="https://tchryssos.github.io/homerun/"
+				toRepo="https://github.com/tchryssos/homerun"
+				imageSrc={BaseballIcon}
 			/>
 		</PortfolioSection>
 	</PageWrapper>
