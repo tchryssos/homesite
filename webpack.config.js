@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const CompressionPlugin = require('compression-webpack-plugin')
+// const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = (env, argv) => {
 	process.env.NODE_ENV = argv.mode
@@ -69,11 +69,11 @@ module.exports = (env, argv) => {
 				hash: isProd,
 				favicon: 'static/favicon.ico',
 			}),
-			new CompressionPlugin({
-				cache: true,
-				test: /\.(js|png|css|jpg|jpeg|gif|svg|ico|xml|woff|woff2|ttf|otf|eot)$/,
-				deleteOriginalAssets: false,
-			}),
+			// new CompressionPlugin({
+			// 	cache: true,
+			// 	test: /\.(js|png|css|jpg|jpeg|gif|svg|ico|xml|woff|woff2|ttf|otf|eot)$/,
+			// 	deleteOriginalAssets: false,
+			// }),
 			// new BundleAnalyzerPlugin(),
 		],
 		resolve: {
