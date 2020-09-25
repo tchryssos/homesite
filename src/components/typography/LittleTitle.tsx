@@ -6,6 +6,7 @@ import { useShadowStyles } from 'logic/util/styles/shadow'
 
 import { monoFont } from 'constants/styles/fonts'
 import { white } from 'constants/styles/colors'
+import { SM_MIN_STRING } from 'constants/styles/breakpoints'
 
 interface Props {
 	className?: string,
@@ -15,8 +16,11 @@ interface Props {
 const useStyles = createUseStyles({
 	h3: {
 		color: white,
-		fontSize: 24,
+		fontSize: 22,
 		fontFamily: monoFont,
+		[SM_MIN_STRING]: {
+			fontSize: 24,
+		},
 	},
 })
 
