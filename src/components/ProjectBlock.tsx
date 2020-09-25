@@ -22,7 +22,6 @@ interface Props {
 
 const useStyles = createUseStyles({
 	block: {
-		height: '100%',
 		borderRadius: 4,
 		backgroundColor: black,
 		border: [[2, 'solid', white]],

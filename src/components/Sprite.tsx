@@ -30,7 +30,13 @@ const useStyles = createUseStyles({
 	},
 	troySprite: {
 		height: '100%',
-		width: 'unset',
+	},
+	troyRight: {
+		// Whoops when I made these gifs years ago
+		// Troy right and Troy weren't given the same dimensions / whitespace
+		height: '95%',
+		width: 90,
+		transform: 'translateY(-6px)',
 	},
 })
 
@@ -65,7 +71,10 @@ const Sprite: React.FC<Props> = ({ type, style = {}, className }) => {
 				src={spriteSwitch(type)}
 				className={clsx(
 					classes.sprite,
-					{ [classes.troySprite]: type === TROY || type === TROY_RIGHT },
+					{
+						[classes.troySprite]: type === TROY,
+						[classes.troyRight]: type === TROY_RIGHT,
+					},
 				)}
 				alt={`A sprite of ${type}`}
 			/>
