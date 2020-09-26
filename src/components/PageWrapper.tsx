@@ -2,6 +2,8 @@ import React from 'react'
 import clsx from 'clsx'
 import { createUseStyles } from 'react-jss'
 
+import { MD_MIN_VALUE } from 'constants/styles/breakpoints'
+
 interface Props {
 	className?: string,
 	children: React.ReactNode,
@@ -18,7 +20,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
-		maxWidth: 960,
+		maxWidth: MD_MIN_VALUE,
 	},
 })
 

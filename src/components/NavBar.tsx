@@ -5,7 +5,7 @@ import clsx from 'clsx'
 
 import { black, white, dimmedWhite } from 'constants/styles/colors'
 import { monoFont } from 'constants/styles/fonts'
-import { SM_MIN_STRING, MD_MIN_STRING } from 'constants/styles/breakpoints'
+import { SM_MIN_STRING, MD_MIN_STRING, MD_MIN_VALUE } from 'constants/styles/breakpoints'
 import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 
 import AnimationContext from 'logic/contexts/animation'
@@ -18,6 +18,17 @@ import Github from 'components/icons/Github'
 
 
 const useStyles = createUseStyles({
+	headerContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+		width: '100%',
+	},
+	headerWrapper: {
+		display: 'flex',
+		flexDirection: 'column',
+		width: '100%',
+		maxWidth: MD_MIN_VALUE,
+	},
 	navTopRow: {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -103,38 +114,40 @@ const NavBar: React.FC = () => {
 	const classes = useStyles()
 	const shadowClasses = useShadowStyles()
 	return (
-		<>
-			<div className={classes.navTopRow}>
-				<NavLink to={HOME_PATH} className={classes.nameHomeLink}>
-					<Body
-						decorative
-						className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
-					>
-						Troy Chryssos
-					</Body>
-				</NavLink>
-				<div className={classes.navIcons}>
-					<IconLink to="mailto:troychryssos@gmail.com">
-						{(iconClass, iconColorClass) => (
-							<Email className={iconClass} colorClassName={iconColorClass} />
-						)}
-					</IconLink>
-					<IconLink to="https://github.com/tchryssos">
-						{(iconClass, iconColorClass) => (
-							<Github className={iconClass} colorClassName={iconColorClass} />
-						)}
-					</IconLink>
+		<div className={classes.headerContainer}>
+			<div className={classes.headerWrapper}>
+				<div className={classes.navTopRow}>
+					<NavLink to={HOME_PATH} className={classes.nameHomeLink}>
+						<Body
+							decorative
+							className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
+						>
+							Troy Chryssos
+						</Body>
+					</NavLink>
+					<div className={classes.navIcons}>
+						<IconLink to="mailto:troychryssos@gmail.com">
+							{(iconClass, iconColorClass) => (
+								<Email className={iconClass} colorClassName={iconColorClass} />
+							)}
+						</IconLink>
+						<IconLink to="https://github.com/tchryssos">
+							{(iconClass, iconColorClass) => (
+								<Github className={iconClass} colorClassName={iconColorClass} />
+							)}
+						</IconLink>
+					</div>
+				</div>
+				<div className={classes.navWrapper}>
+					<NavText to={HOME_PATH} classes={classes}>
+						Home
+					</NavText>
+					<NavText to={PORTFOLIO_PATH} classes={classes}>
+						Portfolio
+					</NavText>
 				</div>
 			</div>
-			<div className={classes.navWrapper}>
-				<NavText to={HOME_PATH} classes={classes}>
-					Home
-				</NavText>
-				<NavText to={PORTFOLIO_PATH} classes={classes}>
-					Portfolio
-				</NavText>
-			</div>
-		</>
+		</div>
 	)
 }
 
