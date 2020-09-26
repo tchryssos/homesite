@@ -66,7 +66,7 @@ const Portfolio = () => (
 				imageSrc={BanjoIcon}
 			/>
 			<DisplayBlock
-				title="Home Run!"
+				title="HOME RUN"
 				text="Step up to the plate as a procedurally generated baseball player  and swing for the fences"
 				to="https://tchryssos.github.io/homerun/"
 				toRepo="https://github.com/tchryssos/homerun"
