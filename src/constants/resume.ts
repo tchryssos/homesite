@@ -41,6 +41,7 @@ export const skills: string[] = [
 	'React',
 	'Redux',
 	'React Native',
+	'Typescript',
 	'Javascript',
 	'Node',
 	'Python',
