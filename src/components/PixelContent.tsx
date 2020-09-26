@@ -13,7 +13,7 @@ import Sprite from 'components/Sprite'
 import {
 	TROY, QUESTIONMAN, LAPTOP, CANE, TROY_RIGHT,
 } from 'constants/sprites'
-import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
+import { ABOUT_PATH, HOME_PATH } from 'constants/routes'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
 
 import { streetDisplayHeight, getWalkAnimationDistance } from 'logic/util/animation'
@@ -72,9 +72,9 @@ const useAnimatingStyles = createUseStyles({
 const pathToSprite = (path: string) => {
 	switch (path) {
 		case HOME_PATH:
-			return CANE
-		case PORTFOLIO_PATH:
 			return LAPTOP
+		case ABOUT_PATH:
+			return CANE
 		default:
 			return QUESTIONMAN
 	}

@@ -9,7 +9,7 @@ import debounce from 'lodash.debounce'
 import AnimationContext from 'logic/contexts/animation'
 import WindowContext from 'logic/contexts/window'
 
-import Home from 'pages/Home'
+import About from 'pages/About'
 import Portfolio from 'pages/Portfolio'
 import FourOhFour from 'pages/FourOhFour'
 
@@ -18,6 +18,7 @@ import PixelContent from 'components/PixelContent'
 
 import { marPadZero, baseStyle } from 'constants/styles/base'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
+import { HOME_PATH, PORTFOLIO_PATH, ABOUT_PATH } from 'constants/routes'
 
 const useStyles = createUseStyles({
 	'@import': "url('https://fonts.googleapis.com/css2?family=PT+Sans&family=VT323&display=swap')",
@@ -75,8 +76,8 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 				<NavBar />
 				<PixelContent />
 				<Switch>
-					<Route path="/" exact component={Home} />
-					<Route path="/portfolio" component={Portfolio} />
+					<Route path={HOME_PATH} exact component={Portfolio} />
+					<Route path={ABOUT_PATH} component={About} />
 					<Route component={FourOhFour} />
 				</Switch>
 			</WindowContext.Provider>

@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { black, white, dimmedWhite } from 'constants/styles/colors'
 import { monoFont } from 'constants/styles/fonts'
 import { SM_MIN_STRING, MD_MIN_STRING, MD_MIN_VALUE } from 'constants/styles/breakpoints'
-import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
+import { HOME_PATH, ABOUT_PATH } from 'constants/routes'
 
 import AnimationContext from 'logic/contexts/animation'
 import { useShadowStyles } from 'logic/util/styles/shadow'
@@ -139,10 +139,10 @@ const NavBar: React.FC = () => {
 				</div>
 				<div className={classes.navWrapper}>
 					<NavText to={HOME_PATH} classes={classes}>
-						Home
-					</NavText>
-					<NavText to={PORTFOLIO_PATH} classes={classes}>
 						Portfolio
+					</NavText>
+					<NavText to={ABOUT_PATH} classes={classes}>
+						About
 					</NavText>
 				</div>
 			</div>
