@@ -20,6 +20,7 @@ interface Props {
 	imageSrc: string,
 	to: string,
 	toRepo?: string,
+	hideLink?: boolean,
 }
 
 const useStyles = createUseStyles({
@@ -61,7 +62,7 @@ const useStyles = createUseStyles({
 
 const ProjectBlock: React.FC<Props> = ({
 	title, text, altText, imageSrc, to,
-	toRepo,
+	toRepo, hideLink,
 }) => {
 	const classes = useStyles()
 	const shadowClasses = useShadowStyles()
@@ -84,11 +85,14 @@ const ProjectBlock: React.FC<Props> = ({
 					<LittleTitle>{title}</LittleTitle>
 				</div>
 				<div className={classes.icons}>
-					<IconLink to={to}>
-						{(iconClass, iconColorClass) => (
-							<Open className={iconClass} colorClassName={iconColorClass} />
-						)}
-					</IconLink>
+					{orNull(
+						!hideLink,
+						<IconLink to={to}>
+							{(iconClass, iconColorClass) => (
+								<Open className={iconClass} colorClassName={iconColorClass} />
+							)}
+						</IconLink>,
+					)}
 					{orNull(
 						Boolean(toRepo),
 						<IconLink to={toRepo}>
