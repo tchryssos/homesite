@@ -60,14 +60,14 @@ const Portfolio = () => (
 		<PortfolioSection title="Experiments">
 			<DisplayBlock
 				title="Banjo MtG"
-				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the rules text"
+				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the card text"
 				to="https://tchryssos.github.io/banjo-mtg/"
 				toRepo="https://github.com/tchryssos/banjo-mtg"
 				imageSrc={BanjoIcon}
 			/>
 			<DisplayBlock
 				title="Home Run!"
-				text="Step up to the plate as a procedurally generated baseball player in this odd &quot;game&quot;"
+				text="Step up to the plate as a procedurally generated baseball player  and swing for the fences"
 				to="https://tchryssos.github.io/homerun/"
 				toRepo="https://github.com/tchryssos/homerun"
 				imageSrc={BaseballIcon}
