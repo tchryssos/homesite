@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
 import Github from 'components/icons/Github'
+import Open from 'components/icons/Open'
 import ExtLink from 'components/ExtLink'
 
 import { black, white, dimmedWhite } from 'constants/styles/colors'
@@ -52,7 +53,10 @@ const useStyles = createUseStyles({
 		width: 40,
 		marginRight: 16,
 	},
-	githubLink: {
+	icons: {
+		display: 'flex',
+	},
+	iconLink: {
 		zIndex: 2,
 		height: 40,
 		width: 40,
@@ -66,11 +70,11 @@ const useStyles = createUseStyles({
 			fill: dimmedWhite,
 		},
 	},
-	github: {
+	icon: {
 		height: 28,
 		width: 28,
 	},
-	githubColor: {}, // modified by .githubLink
+	githubColor: {}, // modified by .iconLink
 })
 
 const ProjectBlock: React.FC<Props> = ({
@@ -97,12 +101,17 @@ const ProjectBlock: React.FC<Props> = ({
 					/>
 					<LittleTitle>{title}</LittleTitle>
 				</div>
-				{orNull(
-					Boolean(toRepo),
-					<ExtLink to={toRepo} className={classes.githubLink}>
-						<Github className={classes.github} colorClassName={classes.githubColor} />
-					</ExtLink>,
-				)}
+				<div className={classes.icons}>
+					<ExtLink to={to} className={classes.iconLink}>
+						<Open className={classes.icon} colorClassName={classes.githubColor} />
+					</ExtLink>
+					{orNull(
+						Boolean(toRepo),
+						<ExtLink to={toRepo} className={classes.iconLink}>
+							<Github className={classes.icon} colorClassName={classes.githubColor} />
+						</ExtLink>,
+					)}
+				</div>
 			</div>
 			<Body>{text}</Body>
 		</div>
