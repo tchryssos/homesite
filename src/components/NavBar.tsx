@@ -12,14 +12,23 @@ import AnimationContext from 'logic/contexts/animation'
 import { useShadowStyles } from 'logic/util/styles/shadow'
 
 import Body from 'components/typography/Body'
+import IconLink from 'components/IconLink'
+import Email from 'components/icons/Email'
 
 
 const useStyles = createUseStyles({
+	navTopRow: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		padding: 16,
+	},
 	nameWrapper: {
-		margin: 16,
-		marginTop: 0,
-		paddingTop: 16,
 		fontStyle: 'italic',
+	},
+	navIcons: {
+		display: 'flex',
+		alignItems: 'center',
 	},
 	navWrapper: {
 		display: 'flex',
@@ -91,9 +100,18 @@ const NavBar: React.FC = () => {
 	const shadowClasses = useShadowStyles()
 	return (
 		<>
-			<Body decorative className={clsx(classes.nameWrapper, shadowClasses.textShadow)}>
-				Troy Chryssos
-			</Body>
+			<div className={classes.navTopRow}>
+				<Body decorative className={clsx(classes.nameWrapper, shadowClasses.textShadow)}>
+					Troy Chryssos
+				</Body>
+				<div className={classes.navIcons}>
+					<IconLink to="mailto:troychryssos@gmail.com">
+						{(iconClass, iconColorClass) => (
+							<Email className={iconClass} colorClassName={iconColorClass} />
+						)}
+					</IconLink>
+				</div>
+			</div>
 			<div className={classes.navWrapper}>
 				<NavText to={HOME_PATH} classes={classes}>
 					Home

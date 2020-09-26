@@ -7,8 +7,9 @@ import LittleTitle from 'components/typography/LittleTitle'
 import Github from 'components/icons/Github'
 import Open from 'components/icons/Open'
 import ExtLink from 'components/ExtLink'
+import IconLink from 'components/IconLink'
 
-import { black, white, dimmedWhite } from 'constants/styles/colors'
+import { black, white } from 'constants/styles/colors'
 import { useShadowStyles } from 'logic/util/styles/shadow'
 import orNull from 'logic/util/orNull'
 
@@ -56,25 +57,6 @@ const useStyles = createUseStyles({
 	icons: {
 		display: 'flex',
 	},
-	iconLink: {
-		zIndex: 2,
-		height: 40,
-		width: 40,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-		'&:hover $githubColor': {
-			fill: dimmedWhite,
-		},
-		'&:active $githubColor': {
-			fill: dimmedWhite,
-		},
-	},
-	icon: {
-		height: 28,
-		width: 28,
-	},
-	githubColor: {}, // modified by .iconLink
 })
 
 const ProjectBlock: React.FC<Props> = ({
@@ -102,14 +84,18 @@ const ProjectBlock: React.FC<Props> = ({
 					<LittleTitle>{title}</LittleTitle>
 				</div>
 				<div className={classes.icons}>
-					<ExtLink to={to} className={classes.iconLink}>
-						<Open className={classes.icon} colorClassName={classes.githubColor} />
-					</ExtLink>
+					<IconLink to={to}>
+						{(iconClass, iconColorClass) => (
+							<Open className={iconClass} colorClassName={iconColorClass} />
+						)}
+					</IconLink>
 					{orNull(
 						Boolean(toRepo),
-						<ExtLink to={toRepo} className={classes.iconLink}>
-							<Github className={classes.icon} colorClassName={classes.githubColor} />
-						</ExtLink>,
+						<IconLink to={toRepo}>
+							{(iconClass, iconColorClass) => (
+								<Github className={iconClass} colorClassName={iconColorClass} />
+							)}
+						</IconLink>,
 					)}
 				</div>
 			</div>
