@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
 			path: path.join(__dirname, 'www'),
 			filename: '[name].bundle.js',
 			chunkFilename: '[name].bundle.js',
-			publicPath: './',
+			publicPath: isProd ? './' : '/',
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
