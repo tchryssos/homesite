@@ -13,7 +13,7 @@ module.exports = (env, argv) => {
 			historyApiFallback: true,
 			compress: true,
 		},
-		devtool: isProd ? '' : 'inline-source-map',
+		devtool: isProd ? 'source-map' : 'inline-source-map',
 		entry: [
 			'./app.tsx',
 		],
