@@ -14,6 +14,7 @@ import { useShadowStyles } from 'logic/util/styles/shadow'
 import Body from 'components/typography/Body'
 import IconLink from 'components/IconLink'
 import Email from 'components/icons/Email'
+import Github from 'components/icons/Github'
 
 
 const useStyles = createUseStyles({
@@ -22,6 +23,9 @@ const useStyles = createUseStyles({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		padding: 16,
+	},
+	nameHomeLink: {
+		textDecoration: 'none',
 	},
 	nameWrapper: {
 		fontStyle: 'italic',
@@ -101,13 +105,23 @@ const NavBar: React.FC = () => {
 	return (
 		<>
 			<div className={classes.navTopRow}>
-				<Body decorative className={clsx(classes.nameWrapper, shadowClasses.textShadow)}>
-					Troy Chryssos
-				</Body>
+				<NavLink to={HOME_PATH} className={classes.nameHomeLink}>
+					<Body
+						decorative
+						className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
+					>
+						Troy Chryssos
+					</Body>
+				</NavLink>
 				<div className={classes.navIcons}>
 					<IconLink to="mailto:troychryssos@gmail.com">
 						{(iconClass, iconColorClass) => (
 							<Email className={iconClass} colorClassName={iconColorClass} />
+						)}
+					</IconLink>
+					<IconLink to="https://github.com/tchryssos">
+						{(iconClass, iconColorClass) => (
+							<Github className={iconClass} colorClassName={iconColorClass} />
 						)}
 					</IconLink>
 				</div>

@@ -14,8 +14,8 @@ interface Props {
 
 const useStyles = createUseStyles({
 	iconLink: {
-		height: 40,
-		width: 40,
+		height: 44,
+		width: 44,
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
