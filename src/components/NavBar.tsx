@@ -11,7 +11,7 @@ import { HOME_PATH, PORTFOLIO_PATH } from 'constants/routes'
 import AnimationContext from 'logic/contexts/animation'
 import { useShadowStyles } from 'logic/util/styles/shadow'
 
-import Body from 'components/typography/Body'
+import LittleTitle from 'components/typography/LittleTitle'
 import IconLink from 'components/IconLink'
 import Email from 'components/icons/Email'
 import Github from 'components/icons/Github'
@@ -118,12 +118,11 @@ const NavBar: React.FC = () => {
 			<div className={classes.headerWrapper}>
 				<div className={classes.navTopRow}>
 					<NavLink to={HOME_PATH} className={classes.nameHomeLink}>
-						<Body
-							decorative
+						<LittleTitle
 							className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
 						>
 							Troy Chryssos
-						</Body>
+						</LittleTitle>
 					</NavLink>
 					<div className={classes.navIcons}>
 						<IconLink to="mailto:troychryssos@gmail.com">

@@ -50,7 +50,7 @@ const Portfolio = () => (
 	<PageWrapper>
 		<PortfolioSection title="Work">
 			<DisplayBlock
-				title="caseybradford.club"
+				title="caseybradford&#x0200B;.club"
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford"
 				to="https://caseybradford.club/"
 				toRepo="https://github.com/tchryssos/casey-site"
