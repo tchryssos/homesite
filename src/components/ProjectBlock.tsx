@@ -74,7 +74,7 @@ const ProjectBlock: React.FC<Props> = ({
 				shadowClasses.hoverShadow,
 			)}
 		>
-			<ExtLink to={to} className={classes.siteLink} />
+			<ExtLink to={to} className={classes.siteLink} alt={title} />
 			<div className={classes.header}>
 				<div className={classes.headerLeft}>
 					<img

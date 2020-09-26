@@ -6,11 +6,17 @@ import ternary from 'logic/util/ternary'
 
 import { white } from 'constants/styles/colors'
 
-interface Props {
+type Props = {
 	to: string | undefined,
 	download?: boolean,
 	className?: string,
-	children?: React.ReactNode,
+	children: React.ReactNode,
+	alt?: string,
+} | {
+	to: string | undefined,
+	download?: boolean,
+	className?: string,
+	alt: string,
 }
 
 const useStyles = createUseStyles({
@@ -24,7 +30,7 @@ const useStyles = createUseStyles({
 })
 
 const ExtLink: React.FC<Props> = ({
-	to, download, className, children,
+	to, download, className, children, alt,
 }) => {
 	const classes = useStyles()
 	return ternary(
@@ -36,6 +42,7 @@ const ExtLink: React.FC<Props> = ({
 				className={clsx(classes.link, className)}
 				target="_blank"
 				rel="noreferrer"
+				aria-label={alt}
 			>
 				{children}
 			</a>
