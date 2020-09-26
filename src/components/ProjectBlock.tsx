@@ -93,7 +93,7 @@ const ProjectBlock: React.FC<Props> = ({
 									className={iconClass}
 									colorClassName={iconColorClass}
 									title={`Open ${title}`}
-									titleId={`${title}OpenId`}
+									titleId={`${to}OpenId`}
 								/>
 							)}
 						</IconLink>,
@@ -106,7 +106,7 @@ const ProjectBlock: React.FC<Props> = ({
 									className={iconClass}
 									colorClassName={iconColorClass}
 									title={`Go to the Github repo for ${title}`}
-									titleId={`${title}GitRepoId`}
+									titleId={`${to}GitRepoId`}
 								/>
 							)}
 						</IconLink>,
