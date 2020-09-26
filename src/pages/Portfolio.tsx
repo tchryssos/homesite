@@ -55,6 +55,7 @@ const Portfolio = () => (
 				to="https://caseybradford.club/"
 				toRepo="https://github.com/tchryssos/casey-site"
 				imageSrc={SparkleIcon}
+				imageAltText="Sparkle emoji"
 			/>
 		</PortfolioSection>
 		<PortfolioSection title="Experiments">
@@ -64,6 +65,7 @@ const Portfolio = () => (
 				to="https://tchryssos.github.io/banjo-mtg/"
 				toRepo="https://github.com/tchryssos/banjo-mtg"
 				imageSrc={BanjoIcon}
+				imageAltText="Banjo the Bear dabbing"
 			/>
 			<ProjectBlock
 				title="HOME RUN"
@@ -71,6 +73,7 @@ const Portfolio = () => (
 				to="https://tchryssos.github.io/homerun/"
 				toRepo="https://github.com/tchryssos/homerun"
 				imageSrc={BaseballIcon}
+				imageAltText="Pixel-art baseball"
 			/>
 		</PortfolioSection>
 		<PortfolioSection title="Other">
@@ -81,6 +84,7 @@ const Portfolio = () => (
 				toRepo="https://github.com/tchryssos/react-template"
 				hideLink
 				imageSrc="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
+				imageAltText="React JS logo"
 			/>
 		</PortfolioSection>
 	</PageWrapper>

@@ -127,12 +127,22 @@ const NavBar: React.FC = () => {
 					<div className={classes.navIcons}>
 						<IconLink to="mailto:troychryssos@gmail.com">
 							{(iconClass, iconColorClass) => (
-								<Email className={iconClass} colorClassName={iconColorClass} />
+								<Email
+									className={iconClass}
+									colorClassName={iconColorClass}
+									title="Email me"
+									titleId="navMailId"
+								/>
 							)}
 						</IconLink>
 						<IconLink to="https://github.com/tchryssos">
 							{(iconClass, iconColorClass) => (
-								<Github className={iconClass} colorClassName={iconColorClass} />
+								<Github
+									className={iconClass}
+									colorClassName={iconColorClass}
+									title="Go to my Github profile"
+									titleId="navGithubId"
+								/>
 							)}
 						</IconLink>
 					</div>

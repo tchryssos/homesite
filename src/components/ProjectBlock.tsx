@@ -16,7 +16,7 @@ import orNull from 'logic/util/orNull'
 interface Props {
 	title: string,
 	text: string,
-	altText?: string,
+	imageAltText: string,
 	imageSrc: string,
 	to: string,
 	toRepo?: string,
@@ -61,7 +61,7 @@ const useStyles = createUseStyles({
 })
 
 const ProjectBlock: React.FC<Props> = ({
-	title, text, altText, imageSrc, to,
+	title, text, imageAltText, imageSrc, to,
 	toRepo, hideLink,
 }) => {
 	const classes = useStyles()
@@ -79,7 +79,7 @@ const ProjectBlock: React.FC<Props> = ({
 				<div className={classes.headerLeft}>
 					<img
 						src={imageSrc}
-						alt={altText}
+						alt={imageAltText}
 						className={classes.image}
 					/>
 					<LittleTitle>{title}</LittleTitle>
@@ -89,7 +89,12 @@ const ProjectBlock: React.FC<Props> = ({
 						!hideLink,
 						<IconLink to={to}>
 							{(iconClass, iconColorClass) => (
-								<Open className={iconClass} colorClassName={iconColorClass} />
+								<Open
+									className={iconClass}
+									colorClassName={iconColorClass}
+									title={`Open ${title}`}
+									titleId={`${title}OpenId`}
+								/>
 							)}
 						</IconLink>,
 					)}
@@ -97,7 +102,12 @@ const ProjectBlock: React.FC<Props> = ({
 						Boolean(toRepo),
 						<IconLink to={toRepo}>
 							{(iconClass, iconColorClass) => (
-								<Github className={iconClass} colorClassName={iconColorClass} />
+								<Github
+									className={iconClass}
+									colorClassName={iconColorClass}
+									title={`Go to the Github repo for ${title}`}
+									titleId={`${title}GitRepoId`}
+								/>
 							)}
 						</IconLink>,
 					)}
