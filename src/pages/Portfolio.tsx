@@ -8,6 +8,7 @@ import { SM_MIN_STRING, LG_MIN_STRING } from 'constants/styles/breakpoints'
 import BanjoJace from 'static/banjo_jace.png'
 import BaseballIcon from 'static/baseball.ico'
 import Sparkle from 'static/sparkle.png'
+import TroyHead from 'static/troy_head.png'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -50,7 +51,7 @@ const Portfolio = () => (
 	<PageWrapper>
 		<PortfolioSection title="Work">
 			<ProjectBlock
-				title="caseybradford&#x0200B;.club"
+				title="casey&#x0200B;bradford&#x0200B;.club"
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford."
 				to="https://caseybradford.club/"
 				toRepo="https://github.com/tchryssos/casey-site"
@@ -65,7 +66,7 @@ const Portfolio = () => (
 				to="https://tchryssos.github.io/banjo-mtg/"
 				toRepo="https://github.com/tchryssos/banjo-mtg"
 				imageSrc={BanjoJace}
-				imageAltText="Banjo the Bear dabbing"
+				imageAltText="Banjo the Mind Sculptor"
 			/>
 			<ProjectBlock
 				title="HOME RUN"
@@ -85,6 +86,15 @@ const Portfolio = () => (
 				hideLink
 				imageSrc="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
 				imageAltText="React JS logo"
+			/>
+			<ProjectBlock
+				title="troychryssos&#x0200B;.com"
+				text="Peek behind the curtain of this site."
+				to="https://github.com/tchryssos/homesite"
+				toRepo="https://github.com/tchryssos/homesite"
+				hideLink
+				imageAltText="Troy's head"
+				imageSrc={TroyHead}
 			/>
 		</PortfolioSection>
 	</PageWrapper>
