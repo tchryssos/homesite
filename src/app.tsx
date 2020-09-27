@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, {
+	useEffect, useState, useRef, Suspense, lazy,
+} from 'react'
 import { render } from 'react-dom'
 import {
 	BrowserRouter, Route, Switch, withRouter,
@@ -9,16 +11,16 @@ import debounce from 'lodash.debounce'
 import AnimationContext from 'logic/contexts/animation'
 import WindowContext from 'logic/contexts/window'
 
-import About from 'pages/About'
-import Portfolio from 'pages/Portfolio'
-import FourOhFour from 'pages/FourOhFour'
-
 import NavBar from 'components/NavBar'
 import PixelContent from 'components/PixelContent'
 
 import { marPadZero, baseStyle } from 'constants/styles/base'
 import { PAGE_TRANSITION_TIME } from 'constants/animation'
-import { HOME_PATH, PORTFOLIO_PATH, ABOUT_PATH } from 'constants/routes'
+import { HOME_PATH, ABOUT_PATH } from 'constants/routes'
+
+const About = lazy(() => import('pages/About'))
+const Portfolio = lazy(() => import('pages/Portfolio'))
+const FourOhFour = lazy(() => import('pages/FourOhFour'))
 
 const useStyles = createUseStyles({
 	'@import': "url('https://fonts.googleapis.com/css2?family=PT+Sans&family=VT323&display=swap')",
@@ -75,11 +77,13 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
 			<WindowContext.Provider value={{ windowSize }}>
 				<NavBar />
 				<PixelContent />
-				<Switch>
-					<Route path={HOME_PATH} exact component={Portfolio} />
-					<Route path={ABOUT_PATH} component={About} />
-					<Route component={FourOhFour} />
-				</Switch>
+				<Suspense fallback={<div />}>
+					<Switch>
+						<Route path={HOME_PATH} exact component={Portfolio} />
+						<Route path={ABOUT_PATH} component={About} />
+						<Route component={FourOhFour} />
+					</Switch>
+				</Suspense>
 			</WindowContext.Provider>
 		</AnimationContext.Provider>
 	)

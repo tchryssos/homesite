@@ -5,9 +5,9 @@ import PageWrapper from 'components/PageWrapper'
 import Title from 'components/typography/Title'
 import { SM_MIN_STRING, LG_MIN_STRING } from 'constants/styles/breakpoints'
 
-import BanjoIcon from 'static/banjo.ico'
+import BanjoJace from 'static/banjo_jace.png'
 import BaseballIcon from 'static/baseball.ico'
-import SparkleIcon from 'static/sparkle.ico'
+import Sparkle from 'static/sparkle.png'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -54,7 +54,7 @@ const Portfolio = () => (
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford."
 				to="https://caseybradford.club/"
 				toRepo="https://github.com/tchryssos/casey-site"
-				imageSrc={SparkleIcon}
+				imageSrc={Sparkle}
 				imageAltText="Sparkle emoji"
 			/>
 		</PortfolioSection>
@@ -64,7 +64,7 @@ const Portfolio = () => (
 				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the card text."
 				to="https://tchryssos.github.io/banjo-mtg/"
 				toRepo="https://github.com/tchryssos/banjo-mtg"
-				imageSrc={BanjoIcon}
+				imageSrc={BanjoJace}
 				imageAltText="Banjo the Bear dabbing"
 			/>
 			<ProjectBlock

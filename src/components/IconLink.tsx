@@ -28,8 +28,8 @@ const useStyles = createUseStyles({
 		},
 	},
 	iconChild: {
-		height: 28,
-		width: 28,
+		height: [[28], '!important'],
+		width: [[28], '!important'],
 	},
 	iconChildColor: {
 		fill: white,
