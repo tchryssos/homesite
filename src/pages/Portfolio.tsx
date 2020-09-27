@@ -1,8 +1,13 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
+
+import orNull from 'logic/util/orNull'
+
 import ProjectBlock from 'components/ProjectBlock'
 import PageWrapper from 'components/PageWrapper'
 import Title from 'components/typography/Title'
+import Body from 'components/typography/Body'
+
 import { SM_MIN_STRING, LG_MIN_STRING } from 'constants/styles/breakpoints'
 
 import BanjoJace from 'static/banjo_jace.png'
@@ -23,23 +28,33 @@ const useStyles = createUseStyles({
 			gridTemplateColumns: '1fr 1fr 1fr',
 		},
 	},
-	title: {
+	descWrapper: {
 		marginBottom: 16,
+	},
+	descText: {
+		marginTop: 4,
 	},
 })
 
 interface SectionProps {
 	title: string,
+	desc?: string,
 	children: React.ReactNode,
 }
 
 const PortfolioSection: React.FC<SectionProps> = ({
-	title, children,
+	title, desc, children,
 }) => {
 	const classes = useStyles()
 	return (
 		<>
-			<Title className={classes.title}>{title}</Title>
+			<Title>{title}</Title>
+			<div className={classes.descWrapper}>
+				{orNull(
+					!!desc,
+					<Body className={classes.descText}>{desc}</Body>,
+				)}
+			</div>
 			<div className={classes.codeBlockWrapper}>
 				{children}
 			</div>
@@ -59,7 +74,10 @@ const Portfolio = () => (
 				imageAltText="Sparkle emoji"
 			/>
 		</PortfolioSection>
-		<PortfolioSection title="Experiments">
+		<PortfolioSection
+			title="Experiments"
+			desc="A selection of creative projects I've built to satisfy my own curiosity and/or teach myself something new."
+		>
 			<ProjectBlock
 				title="Banjo MtG"
 				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the card text."
@@ -77,7 +95,10 @@ const Portfolio = () => (
 				imageAltText="Pixel-art baseball"
 			/>
 		</PortfolioSection>
-		<PortfolioSection title="Other">
+		<PortfolioSection
+			title="Other"
+			desc="Templates, odds and ends, and projects that don't fit anywhere else."
+		>
 			<ProjectBlock
 				title="React Template"
 				text="My template for new React projects. Includes React, TS, and Storybook."

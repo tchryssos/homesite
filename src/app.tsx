@@ -10,6 +10,7 @@ import debounce from 'lodash.debounce'
 
 import AnimationContext from 'logic/contexts/animation'
 import WindowContext from 'logic/contexts/window'
+import disableDevTools from 'logic/util/disableDevTools'
 
 import NavBar from 'components/NavBar'
 import PixelContent from 'components/PixelContent'
@@ -21,6 +22,10 @@ import { HOME_PATH, ABOUT_PATH } from 'constants/routes'
 const About = lazy(() => import('pages/About'))
 const Portfolio = lazy(() => import('pages/Portfolio'))
 const FourOhFour = lazy(() => import('pages/FourOhFour'))
+
+if (process.env.NODE_ENV === 'production') {
+	disableDevTools()
+}
 
 const useStyles = createUseStyles({
 	'@import': "url('https://fonts.googleapis.com/css2?family=PT+Sans&family=VT323&display=swap')",
