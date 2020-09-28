@@ -14,6 +14,7 @@ import BanjoJace from 'static/banjo_jace.png'
 import BaseballIcon from 'static/baseball.ico'
 import Sparkle from 'static/sparkle.png'
 import TroyHead from 'static/troy_head.png'
+import QuadioLogo from 'static/quadio.jpg'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -64,7 +65,17 @@ const PortfolioSection: React.FC<SectionProps> = ({
 
 const Portfolio = () => (
 	<PageWrapper>
-		<PortfolioSection title="Work">
+		<PortfolioSection
+			title="Work"
+			desc="A selection of professional projects."
+		>
+			<ProjectBlock
+				title="Quadio"
+				text="A music streaming and sharing app for college creatives."
+				to="https://app.quadio.com/tracks/337"
+				imageSrc={QuadioLogo}
+				imageAltText="Quadio transport logo"
+			/>
 			<ProjectBlock
 				title="casey&#x0200B;bradford&#x0200B;.club"
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford."
