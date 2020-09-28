@@ -111,6 +111,15 @@ const Portfolio = () => (
 			desc="Templates, odds and ends, and projects that don't fit anywhere else."
 		>
 			<ProjectBlock
+				title="troychryssos&#x0200B;.com"
+				text="Peek behind the curtain of this site."
+				to="https://github.com/tchryssos/homesite"
+				toRepo="https://github.com/tchryssos/homesite"
+				hideLink
+				imageAltText="Troy's head"
+				imageSrc={TroyHead}
+			/>
+			<ProjectBlock
 				title="React Template"
 				text="My template for new React projects. Includes React, TS, and Storybook."
 				to="https://github.com/tchryssos/react-template"
@@ -120,13 +129,13 @@ const Portfolio = () => (
 				imageAltText="React JS logo"
 			/>
 			<ProjectBlock
-				title="troychryssos&#x0200B;.com"
-				text="Peek behind the curtain of this site."
-				to="https://github.com/tchryssos/homesite"
-				toRepo="https://github.com/tchryssos/homesite"
+				title="Parcel Template"
+				text="My template for new Parcel projects."
+				to="https://github.com/tchryssos/parcel-template"
+				toRepo="https://github.com/tchryssos/parcel-template"
 				hideLink
-				imageAltText="Troy's head"
-				imageSrc={TroyHead}
+				imageAltText="Parcel box"
+				imageSrc="https://parceljs.org/assets/parcel-og.png"
 			/>
 		</PortfolioSection>
 	</PageWrapper>
