@@ -105,6 +105,14 @@ const Portfolio = () => (
 				imageSrc={BaseballIcon}
 				imageAltText="Pixel-art baseball"
 			/>
+			<ProjectBlock
+				title="Stream CC"
+				text="A lightweight, browser-based streaming tool for automatic closed captioning using the SpeechRecognition API"
+				to="https://tchryssos.github.io/stream-cc/"
+				toRepo="https://github.com/tchryssos/stream-cc"
+				imageSrc="https://upload.wikimedia.org/wikipedia/commons/0/09/Closed_captioning_symbol.svg"
+				imageAltText="Closed captioning logo"
+			/>
 		</PortfolioSection>
 		<PortfolioSection
 			title="Other"
