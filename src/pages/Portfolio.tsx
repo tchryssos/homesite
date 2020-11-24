@@ -71,14 +71,6 @@ const Portfolio = () => (
 			desc="A selection of professional projects."
 		>
 			<ProjectBlock
-				title="casey&#x0200B;bradford&#x0200B;.club"
-				text="Portfolio website for graphic &amp; UX designer Casey Bradford."
-				to="https://caseybradford.club/"
-				toRepo="https://github.com/tchryssos/casey-site"
-				imageSrc={Sparkle}
-				imageAltText="Sparkle emoji"
-			/>
-			<ProjectBlock
 				title="Moss Workspace"
 				text="A shared virtual desktop workspace for creative teams to view and organize project assets."
 				to="https://mossworkspace.com/"
@@ -96,6 +88,14 @@ const Portfolio = () => (
 				to="https://app.quadio.com/tracks/337"
 				imageSrc={QuadioLogo}
 				imageAltText="Quadio transport logo"
+			/>
+			<ProjectBlock
+				title="casey&#x0200B;bradford&#x0200B;.club"
+				text="Portfolio website for graphic &amp; UX designer Casey Bradford."
+				to="https://caseybradford.club/"
+				toRepo="https://github.com/tchryssos/casey-site"
+				imageSrc={Sparkle}
+				imageAltText="Sparkle emoji"
 			/>
 		</PortfolioSection>
 		<PortfolioSection

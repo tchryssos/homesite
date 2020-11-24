@@ -141,19 +141,6 @@ const ProjectBlock: React.FC<Props> = ({
 						),
 					)}
 					{orNull(
-						!hideLink,
-						<IconLink to={to}>
-							{(iconClass, iconColorClass) => (
-								<Open
-									className={iconClass}
-									colorClassName={iconColorClass}
-									title={`Open ${title}`}
-									titleId={`${to}OpenId`}
-								/>
-							)}
-						</IconLink>,
-					)}
-					{orNull(
 						Boolean(toRepo),
 						<IconLink to={toRepo}>
 							{(iconClass, iconColorClass) => (
@@ -162,6 +149,19 @@ const ProjectBlock: React.FC<Props> = ({
 									colorClassName={iconColorClass}
 									title={`Go to the Github repo for ${title}`}
 									titleId={`${to}GitRepoId`}
+								/>
+							)}
+						</IconLink>,
+					)}
+					{orNull(
+						!hideLink,
+						<IconLink to={to}>
+							{(iconClass, iconColorClass) => (
+								<Open
+									className={iconClass}
+									colorClassName={iconColorClass}
+									title={`Open ${title}`}
+									titleId={`${to}OpenId`}
 								/>
 							)}
 						</IconLink>,
