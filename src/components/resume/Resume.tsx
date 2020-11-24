@@ -3,8 +3,6 @@ import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
 
 import LittleTitle from 'components/typography/LittleTitle'
-import SubText from 'components/typography/SubText'
-import ResumeExperience from 'components/resume/ResumeExperience'
 import ExtLink from 'components/ExtLink'
 
 import resumePdf from 'static/chryssos_resume.pdf'
@@ -12,7 +10,6 @@ import resumePdf from 'static/chryssos_resume.pdf'
 import { white, dimmed } from 'constants/styles/colors'
 import { SM_MIN_STRING } from 'constants/styles/breakpoints'
 import { useShadowStyles } from 'logic/util/styles/shadow'
-import { experience, skills } from 'constants/resume'
 
 const useStyles = createUseStyles({
 	download: {
@@ -82,7 +79,8 @@ const Resume = () => {
 				<LittleTitle className={classes.downloadText}>Download Full Resume</LittleTitle>
 			</ExtLink>
 
-			<div className={classes.resumeContainer}>
+			{/* Disabling non-downloaded resume for now since I have a job */}
+			{/* <div className={classes.resumeContainer}>
 				<div className={classes.main}>
 					<LittleTitle className={classes.sectionLabel}>Experience</LittleTitle>
 					{experience.map(
@@ -106,7 +104,7 @@ const Resume = () => {
 						(s) => <SubText key={s}>{s}</SubText>,
 					)}
 				</div>
-			</div>
+			</div> */}
 		</>
 	)
 }
