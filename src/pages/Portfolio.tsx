@@ -15,6 +15,7 @@ import BaseballIcon from 'static/baseball.ico'
 import Sparkle from 'static/sparkle.png'
 import TroyHead from 'static/troy_head.png'
 import QuadioLogo from 'static/quadio.jpg'
+import Moss from 'static/moss.png'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -70,19 +71,31 @@ const Portfolio = () => (
 			desc="A selection of professional projects."
 		>
 			<ProjectBlock
-				title="Quadio"
-				text="A music streaming and sharing app for college creatives."
-				to="https://app.quadio.com/tracks/337"
-				imageSrc={QuadioLogo}
-				imageAltText="Quadio transport logo"
-			/>
-			<ProjectBlock
 				title="casey&#x0200B;bradford&#x0200B;.club"
 				text="Portfolio website for graphic &amp; UX designer Casey Bradford."
 				to="https://caseybradford.club/"
 				toRepo="https://github.com/tchryssos/casey-site"
 				imageSrc={Sparkle}
 				imageAltText="Sparkle emoji"
+			/>
+			<ProjectBlock
+				title="Moss Workspace"
+				text="A shared virtual desktop workspace for creative teams to view and organize project assets."
+				to="https://mossworkspace.com/"
+				imageSrc={Moss}
+				imageAltText="Moss sprout logo"
+				toOthers={[{
+					extLink: 'https://vimeo.com/472490067/524a565895',
+					extTitle: 'Moss Vimeo',
+					extType: 'vimeo',
+				}]}
+			/>
+			<ProjectBlock
+				title="Quadio"
+				text="A music streaming and sharing app for college creatives."
+				to="https://app.quadio.com/tracks/337"
+				imageSrc={QuadioLogo}
+				imageAltText="Quadio transport logo"
 			/>
 		</PortfolioSection>
 		<PortfolioSection

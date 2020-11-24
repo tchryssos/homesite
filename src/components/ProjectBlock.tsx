@@ -6,22 +6,14 @@ import Body from 'components/typography/Body'
 import LittleTitle from 'components/typography/LittleTitle'
 import Github from 'components/icons/Github'
 import Open from 'components/icons/Open'
+import Vimeo from 'components/icons/Vimeo'
+import Medium from 'components/icons/Medium'
 import ExtLink from 'components/ExtLink'
 import IconLink from 'components/IconLink'
 
 import { black, white } from 'constants/styles/colors'
 import { useShadowStyles } from 'logic/util/styles/shadow'
 import orNull from 'logic/util/orNull'
-
-interface Props {
-	title: string,
-	text: string,
-	imageAltText: string,
-	imageSrc: string,
-	to: string,
-	toRepo?: string,
-	hideLink?: boolean,
-}
 
 const useStyles = createUseStyles({
 	block: {
@@ -60,9 +52,63 @@ const useStyles = createUseStyles({
 	},
 })
 
+interface LinkProps {
+	extType: string,
+	extLink: string,
+	extTitle: string,
+}
+const OtherLink: React.FC<LinkProps> = ({ extType, extTitle, extLink }) => {
+	switch (extType) {
+		case 'vimeo':
+			return (
+				<IconLink to={extLink}>
+					{(iconClass, iconColorClass) => (
+						<Vimeo
+							className={iconClass}
+							colorClassName={iconColorClass}
+							title={`Open ${extTitle}`}
+							titleId={`${extLink}OpenId`}
+						/>
+					)}
+				</IconLink>
+			)
+		case 'medium':
+			return (
+				<IconLink to={extLink}>
+					{(iconClass, iconColorClass) => (
+						<Medium
+							className={iconClass}
+							colorClassName={iconColorClass}
+							title={`Open ${extTitle}`}
+							titleId={`${extLink}OpenId`}
+						/>
+					)}
+				</IconLink>
+			)
+		default:
+			console.warn('This link type is not supported')
+			return null
+	}
+}
+
+interface Props {
+	title: string,
+	text: string,
+	imageAltText: string,
+	imageSrc: string,
+	to: string,
+	toRepo?: string,
+	hideLink?: boolean,
+	toOthers?: {
+		extType: string,
+		extLink: string,
+		extTitle: string,
+	}[]
+}
+
 const ProjectBlock: React.FC<Props> = ({
 	title, text, imageAltText, imageSrc, to,
-	toRepo, hideLink,
+	toRepo, hideLink, toOthers,
 }) => {
 	const classes = useStyles()
 	const shadowClasses = useShadowStyles()
@@ -85,6 +131,15 @@ const ProjectBlock: React.FC<Props> = ({
 					<LittleTitle>{title}</LittleTitle>
 				</div>
 				<div className={classes.icons}>
+					{toOthers?.map(
+						({ extType, extLink, extTitle }) => (
+							<OtherLink
+								extType={extType}
+								extLink={extLink}
+								extTitle={extTitle}
+							/>
+						),
+					)}
 					{orNull(
 						!hideLink,
 						<IconLink to={to}>
