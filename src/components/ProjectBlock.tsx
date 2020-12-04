@@ -137,6 +137,7 @@ const ProjectBlock: React.FC<Props> = ({
 								extType={extType}
 								extLink={extLink}
 								extTitle={extTitle}
+								key={extLink}
 							/>
 						),
 					)}

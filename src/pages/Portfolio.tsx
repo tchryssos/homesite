@@ -16,6 +16,7 @@ import Sparkle from 'static/sparkle.png'
 import TroyHead from 'static/troy_head.png'
 import QuadioLogo from 'static/quadio.jpg'
 import Moss from 'static/moss.png'
+import ManYouKnow from 'static/man_you_know.png'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -88,6 +89,11 @@ const Portfolio = () => (
 				to="https://app.quadio.com/tracks/337"
 				imageSrc={QuadioLogo}
 				imageAltText="Quadio transport logo"
+				toOthers={[{
+					extLink: 'https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14',
+					extTitle: 'Building an audio waveform progress bar for Quadio dev blog',
+					extType: 'medium',
+				}]}
 			/>
 			<ProjectBlock
 				title="casey&#x0200B;bradford&#x0200B;.club"
@@ -103,6 +109,22 @@ const Portfolio = () => (
 			desc="A selection of creative projects I've built to satisfy my own curiosity and/or teach myself something new."
 		>
 			<ProjectBlock
+				title="Stream CC"
+				text="A lightweight, browser-based streaming tool for automatic closed captioning using the SpeechRecognition API"
+				to="https://tchryssos.github.io/stream-cc/"
+				toRepo="https://github.com/tchryssos/stream-cc"
+				imageSrc="https://upload.wikimedia.org/wikipedia/commons/0/09/Closed_captioning_symbol.svg"
+				imageAltText="Closed captioning logo"
+			/>
+			<ProjectBlock
+				title="The Man You Know"
+				text="A canvas-based weirdo generator. Still a work in progress."
+				to="https://tchryssos.github.io/the-man-you-know/"
+				toRepo="https://github.com/tchryssos/the-man-you-know"
+				imageSrc={ManYouKnow}
+				imageAltText="A generated man"
+			/>
+			<ProjectBlock
 				title="Banjo MtG"
 				text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the card text."
 				to="https://tchryssos.github.io/banjo-mtg/"
@@ -117,14 +139,6 @@ const Portfolio = () => (
 				toRepo="https://github.com/tchryssos/homerun"
 				imageSrc={BaseballIcon}
 				imageAltText="Pixel-art baseball"
-			/>
-			<ProjectBlock
-				title="Stream CC"
-				text="A lightweight, browser-based streaming tool for automatic closed captioning using the SpeechRecognition API"
-				to="https://tchryssos.github.io/stream-cc/"
-				toRepo="https://github.com/tchryssos/stream-cc"
-				imageSrc="https://upload.wikimedia.org/wikipedia/commons/0/09/Closed_captioning_symbol.svg"
-				imageAltText="Closed captioning logo"
 			/>
 		</PortfolioSection>
 		<PortfolioSection
