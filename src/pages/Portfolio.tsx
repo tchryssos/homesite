@@ -86,7 +86,7 @@ const Portfolio = () => (
 			<ProjectBlock
 				title="Quadio"
 				text="A music streaming and sharing app for college creatives."
-				to="https://app.quadio.com/tracks/337"
+				to="https://www.quadio.com/"
 				imageSrc={QuadioLogo}
 				imageAltText="Quadio transport logo"
 				toOthers={[{
