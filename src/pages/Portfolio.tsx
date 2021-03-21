@@ -17,6 +17,7 @@ import TroyHead from 'static/troy_head.png'
 import QuadioLogo from 'static/quadio.jpg'
 import Moss from 'static/moss.png'
 import ManYouKnow from 'static/man_you_know.png'
+import Vercel from 'static/vercel.svg'
 
 const useStyles = createUseStyles({
 	codeBlockWrapper: {
@@ -153,6 +154,15 @@ const Portfolio = () => (
 				hideLink
 				imageAltText="Troy's head"
 				imageSrc={TroyHead}
+			/>
+			<ProjectBlock
+				title="Next.js Template"
+				text="My template for new Next.js projects. Includes typescript."
+				to="https://github.com/tchryssos/next-template"
+				toRepo="https://github.com/tchryssos/next-template"
+				imageSrc={Vercel}
+				imageAltText="Vercel logo"
+				hideLink
 			/>
 			<ProjectBlock
 				title="React Template"
