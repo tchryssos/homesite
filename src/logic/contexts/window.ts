@@ -1,7 +1,7 @@
-import { createContext } from 'react'
+import { createContext } from 'react';
 
 const WindowContext = createContext({
-	windowSize: 0,
-})
+  windowSize: 0,
+});
 
-export default WindowContext
+export default WindowContext;

@@ -1,7 +1,7 @@
-import { createContext } from 'react'
+import { createContext } from 'react';
 
 const AnimationContext = createContext({
-	isAnimating: false,
-})
+  isAnimating: false,
+});
 
-export default AnimationContext
+export default AnimationContext;

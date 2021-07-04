@@ -1,3 +1,5 @@
-import ternary from 'logic/util/ternary'
+import ternary from 'logic/util/ternary';
 
-export default (bool: boolean, truthy: any) => ternary(bool, truthy, null)
+const orNull = (bool: boolean, truthy: any) => ternary(bool, truthy, null);
+
+export default orNull;
