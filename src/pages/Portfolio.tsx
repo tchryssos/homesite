@@ -18,6 +18,7 @@ import QuadioLogo from 'static/quadio.jpg';
 import Moss from 'static/moss.png';
 import ManYouKnow from 'static/man_you_know.png';
 import Vercel from 'static/vercel.svg';
+import Codecademy from 'static/codecademy.svg';
 
 const useStyles = createUseStyles({
   codeBlockWrapper: {
@@ -66,6 +67,14 @@ const PortfolioSection: React.FC<SectionProps> = ({
 const Portfolio = () => (
   <PageWrapper>
     <PortfolioSection desc="A selection of professional projects." title="Work">
+      <ProjectBlock
+        imageAltText="Codecademy logo"
+        imageSrc={Codecademy}
+        text="An online learning platform that has helped over 45 million people learn to code."
+        title="Codecademy"
+        to="https://www.codecademy.com/"
+        toRepo="https://github.com/Codecademy"
+      />
       <ProjectBlock
         imageAltText="Moss sprout logo"
         imageSrc={Moss}
@@ -164,7 +173,8 @@ const Portfolio = () => (
         to="https://github.com/tchryssos/next-template"
         toRepo="https://github.com/tchryssos/next-template"
       />
-      <ProjectBlock
+      {/* @TODO React template needs a little work, and would I still make a plain react project without Next? */}
+      {/* <ProjectBlock
         hideLink
         imageAltText="React JS logo"
         imageSrc="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
@@ -172,7 +182,7 @@ const Portfolio = () => (
         title="React Template"
         to="https://github.com/tchryssos/react-template"
         toRepo="https://github.com/tchryssos/react-template"
-      />
+      /> */}
       <ProjectBlock
         hideLink
         imageAltText="Parcel box"
