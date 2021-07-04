@@ -2,9 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { createUseStyles } from 'react-jss';
 
-import { TROY, LAPTOP, CANE, TROY_RIGHT } from 'constants/sprites';
+import { TROY, LAPTOP, TROY_RIGHT } from 'constants/sprites';
 
-import dumbCane from 'static/dumbcane.gif';
 import laptop from 'static/laptop.gif';
 import questionMan from 'static/questionman.gif';
 import troy from 'static/troy.gif';
@@ -46,8 +45,8 @@ const spriteSwitch = (type: string) => {
       return troyRight;
     case LAPTOP:
       return laptop;
-    case CANE:
-      return dumbCane;
+    // case CANE:
+    //   return dumbCane;
     default:
       return questionMan;
   }
