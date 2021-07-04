@@ -9,7 +9,8 @@
   "sideEffects": false,
   "scripts": {
     "start": "./node_modules/.bin/webpack serve --progress --hot --content-base build --inline --mode=development --config webpack.config.js --port 3000",
-    "build": "webpack -p --mode=production --config webpack.config.js",
+    "build": "webpack --mode='production' --config webpack.config.js",
+    "start:build": "npm run build && npx http-server www -p 3003 --proxy http://localhost:3003?",
     "deploy": "rm -rf www && npm run build && scp -r ./www/* troy@67.205.141.3:/var/www/troychryssos.com/html",
     "lint": "eslint src --fix",
     "prepare": "husky install"
