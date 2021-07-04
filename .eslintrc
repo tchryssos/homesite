@@ -28,6 +28,7 @@
     "operator-linebreak": "off",
     "prefer-arrow-callback": "warn",
     "semi": "off",
+    "no-use-before-define": "off",
 
     // import
     "import/no-named-as-default": "off",
@@ -65,7 +66,8 @@
     "react/no-access-state-in-setstate": "error",
 
     // Typescript
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
   },
   "parserOptions": {
     "ecmaFeatures": {
