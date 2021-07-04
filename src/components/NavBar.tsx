@@ -10,7 +10,7 @@ import {
   MD_MIN_STRING,
   MD_MIN_VALUE,
 } from 'constants/styles/breakpoints';
-import { HOME_PATH, ABOUT_PATH } from 'constants/routes';
+import { HOME_PATH } from 'constants/routes';
 
 import AnimationContext from 'logic/contexts/animation';
 import { useShadowStyles } from 'logic/util/styles/shadow';
@@ -152,9 +152,10 @@ const NavBar: React.FC = () => {
           <NavText classes={classes} to={HOME_PATH}>
             Portfolio
           </NavText>
-          <NavText classes={classes} to={ABOUT_PATH}>
+          {/* @TODO About page needs a better reason to exist */}
+          {/* <NavText classes={classes} to={ABOUT_PATH}>
             About
-          </NavText>
+          </NavText> */}
         </div>
       </div>
     </div>

@@ -13,9 +13,9 @@ import PixelContent from 'components/PixelContent';
 
 import { marPadZero, baseStyle } from 'constants/styles/base';
 import { PAGE_TRANSITION_TIME } from 'constants/animation';
-import { HOME_PATH, ABOUT_PATH } from 'constants/routes';
+import { HOME_PATH } from 'constants/routes';
 
-const About = lazy(() => import('pages/About'));
+// const About = lazy(() => import('pages/About'));
 const Portfolio = lazy(() => import('pages/Portfolio'));
 const FourOhFour = lazy(() => import('pages/FourOhFour'));
 
@@ -82,7 +82,7 @@ const App: React.FC<AppProps> = ({ location: { pathname } }) => {
         <Suspense fallback={<div />}>
           <Switch>
             <Route component={Portfolio} exact path={HOME_PATH} />
-            <Route component={About} path={ABOUT_PATH} />
+            {/* <Route component={About} path={ABOUT_PATH} /> */}
             <Route component={FourOhFour} />
           </Switch>
         </Suspense>
