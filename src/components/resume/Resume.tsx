@@ -80,33 +80,6 @@ const Resume = () => {
           Download Full Resume
         </LittleTitle>
       </ExtLink>
-
-      {/* Disabling non-downloaded resume for now since I have a job */}
-      {/* <div className={classes.resumeContainer}>
-				<div className={classes.main}>
-					<LittleTitle className={classes.sectionLabel}>Experience</LittleTitle>
-					{experience.map(
-						({
-							company, title, dates, highlights,
-						}) => (
-							<ResumeExperience
-								company={company}
-								title={title}
-								dates={dates}
-								highlights={highlights}
-								key={`${company}-${title}`}
-							/>
-						),
-					)}
-				</div>
-
-				<div className={classes.sidebar}>
-					<LittleTitle className={classes.sectionLabel}>Skills</LittleTitle>
-					{skills.map(
-						(s) => <SubText key={s}>{s}</SubText>,
-					)}
-				</div>
-			</div> */}
     </>
   );
 };
