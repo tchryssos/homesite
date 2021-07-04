@@ -1,63 +1,85 @@
 {
-	"parser": "babel-eslint",
-	"env": {
-		"browser": true,
-		"node": true,
-		"es6": true
-	},
-	"globals": {
-		"React": true
-	},
-	"plugins": [
-		"react"
-	],
-	"extends": [
-		"eslint:recommended",
-		"airbnb"
-	],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "React": true
+  },
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "airbnb"],
 
-	"rules": {
-		"max-len": 0,
-		"one-var": 0,
-		"no-console": ["error", { "allow": ["warn", "error"] }],
-		"no-multiple-empty-lines": ["error", {"max": 2}],
-		"no-prototype-builtins": 0,
-		"class-methods-use-this": 0,
-		"padded-blocks": 0,
-		"no-tabs": 0,
-		"no-mixed-spaces-and-tabs": "error",
-		"indent": ["error", "tab", { "SwitchCase": 1 }],
-		"semi": [2, "never"],
+  "rules": {
+    // eslint
+    "max-len": "off",
+    "one-var": "off",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "no-prototype-builtins": "off",
+    "class-methods-use-this": "warn",
+    "padded-blocks": "off",
+    "no-tabs": "warn",
+    "no-mixed-spaces-and-tabs": "warn",
+    "object-curly-newline": "off",
+    "no-confusing-arrow": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "prefer-arrow-callback": "warn",
+    "semi": "off",
 
-		"import/no-named-as-default": 0,
-		"import/extensions": 0,
-		"import/prefer-default-export": 0,
+    // import
+    "import/no-named-as-default": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "import/no-anonymous-default-export": "error",
 
-		"jsx-a11y/href-no-hash": 0,
-		"jsx-a11y/label-has-for": 0,
-		"jsx-a11y/no-static-element-interactions": 0,
+    // jsx-a11y
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
 
+    // react
+    "react/jsx-indent": ["warn", 2],
+    "react/jsx-indent-props": ["warn", 2],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-no-bind": "warn",
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
+    "react/jsx-curly-newline": "off",
+    "react/button-has-type": "error",
+    "react/jsx-key": "warn",
+    "react/prefer-stateless-function": "warn",
+    "react/destructuring-assignment": ["warn", "always"],
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true
+      }
+    ],
+    "react/no-deprecated": "error",
+    "react/no-typos": "error",
+    "react/self-closing-comp": "warn",
+    "react/no-access-state-in-setstate": "error",
 
-		"react/jsx-indent": [2, "tab"],
-		"react/jsx-indent-props": ["error", "tab"],
-		"react/jsx-no-bind": 1,
-		"react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-		"react/require-default-props": 0,
-		"react/prop-types": 0
-	},
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true,
-			"modules": true
-		}
-	},
+    // Typescript
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
 
-	"settings": {
-		"import/resolver": {
-			"node": {
-				"paths": ["src"],
-				"extensions": [".js", ".jsx", ".ts", ".tsx"]
-			}
-		}
-	}
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
 }
