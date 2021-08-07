@@ -35,8 +35,8 @@ module.exports = (env, argv) => {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: '~/static/assets',
-            publicPath: '~/static/assets',
+            outputPath: 'static/assets',
+            publicPath: 'static/assets',
           },
         },
         {
@@ -65,25 +65,20 @@ module.exports = (env, argv) => {
         template: path.resolve(__dirname, 'src/app.html'),
         filename: 'index.html',
         hash: isProd,
-        favicon: '~/static/favicon.ico',
+        favicon: 'static/favicon.ico',
       }),
       // new CompressionPlugin({
-      // 	cache: true,
-      // 	test: /\.(js|png|css|jpg|jpeg|gif|svg|ico|xml|woff|woff2|ttf|otf|eot)$/,
-      // 	deleteOriginalAssets: false,
+      // cache: true,
+      // test: /\.(js|png|css|jpg|jpeg|gif|svg|ico|xml|woff|woff2|ttf|otf|eot)$/,
+      // deleteOriginalAssets: false,
       // }),
       // new BundleAnalyzerPlugin(),
     ],
     resolve: {
-      extensions: ['*', '.jsx', '.js', '.ts', '.tsx'],
+      extensions: ['*', '.js', '.ts', '.tsx'],
       modules: ['node_modules'],
       alias: {
-        components: path.join(__dirname, 'src/components'),
-        static: path.join(__dirname, 'src/static'),
-        pages: path.join(__dirname, 'src/pages'),
-        styles: path.join(__dirname, 'src/styles'),
-        constants: path.join(__dirname, 'src/constants'),
-        logic: path.join(__dirname, 'src/logic'),
+        '~': path.join(__dirname, 'src'),
       },
     },
     stats: {

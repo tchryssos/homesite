@@ -99,7 +99,7 @@ const PixelContent: React.FC = () => {
         transform: `translateX(${translate}px)`,
       };
     }
-    return {};
+    return undefined;
   };
 
   useEffect(() => {

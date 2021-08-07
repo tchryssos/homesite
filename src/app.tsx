@@ -14,8 +14,8 @@ import WindowContext from '~/logic/contexts/window';
 import disableDevTools from '~/logic/util/disableDevTools';
 
 // const About = lazy(() => import('pages/About'));
-const Portfolio = lazy(() => import('pages/Portfolio'));
-const FourOhFour = lazy(() => import('pages/FourOhFour'));
+const Portfolio = lazy(() => import('./pages/Portfolio'));
+const FourOhFour = lazy(() => import('./pages/FourOhFour'));
 
 if (process.env.NODE_ENV === 'production') {
   disableDevTools();
