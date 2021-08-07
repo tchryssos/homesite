@@ -1,8 +1,7 @@
+import clsx from 'clsx';
+import { gray, white } from 'constants/styles/colors';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
-
-import { white, gray } from 'constants/styles/colors';
 
 interface Props {
   children: React.ReactNode;

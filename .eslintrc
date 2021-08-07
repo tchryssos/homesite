@@ -8,8 +8,14 @@
   "globals": {
     "React": true
   },
-  "plugins": ["react", "@typescript-eslint"],
-  "extends": ["eslint:recommended", "airbnb"],
+  "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended"
+  ],
+
+  "root": true,
 
   "rules": {
     // eslint
@@ -20,14 +26,14 @@
     "no-prototype-builtins": "off",
     "class-methods-use-this": "warn",
     "padded-blocks": "off",
-    "no-tabs": "warn",
-    "no-mixed-spaces-and-tabs": "warn",
     "object-curly-newline": "off",
     "no-confusing-arrow": "off",
     "implicit-arrow-linebreak": "off",
     "operator-linebreak": "off",
     "prefer-arrow-callback": "warn",
     "semi": "off",
+    "indent": "off",
+    "comma-dangle": "off",
     "no-use-before-define": "off",
 
     // import
@@ -36,6 +42,8 @@
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "import/no-anonymous-default-export": "error",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
 
     // jsx-a11y
     "jsx-a11y/href-no-hash": "off",
@@ -64,12 +72,13 @@
     "react/no-typos": "error",
     "react/self-closing-comp": "warn",
     "react/no-access-state-in-setstate": "error",
+    "react/jsx-one-expression-per-line": "off",
 
     // Typescript
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-use-before-define": ["error"]
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "parserOptions": {
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
@@ -80,7 +89,7 @@
     "import/resolver": {
       "node": {
         "paths": ["src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".ts", ".tsx"]
       }
     }
   }
