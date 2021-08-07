@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
 interface Props {
   className?: string;
