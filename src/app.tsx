@@ -1,19 +1,17 @@
-import React, { useEffect, useState, useRef, Suspense, lazy } from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
-import { createUseStyles } from 'react-jss';
 import debounce from 'lodash.debounce';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { createUseStyles } from 'react-jss';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 
-import AnimationContext from 'logic/contexts/animation';
-import WindowContext from 'logic/contexts/window';
-import disableDevTools from 'logic/util/disableDevTools';
-
-import NavBar from 'components/NavBar';
-import PixelContent from 'components/PixelContent';
-
-import { marPadZero, baseStyle } from 'constants/styles/base';
-import { PAGE_TRANSITION_TIME } from 'constants/animation';
-import { HOME_PATH } from 'constants/routes';
+import NavBar from '~/components/NavBar';
+import PixelContent from '~/components/PixelContent';
+import { PAGE_TRANSITION_TIME } from '~/constants/animation';
+import { HOME_PATH } from '~/constants/routes';
+import { baseStyle, marPadZero } from '~/constants/styles/base';
+import AnimationContext from '~/logic/contexts/animation';
+import WindowContext from '~/logic/contexts/window';
+import disableDevTools from '~/logic/util/disableDevTools';
 
 // const About = lazy(() => import('pages/About'));
 const Portfolio = lazy(() => import('pages/Portfolio'));

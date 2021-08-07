@@ -1,9 +1,9 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { monoFont, sansFont } from 'constants/styles/fonts';
-import { white } from 'constants/styles/colors';
+import { white } from '~/constants/styles/colors';
+import { monoFont, sansFont } from '~/constants/styles/fonts';
 
 interface Props {
   className?: string;

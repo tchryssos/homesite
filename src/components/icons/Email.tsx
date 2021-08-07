@@ -1,10 +1,9 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
-import Icon from 'components/icons/Icon';
-
-import { white } from 'constants/styles/colors';
+import Icon from '~/components/icons/Icon';
+import { white } from '~/constants/styles/colors';
 
 interface Props {
   className?: string;

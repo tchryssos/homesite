@@ -1,11 +1,11 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
-import Body from 'components/typography/Body';
-import Title from 'components/typography/Title';
-import PageWrapper from 'components/PageWrapper';
-import Resume from 'components/resume/Resume';
+import PageWrapper from '~/components/PageWrapper';
+import Resume from '~/components/resume/Resume';
+import Body from '~/components/typography/Body';
+import Title from '~/components/typography/Title';
 
 const useStyles = createUseStyles({
   bottomMar: {

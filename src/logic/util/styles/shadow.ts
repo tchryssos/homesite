@@ -1,5 +1,6 @@
 import { createUseStyles } from 'react-jss';
-import { darkPurple, black } from 'constants/styles/colors';
+
+import { black, darkPurple } from '~/constants/styles/colors';
 
 export const useShadowStyles = createUseStyles({
   shadow: {

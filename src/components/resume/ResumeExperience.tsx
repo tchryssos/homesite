@@ -1,10 +1,9 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import SubText from 'components/typography/SubText';
-import LittleTitle from 'components/typography/LittleTitle';
-
-import { ExperienceProps } from 'constants/resume';
+import LittleTitle from '~/components/typography/LittleTitle';
+import SubText from '~/components/typography/SubText';
+import { ExperienceProps } from '~/constants/resume';
 
 const useStyles = createUseStyles({
   experienceContainer: {

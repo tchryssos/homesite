@@ -1,20 +1,21 @@
-import PageWrapper from 'components/PageWrapper';
-import ProjectBlock from 'components/ProjectBlock';
-import Body from 'components/typography/Body';
-import Title from 'components/typography/Title';
-import { LG_MIN_STRING, SM_MIN_STRING } from 'constants/styles/breakpoints';
-import orNull from 'logic/util/orNull';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import BanjoJace from 'static/banjo_jace.png';
-import BaseballIcon from 'static/baseball.ico';
-import Codecademy from 'static/codecademy.svg';
-import ManYouKnow from 'static/man_you_know.png';
-import Moss from 'static/moss.png';
-import QuadioLogo from 'static/quadio.jpg';
-import Sparkle from 'static/sparkle.png';
-import TroyHead from 'static/troy_head.png';
-import Vercel from 'static/vercel.svg';
+
+import PageWrapper from '~/components/PageWrapper';
+import ProjectBlock from '~/components/ProjectBlock';
+import Body from '~/components/typography/Body';
+import Title from '~/components/typography/Title';
+import { LG_MIN_STRING, SM_MIN_STRING } from '~/constants/styles/breakpoints';
+import orNull from '~/logic/util/orNull';
+import BanjoJace from '~/static/banjo_jace.png';
+import BaseballIcon from '~/static/baseball.ico';
+import Codecademy from '~/static/codecademy.svg';
+import ManYouKnow from '~/static/man_you_know.png';
+import Moss from '~/static/moss.png';
+import QuadioLogo from '~/static/quadio.jpg';
+import Sparkle from '~/static/sparkle.png';
+import TroyHead from '~/static/troy_head.png';
+import Vercel from '~/static/vercel.svg';
 
 const useStyles = createUseStyles({
   codeBlockWrapper: {

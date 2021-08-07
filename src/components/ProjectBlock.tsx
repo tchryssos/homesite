@@ -1,19 +1,18 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
-import Body from 'components/typography/Body';
-import LittleTitle from 'components/typography/LittleTitle';
-import Github from 'components/icons/Github';
-import Open from 'components/icons/Open';
-import Vimeo from 'components/icons/Vimeo';
-import Medium from 'components/icons/Medium';
-import ExtLink from 'components/ExtLink';
-import IconLink from 'components/IconLink';
-
-import { black, white } from 'constants/styles/colors';
-import { useShadowStyles } from 'logic/util/styles/shadow';
-import orNull from 'logic/util/orNull';
+import ExtLink from '~/components/ExtLink';
+import IconLink from '~/components/IconLink';
+import Github from '~/components/icons/Github';
+import Medium from '~/components/icons/Medium';
+import Open from '~/components/icons/Open';
+import Vimeo from '~/components/icons/Vimeo';
+import Body from '~/components/typography/Body';
+import LittleTitle from '~/components/typography/LittleTitle';
+import { black, white } from '~/constants/styles/colors';
+import orNull from '~/logic/util/orNull';
+import { useShadowStyles } from '~/logic/util/styles/shadow';
 
 const useStyles = createUseStyles({
   block: {

@@ -1,15 +1,13 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
-import LittleTitle from 'components/typography/LittleTitle';
-import ExtLink from 'components/ExtLink';
-
-import resumePdf from 'static/chryssos_resume.pdf';
-
-import { white, dimmed } from 'constants/styles/colors';
-import { SM_MIN_STRING } from 'constants/styles/breakpoints';
-import { useShadowStyles } from 'logic/util/styles/shadow';
+import ExtLink from '~/components/ExtLink';
+import LittleTitle from '~/components/typography/LittleTitle';
+import { SM_MIN_STRING } from '~/constants/styles/breakpoints';
+import { dimmed, white } from '~/constants/styles/colors';
+import { useShadowStyles } from '~/logic/util/styles/shadow';
+import resumePdf from '~/static/chryssos_resume.pdf';
 
 const useStyles = createUseStyles({
   download: {

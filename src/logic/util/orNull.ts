@@ -1,4 +1,4 @@
-import ternary from 'logic/util/ternary';
+import ternary from '~/logic/util/ternary';
 
 const orNull = (bool: boolean, truthy: any) => ternary(bool, truthy, null);
 

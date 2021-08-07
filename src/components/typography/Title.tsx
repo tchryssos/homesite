@@ -1,11 +1,10 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { useShadowStyles } from 'logic/util/styles/shadow';
-
-import { monoFont } from 'constants/styles/fonts';
-import { white } from 'constants/styles/colors';
+import { white } from '~/constants/styles/colors';
+import { monoFont } from '~/constants/styles/fonts';
+import { useShadowStyles } from '~/logic/util/styles/shadow';
 
 interface Props {
   className?: string;

@@ -1,8 +1,8 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { MD_MIN_VALUE } from 'constants/styles/breakpoints';
+import { MD_MIN_VALUE } from '~/constants/styles/breakpoints';
 
 interface Props {
   className?: string;

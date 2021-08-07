@@ -1,17 +1,16 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { TROY, LAPTOP, TROY_RIGHT } from 'constants/sprites';
-
-import laptop from 'static/laptop.gif';
-import questionMan from 'static/questionman.gif';
-import troy from 'static/troy.gif';
-import troyRight from 'static/troy_right.gif';
+import { LAPTOP, TROY, TROY_RIGHT } from '~/constants/sprites';
+import laptop from '~/static/laptop.gif';
+import questionMan from '~/static/questionman.gif';
+import troy from '~/static/troy.gif';
+import troyRight from '~/static/troy_right.gif';
 
 interface Props {
   type: string;
-  style?: {};
+  style?: Record<string, string | number>;
   className?: string;
 }
 

@@ -1,10 +1,9 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
-import ternary from 'logic/util/ternary';
-
-import { white } from 'constants/styles/colors';
+import { white } from '~/constants/styles/colors';
+import ternary from '~/logic/util/ternary';
 
 type Props =
   | {

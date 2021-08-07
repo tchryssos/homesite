@@ -35,8 +35,8 @@ module.exports = (env, argv) => {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'static/assets',
-            publicPath: 'static/assets',
+            outputPath: '~/static/assets',
+            publicPath: '~/static/assets',
           },
         },
         {
@@ -65,7 +65,7 @@ module.exports = (env, argv) => {
         template: path.resolve(__dirname, 'src/app.html'),
         filename: 'index.html',
         hash: isProd,
-        favicon: 'static/favicon.ico',
+        favicon: '~/static/favicon.ico',
       }),
       // new CompressionPlugin({
       // 	cache: true,

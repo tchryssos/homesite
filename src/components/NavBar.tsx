@@ -1,24 +1,22 @@
+import clsx from 'clsx';
 import React, { useContext } from 'react';
 import { createUseStyles, WithStylesProps } from 'react-jss';
 import { NavLink, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
 
-import { black, white, dimmedWhite } from 'constants/styles/colors';
-import { monoFont } from 'constants/styles/fonts';
+import IconLink from '~/components/IconLink';
+import Email from '~/components/icons/Email';
+import Github from '~/components/icons/Github';
+import LittleTitle from '~/components/typography/LittleTitle';
+import { HOME_PATH } from '~/constants/routes';
 import {
-  SM_MIN_STRING,
   MD_MIN_STRING,
   MD_MIN_VALUE,
-} from 'constants/styles/breakpoints';
-import { HOME_PATH } from 'constants/routes';
-
-import AnimationContext from 'logic/contexts/animation';
-import { useShadowStyles } from 'logic/util/styles/shadow';
-
-import LittleTitle from 'components/typography/LittleTitle';
-import IconLink from 'components/IconLink';
-import Email from 'components/icons/Email';
-import Github from 'components/icons/Github';
+  SM_MIN_STRING,
+} from '~/constants/styles/breakpoints';
+import { black, dimmedWhite, white } from '~/constants/styles/colors';
+import { monoFont } from '~/constants/styles/fonts';
+import AnimationContext from '~/logic/contexts/animation';
+import { useShadowStyles } from '~/logic/util/styles/shadow';
 
 const useStyles = createUseStyles({
   headerContainer: {

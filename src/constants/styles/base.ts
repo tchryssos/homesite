@@ -1,4 +1,4 @@
-import { purple } from 'constants/styles/colors';
+import { purple } from '~/constants/styles/colors';
 
 export const marPadZero = {
   margin: 0,

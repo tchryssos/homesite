@@ -1,10 +1,9 @@
+import clsx from 'clsx';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import clsx from 'clsx';
 
-import ExtLink from 'components/ExtLink';
-
-import { white, dimmedWhite } from 'constants/styles/colors';
+import ExtLink from '~/components/ExtLink';
+import { dimmedWhite, white } from '~/constants/styles/colors';
 
 interface Props {
   className?: string;

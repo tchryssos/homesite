@@ -1,23 +1,25 @@
-import React, { useEffect, useContext, useState } from 'react';
+import clsx from 'clsx';
+import React, { useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useLocation } from 'react-router-dom';
-import clsx from 'clsx';
 
-import AnimationContext from 'logic/contexts/animation';
-import WindowContext from 'logic/contexts/window';
-
-import Sprite from 'components/Sprite';
-
-import { TROY, QUESTIONMAN, LAPTOP, CANE, TROY_RIGHT } from 'constants/sprites';
-import { ABOUT_PATH, HOME_PATH } from 'constants/routes';
-import { PAGE_TRANSITION_TIME } from 'constants/animation';
-
+import Sprite from '~/components/Sprite';
+import { PAGE_TRANSITION_TIME } from '~/constants/animation';
+import { ABOUT_PATH, HOME_PATH } from '~/constants/routes';
 import {
-  streetDisplayHeight,
+  CANE,
+  LAPTOP,
+  QUESTIONMAN,
+  TROY,
+  TROY_RIGHT,
+} from '~/constants/sprites';
+import AnimationContext from '~/logic/contexts/animation';
+import WindowContext from '~/logic/contexts/window';
+import {
   getWalkAnimationDistance,
-} from 'logic/util/animation';
-
-import street from 'static/street_purp_sm.png';
+  streetDisplayHeight,
+} from '~/logic/util/animation';
+import street from '~/static/street_purp_sm.png';
 
 const useStyles = createUseStyles({
   artContainer: {
