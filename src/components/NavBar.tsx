@@ -112,6 +112,8 @@ const NavText: React.FC<Props> = ({ to, classes, children }) => {
 const NavBar: React.FC = () => {
   const classes = useStyles();
   const shadowClasses = useShadowStyles();
+  const { pathname } = useLocation();
+
   return (
     <div className={classes.headerContainer}>
       <div className={classes.headerWrapper}>
@@ -146,15 +148,17 @@ const NavBar: React.FC = () => {
             </IconLink>
           </div>
         </div>
-        <div className={classes.navWrapper}>
-          <NavText classes={classes} to={HOME_PATH}>
-            Portfolio
-          </NavText>
-          {/* @TODO About page needs a better reason to exist */}
-          {/* <NavText classes={classes} to={ABOUT_PATH}>
-            About
-          </NavText> */}
-        </div>
+        {/*
+          @TODO Because there's only one page atm, only show the nav on some other page
+          AKA the 404 page
+         */}
+        {pathname !== HOME_PATH && (
+          <div className={classes.navWrapper}>
+            <NavText classes={classes} to={HOME_PATH}>
+              Back to Home
+            </NavText>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -63,7 +63,7 @@ const PortfolioSection: React.FC<SectionProps> = ({
 
 const Portfolio = () => (
   <PageWrapper>
-    <PortfolioSection desc="A selection of professional projects." title="Work">
+    <PortfolioSection title="My current gig">
       <ProjectBlock
         imageAltText="Codecademy logo"
         imageSrc={Codecademy}
@@ -72,6 +72,11 @@ const Portfolio = () => (
         to="https://www.codecademy.com/"
         toRepo="https://github.com/Codecademy"
       />
+    </PortfolioSection>
+    <PortfolioSection
+      desc="A selection of other professional projects."
+      title="Work"
+    >
       <ProjectBlock
         imageAltText="Moss sprout logo"
         imageSrc={Moss}
@@ -85,6 +90,14 @@ const Portfolio = () => (
             extType: 'vimeo',
           },
         ]}
+      />
+      <ProjectBlock
+        imageAltText="Sparkle emoji"
+        imageSrc={Sparkle}
+        text="Portfolio website for graphic &amp; UX designer Casey Bradford."
+        title="casey&#x0200B;bradford&#x0200B;.club"
+        to="https://caseybradford.club/"
+        toRepo="https://github.com/hottinet/casey-site-v2"
       />
       <ProjectBlock
         imageAltText="Quadio transport logo"
@@ -101,14 +114,6 @@ const Portfolio = () => (
             extType: 'medium',
           },
         ]}
-      />
-      <ProjectBlock
-        imageAltText="Sparkle emoji"
-        imageSrc={Sparkle}
-        text="Portfolio website for graphic &amp; UX designer Casey Bradford."
-        title="casey&#x0200B;bradford&#x0200B;.club"
-        to="https://caseybradford.club/"
-        toRepo="https://github.com/tchryssos/casey-site"
       />
     </PortfolioSection>
     <PortfolioSection
