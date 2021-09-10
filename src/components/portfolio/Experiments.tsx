@@ -17,7 +17,7 @@ export const Experiments: React.FC = () => (
       hideLink
       imageAltText="Screamin' Nicholas logo"
       imageSrc={ScreaminNicholas}
-      text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot."
+      text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot. Still a work in progress."
       title="Screamin' Nicholas"
       to="https://github.com/tchryssos/screamin-nicholas"
       toRepo="https://github.com/tchryssos/screamin-nicholas"
@@ -25,7 +25,7 @@ export const Experiments: React.FC = () => (
     <ProjectBlock
       imageAltText="Closed captioning logo"
       imageSrc="https://upload.wikimedia.org/wikipedia/commons/0/09/Closed_captioning_symbol.svg"
-      text="A lightweight, browser-based streaming tool for automatic closed captioning using the SpeechRecognition API"
+      text="A lightweight, browser-based streaming tool for automatic closed captioning using the SpeechRecognition API."
       title="Stream CC"
       to="https://tchryssos.github.io/stream-cc/"
       toRepo="https://github.com/tchryssos/stream-cc"
