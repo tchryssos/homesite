@@ -14,12 +14,11 @@ export const Experiments: React.FC = () => (
     title="Experiments"
   >
     <ProjectBlock
-      hideLink
       imageAltText="Screamin' Nicholas logo"
       imageSrc={ScreaminNicholas}
       text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot. Still a work in progress."
       title="Screamin' Nicholas"
-      to="https://github.com/tchryssos/screamin-nicholas"
+      to="https://discord.com/oauth2/authorize?client_id=880628573369684060&permissions=8&scope=bot%20applications.commands"
       toRepo="https://github.com/tchryssos/screamin-nicholas"
     />
     <ProjectBlock
