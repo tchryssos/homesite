@@ -53,6 +53,7 @@ const theme = {
   },
   fontSize: {
     subBody: '0.75rem',
+    bigSubBody: '0.875rem',
     body: '1rem',
     bigBody: '1.25rem',
     subTitle: '1.5rem',
