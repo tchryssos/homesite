@@ -8,13 +8,13 @@
   "globals": {
     "React": true
   },
-  "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
+  "plugins": ["@emotion", "@typescript-eslint", "simple-import-sort"],
   "extends": [
     "eslint:recommended",
     "airbnb",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "next"
   ],
-
   "root": true,
 
   "rules": {
@@ -34,7 +34,6 @@
     "semi": "off",
     "indent": "off",
     "comma-dangle": "off",
-    "no-use-before-define": "off",
 
     // import
     "import/no-named-as-default": "off",
@@ -44,6 +43,7 @@
     "import/no-anonymous-default-export": "error",
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
+    "import/no-default-export": "warn",
 
     // jsx-a11y
     "jsx-a11y/href-no-hash": "off",
@@ -78,7 +78,6 @@
     "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "parserOptions": {
-    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
@@ -89,7 +88,7 @@
     "import/resolver": {
       "node": {
         "paths": ["src"],
-        "extensions": [".ts", ".tsx"]
+        "extensions": [".ts", ".tsx", ".d.ts"]
       }
     }
   }
