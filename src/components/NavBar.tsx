@@ -1,12 +1,12 @@
+import styled from '@emotion/styled';
 import clsx from 'clsx';
-import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import { createUseStyles, WithStylesProps } from 'react-jss';
-import { NavLink, useLocation } from 'react-router-dom';
 
 import IconLink from '~/components/IconLink';
 import Email from '~/components/icons/Email';
 import Github from '~/components/icons/Github';
-import LittleTitle from '~/components/typography/LittleTitle';
 import { HOME_PATH } from '~/constants/routes';
 import {
   MD_MIN_STRING,
@@ -18,27 +18,32 @@ import { monoFont } from '~/constants/styles/fonts';
 import AnimationContext from '~/logic/contexts/animation';
 import { useShadowStyles } from '~/logic/util/styles/shadow';
 
+import FlexBox from './box/FlexBox';
+import { Link } from './Link';
+import { Body } from './typography/Body';
+import { SubTitle } from './typography/SubTitle';
+
 const useStyles = createUseStyles({
-  headerContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  headerWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    maxWidth: MD_MIN_VALUE,
-  },
-  navTopRow: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 16,
-  },
-  nameHomeLink: {
-    textDecoration: 'none',
-  },
+  // headerContainer: {
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  //   width: '100%',
+  // },
+  // headerWrapper: {
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   width: '100%',
+  //   maxWidth: MD_MIN_VALUE,
+  // },
+  // navTopRow: {
+  //   display: 'flex',
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  //   padding: 16,
+  // },
+  // nameHomeLink: {
+  //   textDecoration: 'none',
+  // },
   nameWrapper: {
     fontStyle: 'italic',
   },
@@ -78,53 +83,91 @@ const useStyles = createUseStyles({
     },
   },
 });
-interface Props extends WithStylesProps<typeof useStyles> {
-  to: string;
-  children: React.ReactNode;
+interface NavTextProps {
+  href: string;
+  children: string;
+  pathname: string;
 }
 
-const NavText: React.FC<Props> = ({ to, classes, children }) => {
-  const { pathname } = useLocation();
+interface NavTextComponentProps {
+  isActive: boolean;
+}
+
+// START - STYLED COMPONENTS - START
+const NavTextText = styled(Body)<NavTextComponentProps>(
+  ({ theme, isActive }) => ({
+    color: theme.colors.lighten,
+    fontSize: theme.fontSize.title,
+    textDecoration: 'none',
+    '&:hover': {
+      cursor: 'wait',
+    },
+    [theme.breakpointValues.sm]: {
+      marginRight: theme.spacing[16],
+    },
+    ...(isActive && {
+      textDecoration: 'underline',
+      color: theme.colors.text,
+    }),
+  }),
+);
+
+const NavTextLink = styled(Link)<NavTextComponentProps>(
+  ({ theme, isActive }) => ({
+    color: theme.colors.lighten,
+    fontSize: theme.fontSize.title,
+    fontFamily: theme.fontFamily.decorative,
+    ...(isActive && {
+      textDecoration: 'underline',
+      color: theme.colors.text,
+    }),
+  }),
+);
+
+const HeaderWrapper = styled(FlexBox)`
+  width: 100%;
+  max-width: ${({ theme }) => `${theme.breakpointValues.md}px`};
+`;
+
+const NameLink = styled(Link)`
+  text-decoration: none;
+`;
+// END - STYLED COMPONENTS - END
+
+const NavText: React.FC<NavTextProps> = ({ href, children, pathname }) => {
   const { isAnimating } = useContext(AnimationContext);
+  const isActive = pathname === href;
   if (isAnimating) {
     return (
-      <p
-        className={clsx(classes.link, classes.disabledLink, {
-          [classes.navActive]: pathname === to,
-        })}
-      >
+      <NavTextText isActive={isActive} variant="decorative">
         {children}
-      </p>
+      </NavTextText>
     );
   }
   return (
-    <NavLink
-      activeClassName={classes.navActive}
-      className={classes.link}
-      exact
-      to={to}
-    >
-      {children}
-    </NavLink>
+    <NavTextLink href={href} isActive={isActive}>
+      <Body>{children}</Body>
+    </NavTextLink>
   );
 };
 
 const NavBar: React.FC = () => {
   const classes = useStyles();
   const shadowClasses = useShadowStyles();
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
-    <div className={classes.headerContainer}>
-      <div className={classes.headerWrapper}>
-        <div className={classes.navTopRow}>
-          <NavLink className={classes.nameHomeLink} to={HOME_PATH}>
-            <LittleTitle
+    <FlexBox flex={1} justifyContent="center">
+      <HeaderWrapper column>
+        <FlexBox alignItems="center" justifyContent="space-between" p={16}>
+          <NameLink href={HOME_PATH}>
+            <SubTitle
               className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
+              italic
             >
               Troy Chryssos
-            </LittleTitle>
-          </NavLink>
+            </SubTitle>
+          </NameLink>
           <div className={classes.navIcons}>
             <IconLink to="mailto:troychryssos@gmail.com">
               {(iconClass, iconColorClass) => (
@@ -147,20 +190,20 @@ const NavBar: React.FC = () => {
               )}
             </IconLink>
           </div>
-        </div>
+        </FlexBox>
         {/*
           @TODO Because there's only one page atm, only show the nav on some other page
           AKA the 404 page
          */}
         {pathname !== HOME_PATH && (
           <div className={classes.navWrapper}>
-            <NavText classes={classes} to={HOME_PATH}>
+            <NavText href={HOME_PATH} pathname={pathname}>
               Back to Home
             </NavText>
           </div>
         )}
-      </div>
-    </div>
+      </HeaderWrapper>
+    </FlexBox>
   );
 };
 
