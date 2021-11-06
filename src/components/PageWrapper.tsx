@@ -1,36 +1,22 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { MD_MIN_VALUE } from '~/constants/styles/breakpoints';
+import { FlexBox } from './box/FlexBox';
 
-interface Props {
+interface PageWrapperProps {
   className?: string;
   children: React.ReactNode;
 }
 
-const useStyles = createUseStyles({
-  pageWrapper: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-around',
-    padding: [[0, 16]],
-  },
-  pageContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    maxWidth: MD_MIN_VALUE,
-  },
-});
+const PageContainer = styled(FlexBox)`
+  width: '100%';
+  max-width: ${({ theme }) => `${theme.breakpointValues.md}px`};
+`;
 
-const PageWrapper: React.FC<Props> = ({ children, className }) => {
-  const classes = useStyles();
-  return (
-    <div className={clsx(classes.pageWrapper, className)}>
-      <div className={classes.pageContainer}>{children}</div>
-    </div>
-  );
-};
-
-export default PageWrapper;
+export const PageWrapper: React.FC<PageWrapperProps> = ({
+  children,
+  className,
+}) => (
+  <FlexBox className={className} flex={1} justifyContent="space-around" py={16}>
+    <PageContainer column>{children}</PageContainer>
+  </FlexBox>
+);

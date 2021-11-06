@@ -55,9 +55,7 @@ const Flex = styled(Box)<FlexBoxProps>(
   }),
 );
 
-const FlexBox: React.FC<FlexBoxProps> = ({ children, ...rest }) => (
+export const FlexBox: React.FC<FlexBoxProps> = ({ children, ...rest }) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
   <Flex {...rest}>{children}</Flex>
 );
-
-export default FlexBox;
