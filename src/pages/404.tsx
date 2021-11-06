@@ -1,30 +1,21 @@
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { white } from '~/constants/styles/colors';
-import { monoFont } from '~/constants/styles/fonts';
+import FlexBox from '~/components/box/FlexBox';
+import { Layout } from '~/components/meta/Layout';
+import { pxToRem } from '~/logic/util/styles/pxToRem';
 
-const useStyles = createUseStyles({
-  fourOhFourContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  fourOhFour: {
-    color: white,
-    fontSize: 72,
-    fontFamily: monoFont,
-  },
-});
+const FourOhFourText = styled.span(({ theme }) => ({
+  color: theme.colors.text,
+  fontSize: pxToRem(72),
+  fontFamily: theme.fontFamily.decorative,
+}));
 
-const FourOhFour = () => {
-  const classes = useStyles();
-  return (
-    <>
-      <div className={classes.fourOhFourContainer}>
-        <span className={classes.fourOhFour}>404</span>
-      </div>
-    </>
-  );
-};
+const FourOhFour = () => (
+  <Layout>
+    <FlexBox center>
+      <FourOhFourText>404</FourOhFourText>
+    </FlexBox>
+  </Layout>
+);
 
 export default FourOhFour;
