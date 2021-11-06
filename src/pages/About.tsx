@@ -1,12 +1,12 @@
-import PageWrapper from '~/components/PageWrapper';
+import { Layout } from '~/components/meta/Layout';
 import Resume from '~/components/resume/Resume';
-import Body from '~/components/typography/Body';
+import { Body } from '~/components/typography/Body';
 import { Title } from '~/components/typography/Title';
 
 const Home = () => (
-  <PageWrapper>
+  <Layout>
     <Title mb={16}>Hey hey hey, I&apos;m Troy.</Title>
-    <Body className={classes.bottomMar}>
+    <Body mb={16}>
       I&apos;m a front-end software engineer (and award-winning songwriter) with
       years of experience in the React ecosystem. I&apos;ve worked with everyone
       from the biggest corporate conglomos to the smallest independent
@@ -14,7 +14,7 @@ const Home = () => (
       creation.
     </Body>
     <Resume />
-  </PageWrapper>
+  </Layout>
 );
 
 export default Home;

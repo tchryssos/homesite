@@ -1,4 +1,5 @@
 import NavBar from '../NavBar';
+import PageWrapper from '../PageWrapper';
 import PixelContent from '../PixelContent';
 import { Head } from './Head';
 
@@ -12,6 +13,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => (
     <Head title={title} />
     <NavBar />
     <PixelContent />
-    {children}
+    <PageWrapper>{children}</PageWrapper>
   </>
 );
