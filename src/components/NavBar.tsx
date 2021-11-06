@@ -1,99 +1,24 @@
 import styled from '@emotion/styled';
-import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
-import { createUseStyles, WithStylesProps } from 'react-jss';
 
 import IconLink from '~/components/IconLink';
 import Email from '~/components/icons/Email';
 import Github from '~/components/icons/Github';
 import { HOME_PATH } from '~/constants/routes';
-import {
-  MD_MIN_STRING,
-  MD_MIN_VALUE,
-  SM_MIN_STRING,
-} from '~/constants/styles/breakpoints';
-import { black, dimmedWhite, white } from '~/constants/styles/colors';
-import { monoFont } from '~/constants/styles/fonts';
 import AnimationContext from '~/logic/contexts/animation';
-import { useShadowStyles } from '~/logic/util/styles/shadow';
+import { pxToRem } from '~/logic/util/styles/pxToRem';
 
 import FlexBox from './box/FlexBox';
 import { Link } from './Link';
 import { Body } from './typography/Body';
 import { SubTitle } from './typography/SubTitle';
 
-const useStyles = createUseStyles({
-  // headerContainer: {
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  //   width: '100%',
-  // },
-  // headerWrapper: {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   width: '100%',
-  //   maxWidth: MD_MIN_VALUE,
-  // },
-  // navTopRow: {
-  //   display: 'flex',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'center',
-  //   padding: 16,
-  // },
-  // nameHomeLink: {
-  //   textDecoration: 'none',
-  // },
-  nameWrapper: {
-    fontStyle: 'italic',
-  },
-  navIcons: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  navWrapper: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    width: '100%',
-    marginBottom: 16,
-    [SM_MIN_STRING]: {
-      paddingLeft: 16,
-      justifyContent: 'flex-start',
-    },
-    [MD_MIN_STRING]: {
-      textShadow: [[2, -2, black]],
-    },
-  },
-  link: {
-    fontFamily: monoFont,
-    color: dimmedWhite,
-    fontSize: 32,
-    textDecoration: 'none',
-    [SM_MIN_STRING]: {
-      marginRight: 16,
-    },
-  },
-  navActive: {
-    textDecoration: [['underline'], '!important'],
-    color: white,
-  },
-  disabledLink: {
-    '&:hover': {
-      cursor: 'wait',
-    },
-  },
-});
-interface NavTextProps {
-  href: string;
-  children: string;
-  pathname: string;
-}
-
+// START - STYLED COMPONENTS - START
 interface NavTextComponentProps {
   isActive: boolean;
 }
 
-// START - STYLED COMPONENTS - START
 const NavTextText = styled(Body)<NavTextComponentProps>(
   ({ theme, isActive }) => ({
     color: theme.colors.lighten,
@@ -132,7 +57,26 @@ const HeaderWrapper = styled(FlexBox)`
 const NameLink = styled(Link)`
   text-decoration: none;
 `;
+
+const NavWrapper = styled(FlexBox)(({ theme }) => ({
+  width: '100%',
+  marginBottom: theme.spacing[16],
+  justifyContent: 'space-evenly',
+  [theme.breakpoints.sm]: {
+    paddingLeft: theme.spacing[16],
+    justifyContent: 'flex-start',
+  },
+  [theme.breakpoints.md]: {
+    textShadow: `${pxToRem(2)} ${pxToRem(-2)} ${theme.colors.background}`,
+  },
+}));
 // END - STYLED COMPONENTS - END
+
+interface NavTextProps {
+  href: string;
+  children: string;
+  pathname: string;
+}
 
 const NavText: React.FC<NavTextProps> = ({ href, children, pathname }) => {
   const { isAnimating } = useContext(AnimationContext);
@@ -151,9 +95,7 @@ const NavText: React.FC<NavTextProps> = ({ href, children, pathname }) => {
   );
 };
 
-const NavBar: React.FC = () => {
-  const classes = useStyles();
-  const shadowClasses = useShadowStyles();
+export const NavBar: React.FC = () => {
   const { pathname } = useRouter();
 
   return (
@@ -161,14 +103,11 @@ const NavBar: React.FC = () => {
       <HeaderWrapper column>
         <FlexBox alignItems="center" justifyContent="space-between" p={16}>
           <NameLink href={HOME_PATH}>
-            <SubTitle
-              className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
-              italic
-            >
+            <SubTitle italic shadowed>
               Troy Chryssos
             </SubTitle>
           </NameLink>
-          <div className={classes.navIcons}>
+          <FlexBox alignItems="center">
             <IconLink to="mailto:troychryssos@gmail.com">
               {(iconClass, iconColorClass) => (
                 <Email
@@ -189,22 +128,20 @@ const NavBar: React.FC = () => {
                 />
               )}
             </IconLink>
-          </div>
+          </FlexBox>
         </FlexBox>
         {/*
           @TODO Because there's only one page atm, only show the nav on some other page
           AKA the 404 page
          */}
         {pathname !== HOME_PATH && (
-          <div className={classes.navWrapper}>
+          <NavWrapper>
             <NavText href={HOME_PATH} pathname={pathname}>
               Back to Home
             </NavText>
-          </div>
+          </NavWrapper>
         )}
       </HeaderWrapper>
     </FlexBox>
   );
 };
-
-export default NavBar;

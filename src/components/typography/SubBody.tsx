@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-import { pxToRem } from '~/logic/util/styles/pxToRem';
-
 import { MarginProps } from '../box/types';
 import { createTextSharedStyles } from './styles';
 import { TypographyProps } from './types';
