@@ -2,9 +2,7 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 
-import IconLink from '~/components/IconLink';
-import Email from '~/components/icons/Email';
-import Github from '~/components/icons/Github';
+import { IconLink } from '~/components/IconLink';
 import { HOME_PATH } from '~/constants/routes';
 import AnimationContext from '~/logic/contexts/animation';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
@@ -89,7 +87,7 @@ const NavText: React.FC<NavTextProps> = ({ href, children, pathname }) => {
     );
   }
   return (
-    <NavTextLink href={href} isActive={isActive}>
+    <NavTextLink altText={children} href={href} isActive={isActive}>
       <Body>{children}</Body>
     </NavTextLink>
   );
@@ -102,32 +100,22 @@ export const NavBar: React.FC = () => {
     <FlexBox flex={1} justifyContent="center">
       <HeaderWrapper column>
         <FlexBox alignItems="center" justifyContent="space-between" p={16}>
-          <NameLink href={HOME_PATH}>
+          <NameLink altText="Troy Chryssos home link" href={HOME_PATH}>
             <SubTitle italic shadowed>
               Troy Chryssos
             </SubTitle>
           </NameLink>
           <FlexBox alignItems="center">
-            <IconLink to="mailto:troychryssos@gmail.com">
-              {(iconClass, iconColorClass) => (
-                <Email
-                  className={iconClass}
-                  colorClassName={iconColorClass}
-                  title="Email me"
-                  titleId="navMailId"
-                />
-              )}
-            </IconLink>
-            <IconLink to="https://github.com/tchryssos">
-              {(iconClass, iconColorClass) => (
-                <Github
-                  className={iconClass}
-                  colorClassName={iconColorClass}
-                  title="Go to my Github profile"
-                  titleId="navGithubId"
-                />
-              )}
-            </IconLink>
+            <IconLink
+              altText="Email me"
+              href="mailto:troychryssos@gmail.com"
+              icon="email"
+            />
+            <IconLink
+              altText="Go to my Github profile"
+              href="https://github.com/tchryssos"
+              icon="github"
+            />
           </FlexBox>
         </FlexBox>
         {/*

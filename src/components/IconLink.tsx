@@ -1,47 +1,62 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
+import { useState } from 'react';
 
-import ExtLink from '~/components/ExtLink';
-import { dimmedWhite, white } from '~/constants/styles/colors';
+import { Email } from './icons/Email';
+import { Github } from './icons/Github';
+import { Medium } from './icons/Medium';
+import { Open } from './icons/Open';
+import { Vimeo } from './icons/Vimeo';
+import { Link } from './Link';
+
+const iconMap = {
+  email: Email,
+  github: Github,
+  medium: Medium,
+  open: Open,
+  vimeo: Vimeo,
+};
 
 interface Props {
   className?: string;
-  children: (arg0: string, arg1: string) => React.ReactNode;
-  to: string | undefined;
+  icon: keyof typeof iconMap;
+  href: string | undefined;
+  altText: string;
 }
 
-const useStyles = createUseStyles({
-  iconLink: {
-    height: 44,
-    width: 44,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    zIndex: 2,
-    '&:hover $iconChildColor': {
-      fill: dimmedWhite,
-    },
-    '&:active $iconChildColor': {
-      fill: dimmedWhite,
-    },
-  },
-  iconChild: {
-    height: [[28], '!important'],
-    width: [[28], '!important'],
-  },
-  iconChildColor: {
-    fill: white,
-  },
-});
+const StyledLink = styled(Link)(({ theme }) => ({
+  height: theme.spacing[40],
+  width: theme.spacing[40],
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  zIndex: 2,
+}));
 
-const IconLink: React.FC<Props> = ({ to, className, children }) => {
-  const classes = useStyles();
+export const IconLink: React.FC<Props> = ({
+  href,
+  className,
+  icon,
+  altText,
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const Icon = iconMap[icon];
+  const StyledIcon = styled(Icon)(({ theme }) => ({
+    height: theme.spacing[24],
+    width: theme.spacing[24],
+  }));
   return (
-    <ExtLink className={clsx(classes.iconLink, className)} to={to}>
-      {children(classes.iconChild, classes.iconChildColor)}
-    </ExtLink>
+    <span
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <StyledLink altText={altText} className={className} href={href}>
+        <StyledIcon
+          color={isHovered ? 'lighten' : 'text'}
+          title={altText}
+          titleId={`${altText}-${icon}`}
+        />
+      </StyledLink>
+    </span>
   );
 };
-
-export default IconLink;

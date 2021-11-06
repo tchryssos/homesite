@@ -1,31 +1,44 @@
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 
-const StyledLink = styled.a`
-  color: ${({ theme }) => theme.colors.text};
-  display: inline-block;
-`;
-
 interface LinkProps {
-  href: string;
+  href: string | undefined;
   isInternal?: boolean;
   children: React.ReactNode;
   className?: string;
+  download?: boolean;
+  altText: string;
 }
+
+const StyledLink = styled.a<Pick<LinkProps, 'isInternal'>>(({ theme }) => ({
+  color: theme.colors.text,
+  display: 'inline-block',
+  textDecoration: 'none',
+  '&:hover': {
+    cursor: 'pointer',
+  },
+}));
 
 export const Link: React.FC<LinkProps> = ({
   href,
   isInternal,
   children,
   className,
-}) => (
-  <NextLink href={href} passHref>
-    <StyledLink
-      className={className}
-      rel="noopener noreferrer"
-      target={isInternal ? '_self' : '_blank'}
-    >
-      {children}
-    </StyledLink>
-  </NextLink>
-);
+  download,
+  altText,
+}) =>
+  href ? (
+    <NextLink href={href} passHref>
+      <StyledLink
+        aria-label={altText}
+        className={className}
+        download={download}
+        rel="noopener noreferrer"
+        target={isInternal ? '_self' : '_blank'}
+      >
+        {children}
+      </StyledLink>
+    </NextLink>
+  ) : (
+    <>{children}</>
+  );
