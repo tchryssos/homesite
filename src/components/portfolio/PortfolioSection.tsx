@@ -1,32 +1,23 @@
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { LG_MIN_STRING, SM_MIN_STRING } from '~/constants/styles/breakpoints';
-import orNull from '~/logic/util/orNull';
+import { Box } from '../box/Box';
+import { GridBox } from '../box/GridBox';
+import { Body } from '../typography/Body';
+import { Title } from '../typography/Title';
 
-import Body from '../typography/Body';
-import Title from '../typography/Title';
+const CodeBlockWrapper = styled(GridBox)(({ theme }) => ({
+  gridTemplateColumns: '1fr',
+  [theme.breakpoints.sm]: {
+    gridTemplateColumns: '1fr 1fr',
+  },
+  [theme.breakpoints.lg]: {
+    gridTemplateColumns: '1fr 1fr 1fr',
+  },
+}));
 
-const useStyles = createUseStyles({
-  codeBlockWrapper: {
-    display: 'grid',
-    gridGap: 16,
-    marginBottom: 16,
-    gridTemplateColumns: '1fr',
-    [SM_MIN_STRING]: {
-      gridTemplateColumns: '1fr 1fr',
-    },
-    [LG_MIN_STRING]: {
-      gridTemplateColumns: '1fr 1fr 1fr',
-    },
-  },
-  descWrapper: {
-    marginBottom: 16,
-  },
-  descText: {
-    marginTop: 4,
-  },
-});
+const DescText = styled(Body)`
+  margin-top: ${({ theme }) => theme.spacing[4]};
+`;
 
 interface SectionProps {
   title: string;
@@ -38,15 +29,12 @@ export const PortfolioSection: React.FC<SectionProps> = ({
   title,
   desc,
   children,
-}) => {
-  const classes = useStyles();
-  return (
-    <>
-      <Title>{title}</Title>
-      <div className={classes.descWrapper}>
-        {orNull(!!desc, <Body className={classes.descText}>{desc}</Body>)}
-      </div>
-      <div className={classes.codeBlockWrapper}>{children}</div>
-    </>
-  );
-};
+}) => (
+  <>
+    <Title>{title}</Title>
+    <Box mb={16}>{desc && <DescText>{desc}</DescText>}</Box>
+    <CodeBlockWrapper columnGap={16} mb={16} rowGap={16}>
+      {children}
+    </CodeBlockWrapper>
+  </>
+);

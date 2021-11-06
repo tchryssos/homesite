@@ -46,9 +46,7 @@ const Grid = styled(Box)<GridBoxProps>(
   }),
 );
 
-const GridBox: React.FC<GridBoxProps> = ({ children, ...rest }) => (
+export const GridBox: React.FC<GridBoxProps> = ({ children, ...rest }) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
   <Grid {...rest}>{children}</Grid>
 );
-
-export default GridBox;

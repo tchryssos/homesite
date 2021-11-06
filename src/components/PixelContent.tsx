@@ -63,7 +63,7 @@ const ObjectSprite = styled(Sprite)<AnimationProps>`
 `;
 // END - STYLED COMPONENTS - END
 
-const pathToSprite = (path: string): Sprites => {
+const pathToSprite = (path: string) => {
   switch (path) {
     case HOME_PATH:
       return Sprites.LAPTOP;
