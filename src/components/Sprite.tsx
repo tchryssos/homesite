@@ -1,70 +1,59 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { LAPTOP, TROY, TROY_RIGHT } from '~/constants/sprites';
+import { Sprites } from '~/constants/sprites';
+import { pxToRem } from '~/logic/util/styles/pxToRem';
 import laptop from '~/static/laptop.gif';
 import questionMan from '~/static/questionman.gif';
 import troy from '~/static/troy.gif';
 import troyRight from '~/static/troy_right.gif';
 
-interface Props {
-  type: string;
+interface SpriteProps {
+  type: Sprites | null;
   style?: Record<string, string | number>;
   className?: string;
 }
 
-const useStyles = createUseStyles({
-  spriteContainer: {
-    maxWidth: 128,
-    maxHeight: 190,
-    display: 'flex',
-    alignItems: 'flex-end',
-  },
-  sprite: {
-    width: '100%',
-  },
-  troySprite: {
-    height: '100%',
-  },
-  troyRight: {
-    // Whoops when I made these gifs years ago
-    // Troy right and Troy weren't given the same dimensions / whitespace
-    height: '95%',
-    width: 90,
-    transform: 'translateY(-6px)',
-  },
-});
+const SpriteContainer = styled.div`
+  max-width: ${pxToRem(128)};
+  max-height: ${pxToRem(190)};
+  display: flex;
+  align-items: flex-end;
+`;
+
+const SpriteImg = styled.img<Pick<SpriteProps, 'type'>>(({ type }) => ({
+  width: type === Sprites.TROY_RIGHT ? pxToRem(90) : '100%',
+  height:
+    // eslint-disable-next-line no-nested-ternary
+    type === Sprites.TROY ? '100%' : type === Sprites.TROY_RIGHT ? '95%' : '',
+  transform: type === Sprites.TROY_RIGHT ? `translateY(${pxToRem(-6)})` : '',
+}));
 
 const spriteSwitch = (type: string) => {
   switch (type) {
-    case TROY:
+    case Sprites.TROY:
       return troy;
-    case TROY_RIGHT:
+    case Sprites.TROY_RIGHT:
       return troyRight;
-    case LAPTOP:
+    case Sprites.LAPTOP:
       return laptop;
-    // case CANE:
+    // case Sprites.CANE:
     //   return dumbCane;
     default:
       return questionMan;
   }
 };
 
-const Sprite: React.FC<Props> = ({ type, style = {}, className }) => {
-  const classes = useStyles();
-  return (
-    <div className={clsx(classes.spriteContainer, className)} style={style}>
-      <img
+export const Sprite: React.FC<SpriteProps> = ({
+  type,
+  style = {},
+  className,
+}) =>
+  type ? (
+    <SpriteContainer className={className} style={style}>
+      <SpriteImg
         alt={`A sprite of ${type}`}
-        className={clsx(classes.sprite, {
-          [classes.troySprite]: type === TROY,
-          [classes.troyRight]: type === TROY_RIGHT,
-        })}
         src={spriteSwitch(type)}
+        type={type}
       />
-    </div>
-  );
-};
-
-export default Sprite;
+    </SpriteContainer>
+  ) : null;

@@ -7,7 +7,7 @@ import { HOME_PATH } from '~/constants/routes';
 import AnimationContext from '~/logic/contexts/animation';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
 
-import FlexBox from './box/FlexBox';
+import { FlexBox } from './box/FlexBox';
 import { Link } from './Link';
 import { Body } from './typography/Body';
 import { SubTitle } from './typography/SubTitle';
