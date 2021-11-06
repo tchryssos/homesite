@@ -4,6 +4,7 @@ export interface ColorModeColors {
   primary: ColorHash;
   background: ColorHash;
   text: ColorHash;
+  inverseText: ColorHash;
   textHover: ColorHash;
   darken: ColorRgba;
   lighten: ColorRgba;

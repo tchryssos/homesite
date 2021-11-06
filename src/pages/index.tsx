@@ -1,22 +1,19 @@
-import { useContext } from 'react';
+import { Layout } from '~/components/meta/Layout';
+import PageWrapper from '~/components/PageWrapper';
+import { CurrentGig } from '~/components/portfolio/CurrentGig';
+import { Experiments } from '~/components/portfolio/Experiments';
+import { Other } from '~/components/portfolio/Other';
+import { Work } from '~/components/portfolio/Work';
 
-import Layout from '~/components/meta/Layout';
-import Body from '~/components/typography/Body';
-import { BreakpointsContext } from '~/logic/contexts/breakpointsContext';
+const Portfolio = () => (
+  <Layout>
+    <PageWrapper>
+      <CurrentGig />
+      <Experiments />
+      <Work />
+      <Other />
+    </PageWrapper>
+  </Layout>
+);
 
-const Home: React.FC = () => {
-  const breakpoints = useContext(BreakpointsContext);
-  return (
-    <Layout>
-      <Body>
-        Welcome to Next JS! Edit src/pages/index.tsx to get started...
-      </Body>
-      <Body>
-        The current breakpoint is &apos;{breakpoints[breakpoints.length - 1]}
-        &apos;
-      </Body>
-    </Layout>
-  );
-};
-
-export default Home;
+export default Portfolio;

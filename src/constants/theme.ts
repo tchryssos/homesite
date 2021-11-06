@@ -12,6 +12,7 @@ const breakpointValues = {
 const StandardModeColors: ColorModeColors = {
   primary: '#4f2d35',
   text: '#fff',
+  inverseText: '#000',
   lighten: 'rgba(255, 255, 255, 0.6)',
   darken: 'rgba(0, 0, 0, 0.2)',
   primaryHeavy: '#301d21',
@@ -51,7 +52,9 @@ const theme = {
     },
   },
   fontSize: {
+    subBody: '0.75rem',
     body: '1rem',
+    subTitle: '1.5rem',
     title: '2rem',
   },
   fontFamily: {

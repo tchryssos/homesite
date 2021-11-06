@@ -4,20 +4,17 @@ type HeadProps = {
   title?: string;
 };
 
-const Head: React.FC<HeadProps> = ({ title = 'CHANGE ME' }) => (
+export const Head: React.FC<HeadProps> = ({ title }) => (
   <NextHead>
     {/* Uncomment the following lines if using google fonts */}
-    {/* <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossOrigin="use-credentials"
-  />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com/" /> */}
-    <title>{title}</title>
+    <link
+      crossOrigin="use-credentials"
+      href="https://fonts.gstatic.com"
+      rel="preconnect"
+    />
+    <title>Troy Chryssos{title ? ` - ${title}` : ''}</title>
     <meta charSet="utf-8" />
     <meta content="initial-scale=1.0, width=device-width" name="viewport" />
-    <meta content="Troy Chryssos' Next JS template" name="description" />
+    <meta content="The personal website of Troy Chryssos" name="description" />
   </NextHead>
 );
-
-export default Head;

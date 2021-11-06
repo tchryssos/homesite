@@ -1,32 +1,20 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { white } from '~/constants/styles/colors';
-import { monoFont } from '~/constants/styles/fonts';
-import { useShadowStyles } from '~/logic/util/styles/shadow';
+import { pxToRem } from '~/logic/util/styles/pxToRem';
 
-interface Props {
-  className?: string;
-  children: React.ReactNode;
-}
+import { MarginProps } from '../box/types';
+import { TypographyProps } from './types';
 
-const useStyles = createUseStyles({
-  h3: {
-    color: white,
-    fontSize: 36,
-    fontFamily: monoFont,
-  },
-});
+type TitleProps = Pick<MarginProps, 'mb'> & TypographyProps;
 
-const Title: React.FC<Props> = ({ children, className }: Props) => {
-  const classes = useStyles();
-  const shadowClasses = useShadowStyles();
-  return (
-    <h2 className={clsx(classes.h3, shadowClasses.textShadow, className)}>
-      {children}
-    </h2>
-  );
-};
-
-export default Title;
+export const Title = styled.h1<TitleProps>(
+  ({ theme, bold, variant = 'normal', mb = 0 }) => ({
+    fontFamily: theme.fontFamily[variant],
+    fontSize: theme.fontSize.title,
+    marginBottom: theme.spacing[mb],
+    lineHeight: theme.lineHeight.normal,
+    color: theme.colors.text,
+    fontWeight: bold ? theme.fontWeight.bold : theme.fontWeight.regular,
+    textShadow: `${pxToRem(1)} ${pxToRem(2)} ${theme.colors.inverseText}`,
+  }),
+);
