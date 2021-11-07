@@ -27,6 +27,7 @@ const ArtContainer = styled.div`
 interface AnimationProps {
   isAnimating: boolean;
 }
+
 const AnimationScroller = styled.div<AnimationProps>`
   display: 'flex';
   height: 240px;
@@ -43,8 +44,8 @@ const Sidewalk = styled.div`
   position: absolute;
   width: 300%;
   top: ${pxToRem(124)};
-  height: ${streetDisplayHeight};
-  background: url('${street}');
+  height: ${pxToRem(streetDisplayHeight)};
+  background: url(${street as unknown as string});
   background-repeat: repeat;
   justify-self: flex-start;
 `;
