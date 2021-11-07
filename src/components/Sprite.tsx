@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 import { Sprites } from '~/constants/sprites';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
@@ -18,14 +19,16 @@ const SpriteContainer = styled.div`
   max-height: ${pxToRem(190)};
   display: flex;
   align-items: flex-end;
+  position: relative;
 `;
 
-const SpriteImg = styled.img<Pick<SpriteProps, 'type'>>(({ type }) => ({
+const TroyWrapper = styled.div<Pick<SpriteProps, 'type'>>(({ type }) => ({
   width: type === Sprites.TROY_RIGHT ? pxToRem(90) : '100%',
   height:
     // eslint-disable-next-line no-nested-ternary
     type === Sprites.TROY ? '100%' : type === Sprites.TROY_RIGHT ? '95%' : '',
   transform: type === Sprites.TROY_RIGHT ? `translateY(${pxToRem(-6)})` : '',
+  position: 'relative',
 }));
 
 const spriteSwitch = (type: string) => {
@@ -43,6 +46,20 @@ const spriteSwitch = (type: string) => {
   }
 };
 
+interface TroySpriteWrapperProps extends Pick<SpriteProps, 'type'> {
+  children: React.ReactNode;
+}
+
+const TroySpriteWrapper: React.FC<TroySpriteWrapperProps> = ({
+  type,
+  children,
+}) => {
+  if (type === Sprites.TROY || type === Sprites.TROY_RIGHT) {
+    return <TroyWrapper type={type}>{children}</TroyWrapper>;
+  }
+  return <>{children}</>;
+};
+
 export const Sprite: React.FC<SpriteProps> = ({
   type,
   style = {},
@@ -50,10 +67,13 @@ export const Sprite: React.FC<SpriteProps> = ({
 }) =>
   type ? (
     <SpriteContainer className={className} style={style}>
-      <SpriteImg
-        alt={`A sprite of ${type}`}
-        src={spriteSwitch(type)}
-        type={type}
-      />
+      <TroySpriteWrapper type={type}>
+        <Image
+          alt={`A sprite of ${type}`}
+          layout="fill"
+          objectFit="contain"
+          src={spriteSwitch(type)}
+        />
+      </TroySpriteWrapper>
     </SpriteContainer>
   ) : null;
