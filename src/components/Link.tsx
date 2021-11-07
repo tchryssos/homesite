@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 interface LinkProps {
   href: string | undefined;
   isInternal?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   download?: boolean;
   altText: string;

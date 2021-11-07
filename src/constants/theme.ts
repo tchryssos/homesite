@@ -1,3 +1,4 @@
+import { pxToRem } from '~/logic/util/styles/pxToRem';
 import { ColorMode, ColorModeColors } from '~/typings/colorMode';
 
 const breakpointValues = {
@@ -46,9 +47,14 @@ const theme = {
     128: '8rem',
   },
   border: {
+    borderRadius: {
+      rounded: pxToRem(4),
+      circular: '50%',
+    },
     borderWidth: {
-      1: '1px',
-      3: '0.1875rem',
+      1: pxToRem(1),
+      2: pxToRem(2),
+      3: pxToRem(3),
     },
   },
   fontSize: {

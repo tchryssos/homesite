@@ -16,9 +16,11 @@ const iconMap = {
   vimeo: Vimeo,
 };
 
+export type IconType = keyof typeof iconMap;
+
 interface Props {
   className?: string;
-  icon: keyof typeof iconMap;
+  icon: IconType;
   href: string | undefined;
   altText: string;
 }
