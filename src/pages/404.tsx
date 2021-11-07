@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import FlexBox from '~/components/box/FlexBox';
+import { FlexBox } from '~/components/box/FlexBox';
 import { Layout } from '~/components/meta/Layout';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
 

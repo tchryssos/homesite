@@ -1,5 +1,4 @@
 import { Layout } from '~/components/meta/Layout';
-import Resume from '~/components/resume/Resume';
 import { Body } from '~/components/typography/Body';
 import { Title } from '~/components/typography/Title';
 
@@ -13,7 +12,6 @@ const Home = () => (
       fishmongers in New York building apps for media sharing, streaming, and
       creation.
     </Body>
-    <Resume />
   </Layout>
 );
 
