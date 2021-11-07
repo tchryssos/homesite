@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { Spacing } from '~/typings/theme';
 
-import Box from './Box';
+import { Box } from './Box';
 import { AlignItems, BoxProps } from './types';
 
 export type GridBoxProps = BoxProps & {

@@ -1,11 +1,9 @@
-import React from 'react';
-
 import BanjoJace from '~/static/banjo_jace.png';
 import BaseballIcon from '~/static/baseball.ico';
 import ManYouKnow from '~/static/man_you_know.png';
 import ScreaminNicholas from '~/static/screamin_nicholas.png';
 
-import ProjectBlock from '../ProjectBlock';
+import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
 export const Experiments: React.FC = () => (

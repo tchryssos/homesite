@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import Box from './Box';
+import { Box } from './Box';
 import { AlignItems, BoxProps, JustifyContent } from './types';
 
 export type FlexBoxProps = BoxProps & {

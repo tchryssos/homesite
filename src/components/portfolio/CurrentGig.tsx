@@ -1,8 +1,6 @@
-import React from 'react';
-
 import Codecademy from '~/static/codecademy.svg';
 
-import ProjectBlock from '../ProjectBlock';
+import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
 export const CurrentGig: React.FC = () => (

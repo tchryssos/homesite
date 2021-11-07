@@ -1,10 +1,8 @@
-import React from 'react';
-
 import Parcel from '~/static/parcel.png';
 import TroyHead from '~/static/troy_head.png';
 import Vercel from '~/static/vercel.svg';
 
-import ProjectBlock from '../ProjectBlock';
+import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
 export const Other: React.FC = () => (

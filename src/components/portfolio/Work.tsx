@@ -1,10 +1,8 @@
-import React from 'react';
-
 import Moss from '~/static/moss.png';
 import QuadioLogo from '~/static/quadio.jpg';
 import Sparkle from '~/static/sparkle.png';
 
-import ProjectBlock from '../ProjectBlock';
+import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
 export const Work: React.FC = () => (

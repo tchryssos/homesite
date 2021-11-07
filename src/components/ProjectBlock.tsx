@@ -14,7 +14,7 @@ interface Props {
   title: string;
   text: string;
   imageAltText: string;
-  imageSrc: string;
+  imageSrc: string | StaticImageData;
   to: string;
   toRepo?: string;
   hideLink?: boolean;
