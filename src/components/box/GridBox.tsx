@@ -5,7 +5,7 @@ import { Spacing } from '~/typings/theme';
 import { Box } from './Box';
 import { AlignItems, BoxProps } from './types';
 
-export type GridBoxProps = BoxProps & {
+type GridBoxProps = BoxProps & {
   center?: boolean;
   justifyItems?: 'normal' | 'start' | 'end' | 'center';
   alignItems?: AlignItems;

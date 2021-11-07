@@ -14,7 +14,7 @@
     "deploy": "rm -rf www && yarn build && scp -r ./www/* troy@67.205.141.3:/var/www/troychryssos.com/html",
     "lint": "next lint",
     "prepare": "husky install",
-    "lint:prune": "! ts-prune -i src/pages/* | grep -v 'used in module'"
+    "lint:prune": "! ts-prune -i src/pages/* | grep -v -e 'used in module' -e src/pages"
   },
   "engines": {
     "node": ">= 13.0.0"

@@ -81,7 +81,7 @@ const theme = {
 
 export const StandardTheme = { ...theme, colors: StandardModeColors };
 
-export type ThemeShape = typeof StandardTheme;
+type ThemeShape = typeof StandardTheme;
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Theme extends ThemeShape {}
 
