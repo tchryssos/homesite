@@ -37,6 +37,7 @@ const AnimationScroller = styled.div<AnimationProps>`
 const SpriteContainer = styled(FlexBox)`
   width: 100%;
   min-width: ${pxToRem(256)};
+  justify-content: center;
 `;
 
 const Sidewalk = styled.div`
@@ -47,6 +48,7 @@ const Sidewalk = styled.div`
   background: url('/street_purp_sm.png');
   background-repeat: repeat;
   justify-self: flex-start;
+  background-size: contain;
 `;
 
 const TroySprite = styled(Sprite)<AnimationProps>`

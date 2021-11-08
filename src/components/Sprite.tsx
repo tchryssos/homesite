@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
+import { Image } from '~/components/Image';
 import { Sprites } from '~/constants/sprites';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
 
@@ -20,11 +20,12 @@ const SpriteContainer = styled.div`
   position: relative;
 `;
 
-const TroyWrapper = styled.div<Pick<SpriteProps, 'type'>>(({ type }) => ({
+// When I made the sprites a few years ago
+// I didn't make them all the same sizes, so now we need to adjust
+// for the TROY_RIGHT sprite
+const SpriteImage = styled(Image)<Pick<SpriteProps, 'type'>>(({ type }) => ({
   width: type === Sprites.TROY_RIGHT ? pxToRem(90) : '100%',
-  height:
-    // eslint-disable-next-line no-nested-ternary
-    type === Sprites.TROY ? '100%' : type === Sprites.TROY_RIGHT ? '95%' : '',
+  height: type === Sprites.TROY_RIGHT ? '95%' : '100%',
   transform: type === Sprites.TROY_RIGHT ? `translateY(${pxToRem(-6)})` : '',
   position: 'relative',
 }));
@@ -44,20 +45,6 @@ const spriteSwitch = (type: string) => {
   }
 };
 
-interface TroySpriteWrapperProps extends Pick<SpriteProps, 'type'> {
-  children: React.ReactNode;
-}
-
-const TroySpriteWrapper: React.FC<TroySpriteWrapperProps> = ({
-  type,
-  children,
-}) => {
-  if (type === Sprites.TROY || type === Sprites.TROY_RIGHT) {
-    return <TroyWrapper type={type}>{children}</TroyWrapper>;
-  }
-  return <>{children}</>;
-};
-
 export const Sprite: React.FC<SpriteProps> = ({
   type,
   style = {},
@@ -65,13 +52,13 @@ export const Sprite: React.FC<SpriteProps> = ({
 }) =>
   type ? (
     <SpriteContainer className={className} style={style}>
-      <TroySpriteWrapper type={type}>
-        <Image
-          alt={`A sprite of ${type}`}
-          layout="fill"
-          objectFit="contain"
-          src={spriteSwitch(type)}
-        />
-      </TroySpriteWrapper>
+      <SpriteImage
+        alt={`A sprite of ${type}`}
+        layout="fill"
+        objectFit="contain"
+        objectPosition="center bottom"
+        src={spriteSwitch(type)}
+        type={type}
+      />
     </SpriteContainer>
   ) : null;
