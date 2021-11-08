@@ -19,9 +19,9 @@ import { FlexBox } from './box/FlexBox';
 
 // START - STYLED COMPONENTS - START
 const ArtContainer = styled.div`
-  width: '100%';
-  position: 'relative';
-  overflow: 'hidden';
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 `;
 
 interface AnimationProps {
@@ -29,14 +29,14 @@ interface AnimationProps {
 }
 
 const AnimationScroller = styled.div<AnimationProps>`
-  display: 'flex';
+  display: flex;
   height: 240px;
   transition: ${({ isAnimating }) =>
     isAnimating ? `transform ${PAGE_TRANSITION_TIME}ms linear` : ''};
 `;
 
 const SpriteContainer = styled(FlexBox)`
-  width: '100%';
+  width: 100%;
   min-width: ${pxToRem(256)};
 `;
 

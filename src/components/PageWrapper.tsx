@@ -8,7 +8,7 @@ interface PageWrapperProps {
 }
 
 const PageContainer = styled(FlexBox)`
-  width: '100%';
+  width: 100%;
   max-width: ${({ theme }) => `${theme.breakpointValues.md}px`};
 `;
 
@@ -16,7 +16,7 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({
   children,
   className,
 }) => (
-  <FlexBox className={className} flex={1} justifyContent="space-around" py={16}>
+  <FlexBox className={className} flex={1} justifyContent="space-around" px={16}>
     <PageContainer column>{children}</PageContainer>
   </FlexBox>
 );

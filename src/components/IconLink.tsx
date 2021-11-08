@@ -25,13 +25,16 @@ interface Props {
   altText: string;
 }
 
+const LinkHoverWrapper = styled.span`
+  z-index: 2;
+`;
+
 const StyledLink = styled(Link)(({ theme }) => ({
-  height: theme.spacing[40],
-  width: theme.spacing[40],
+  height: theme.spacing[48],
+  width: theme.spacing[48],
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  zIndex: 2,
 }));
 
 export const IconLink: React.FC<Props> = ({
@@ -44,11 +47,11 @@ export const IconLink: React.FC<Props> = ({
 
   const Icon = iconMap[icon];
   const StyledIcon = styled(Icon)(({ theme }) => ({
-    height: theme.spacing[24],
-    width: theme.spacing[24],
+    height: theme.spacing[32],
+    width: theme.spacing[32],
   }));
   return (
-    <span
+    <LinkHoverWrapper
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -59,6 +62,6 @@ export const IconLink: React.FC<Props> = ({
           titleId={`${altText}-${icon}`}
         />
       </StyledLink>
-    </span>
+    </LinkHoverWrapper>
   );
 };

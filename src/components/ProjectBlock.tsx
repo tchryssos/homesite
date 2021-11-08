@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 import { IconLink, IconType } from '~/components/IconLink';
+import { Image } from '~/components/Image';
 import { Body } from '~/components/typography/Body';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
 import { SubExtends } from '~/typings/util';
@@ -42,10 +42,12 @@ const ProjectLink = styled(Link)`
   position: absolute;
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
 `;
 
 const ProjectIcon = styled(Image)`
-  margin-right: ${({ theme }) => theme.spacing[16]};
+  margin-right: ${({ theme }) => theme.spacing[8]};
 `;
 
 export const ProjectBlock: React.FC<Props> = ({
@@ -60,7 +62,7 @@ export const ProjectBlock: React.FC<Props> = ({
 }) => (
   <Block column p={8}>
     <ProjectLink altText={title} href={to} />
-    <FlexBox alignItems="center" flex={1} justifyContent="space-between" mb={8}>
+    <FlexBox alignItems="center" justifyContent="space-between" mb={8}>
       <FlexBox alignItems="center">
         <ProjectIcon alt={imageAltText} height={40} src={imageSrc} width={40} />
         <SubTitle>{title}</SubTitle>

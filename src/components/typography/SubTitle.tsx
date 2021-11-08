@@ -6,10 +6,12 @@ import { TypographyProps } from './types';
 
 type SubTitleProps = Pick<MarginProps, 'mb'> & TypographyProps;
 
-export const SubTitle = styled.h2<SubTitleProps>(({ theme, ...rest }) => ({
-  ...createTextSharedStyles(theme, { ...rest }),
-  fontSize: theme.fontSize.bigBody,
-  [theme.breakpoints.sm]: {
-    fontSize: theme.fontSize.subTitle,
-  },
-}));
+export const SubTitle = styled.h2<SubTitleProps>(
+  ({ theme, variant = 'decorative', ...rest }) => ({
+    ...createTextSharedStyles(theme, { variant, ...rest }),
+    fontSize: theme.fontSize.bigBody,
+    [theme.breakpoints.sm]: {
+      fontSize: theme.fontSize.subTitle,
+    },
+  }),
+);
