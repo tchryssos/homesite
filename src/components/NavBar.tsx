@@ -87,8 +87,8 @@ const NavText: React.FC<NavTextProps> = ({ href, children, pathname }) => {
     );
   }
   return (
-    <NavTextLink altText={children} href={href} isActive={isActive}>
-      <Body>{children}</Body>
+    <NavTextLink altText={children} href={href} isActive={isActive} isInternal>
+      <Body variant="decorative">{children}</Body>
     </NavTextLink>
   );
 };
