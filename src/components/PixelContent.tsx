@@ -13,7 +13,6 @@ import {
   streetDisplayHeight,
 } from '~/logic/util/animation';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
-import street from '~/static/street_purp_sm.png';
 
 import { FlexBox } from './box/FlexBox';
 
@@ -30,7 +29,7 @@ interface AnimationProps {
 
 const AnimationScroller = styled.div<AnimationProps>`
   display: flex;
-  height: 240px;
+  height: ${pxToRem(240)};
   transition: ${({ isAnimating }) =>
     isAnimating ? `transform ${PAGE_TRANSITION_TIME}ms linear` : ''};
 `;
@@ -45,7 +44,7 @@ const Sidewalk = styled.div`
   width: 300%;
   top: ${pxToRem(124)};
   height: ${pxToRem(streetDisplayHeight)};
-  background: url(${street as unknown as string});
+  background: url('/street_purp_sm.png');
   background-repeat: repeat;
   justify-self: flex-start;
 `;

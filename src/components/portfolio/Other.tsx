@@ -1,7 +1,3 @@
-import Parcel from '~/static/parcel.png';
-import TroyHead from '~/static/troy_head.png';
-import Vercel from '~/static/vercel.svg';
-
 import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
@@ -13,7 +9,7 @@ export const Other: React.FC = () => (
     <ProjectBlock
       hideLink
       imageAltText="Troy's head"
-      imageSrc={TroyHead}
+      imageSrc="/troy_head.png"
       text="Peek behind the curtain of this site."
       title="troychryssos&#x0200B;.com"
       to="https://github.com/tchryssos/homesite"
@@ -22,7 +18,7 @@ export const Other: React.FC = () => (
     <ProjectBlock
       hideLink
       imageAltText="Vercel logo"
-      imageSrc={Vercel}
+      imageSrc="/vercel.svg"
       text="My template for new Next.js projects. Includes typescript."
       title="Next.js Template"
       to="https://github.com/tchryssos/next-template"
@@ -31,7 +27,7 @@ export const Other: React.FC = () => (
     <ProjectBlock
       hideLink
       imageAltText="Parcel box"
-      imageSrc={Parcel}
+      imageSrc="/parcel.png"
       text="My template for new Parcel projects."
       title="Parcel Template"
       to="https://github.com/tchryssos/parcel-template"

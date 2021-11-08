@@ -1,8 +1,3 @@
-import BanjoJace from '~/static/banjo_jace.png';
-import BaseballIcon from '~/static/baseball.ico';
-import ManYouKnow from '~/static/man_you_know.png';
-import ScreaminNicholas from '~/static/screamin_nicholas.png';
-
 import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
@@ -14,7 +9,7 @@ export const Experiments: React.FC = () => (
     <ProjectBlock
       hideLink
       imageAltText="Screamin' Nicholas logo"
-      imageSrc={ScreaminNicholas}
+      imageSrc="/screamin_nicholas.png'"
       text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot. Still a work in progress."
       title="Screamin' Nicholas"
       to="https://github.com/tchryssos/screamin-nicholas"
@@ -30,7 +25,7 @@ export const Experiments: React.FC = () => (
     />
     <ProjectBlock
       imageAltText="A generated man"
-      imageSrc={ManYouKnow}
+      imageSrc="/man_you_know.png"
       text="A canvas-based weirdo generator. Still a work in progress."
       title="The Man You Know"
       to="https://tchryssos.github.io/the-man-you-know/"
@@ -38,7 +33,7 @@ export const Experiments: React.FC = () => (
     />
     <ProjectBlock
       imageAltText="Banjo the Mind Sculptor"
-      imageSrc={BanjoJace}
+      imageSrc="/banjo_jace.png"
       text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the card text."
       title="Banjo MtG"
       to="https://tchryssos.github.io/banjo-mtg/"
@@ -46,7 +41,7 @@ export const Experiments: React.FC = () => (
     />
     <ProjectBlock
       imageAltText="Pixel-art baseball"
-      imageSrc={BaseballIcon}
+      imageSrc="/baseball.ico'"
       text="Step up to the plate as a procedurally generated baseball player  and swing for the fences!"
       title="HOME RUN"
       to="https://tchryssos.github.io/homerun/"

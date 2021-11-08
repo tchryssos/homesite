@@ -1,7 +1,3 @@
-import Moss from '~/static/moss.png';
-import QuadioLogo from '~/static/quadio.jpg';
-import Sparkle from '~/static/sparkle.png';
-
 import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
@@ -9,7 +5,7 @@ export const Work: React.FC = () => (
   <PortfolioSection desc="A selection of professional projects" title="Work">
     <ProjectBlock
       imageAltText="Sparkle emoji"
-      imageSrc={Sparkle}
+      imageSrc="/sparkle.png'"
       text="Portfolio website for graphic &amp; UX designer Casey Bradford."
       title="casey&#x0200B;bradford&#x0200B;.club"
       to="https://caseybradford.club/"
@@ -17,7 +13,7 @@ export const Work: React.FC = () => (
     />
     <ProjectBlock
       imageAltText="Moss sprout logo"
-      imageSrc={Moss}
+      imageSrc="/moss.png"
       text="A shared virtual desktop workspace for creative teams to view and organize project assets."
       title="Moss Workspace"
       to="https://mossworkspace.com/"
@@ -31,7 +27,7 @@ export const Work: React.FC = () => (
     />
     <ProjectBlock
       imageAltText="Quadio transport logo"
-      imageSrc={QuadioLogo}
+      imageSrc="/quadio.jpg"
       text="A music streaming and sharing app for college creatives."
       title="Quadio"
       to="https://www.quadio.com/"

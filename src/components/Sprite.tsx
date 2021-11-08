@@ -3,10 +3,6 @@ import Image from 'next/image';
 
 import { Sprites } from '~/constants/sprites';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
-import laptop from '~/static/laptop.gif';
-import questionMan from '~/static/questionman.gif';
-import troy from '~/static/troy.gif';
-import troyRight from '~/static/troy_right.gif';
 
 interface SpriteProps {
   type: Sprites | null;
@@ -15,6 +11,8 @@ interface SpriteProps {
 }
 
 const SpriteContainer = styled.div`
+  width: 100%;
+  height: 100%;
   max-width: ${pxToRem(128)};
   max-height: ${pxToRem(190)};
   display: flex;
@@ -34,15 +32,15 @@ const TroyWrapper = styled.div<Pick<SpriteProps, 'type'>>(({ type }) => ({
 const spriteSwitch = (type: string) => {
   switch (type) {
     case Sprites.TROY:
-      return troy;
+      return '/troy.gif';
     case Sprites.TROY_RIGHT:
-      return troyRight;
+      return '/troy_right.gif';
     case Sprites.LAPTOP:
-      return laptop;
+      return '/laptop.gif';
     // case Sprites.CANE:
     //   return dumbCane;
     default:
-      return questionMan;
+      return '/questionman.gif';
   }
 };
 
