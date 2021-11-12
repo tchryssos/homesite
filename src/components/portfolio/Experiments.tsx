@@ -31,14 +31,6 @@ export const Experiments: React.FC = () => (
       toRepo="https://github.com/tchryssos/screamin-nicholas"
     />
     <ProjectBlock
-      imageAltText="Banjo the Mind Sculptor"
-      imageSrc={BanjoJace}
-      text="Enter the name of a Magic the Gathering card and have Banjo &amp; Co. from Banjo Kazooie read you the card text."
-      title="Banjo MtG"
-      to="https://tchryssos.github.io/banjo-mtg/"
-      toRepo="https://github.com/tchryssos/banjo-mtg"
-    />
-    <ProjectBlock
       imageAltText="Pixel-art baseball"
       imageSrc={BaseballIcon}
       text="Step up to the plate as a procedurally generated baseball player  and swing for the fences!"
