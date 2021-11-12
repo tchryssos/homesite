@@ -2,7 +2,7 @@ import React from 'react';
 
 import BanjoJace from '~/static/banjo_jace.png';
 import BaseballIcon from '~/static/baseball.ico';
-import ManYouKnow from '~/static/man_you_know.png';
+import RpgSheetSword from '~/static/rpg_sheet_sword.png';
 import ScreaminNicholas from '~/static/screamin_nicholas.png';
 
 import ProjectBlock from '../ProjectBlock';
@@ -14,6 +14,14 @@ export const Experiments: React.FC = () => (
     title="Experiments"
   >
     <ProjectBlock
+      imageAltText="RPG Sheet sword logo"
+      imageSrc={RpgSheetSword}
+      text="An online tabletop RPG character sheet tool. Currently supports 'Shadow of the Demon Lord'. Still a work in progress."
+      title="rpg sheet dot games"
+      to="https://rpgsheet.games"
+      toRepo="https://github.com/tchryssos/rpg-sheet"
+    />
+    <ProjectBlock
       hideLink
       imageAltText="Screamin' Nicholas logo"
       imageSrc={ScreaminNicholas}
@@ -21,22 +29,6 @@ export const Experiments: React.FC = () => (
       title="Screamin' Nicholas"
       to="https://github.com/tchryssos/screamin-nicholas"
       toRepo="https://github.com/tchryssos/screamin-nicholas"
-    />
-    <ProjectBlock
-      imageAltText="Closed captioning logo"
-      imageSrc="https://upload.wikimedia.org/wikipedia/commons/0/09/Closed_captioning_symbol.svg"
-      text="A lightweight, browser-based streaming tool for automatic closed captioning using the SpeechRecognition API."
-      title="Stream CC"
-      to="https://tchryssos.github.io/stream-cc/"
-      toRepo="https://github.com/tchryssos/stream-cc"
-    />
-    <ProjectBlock
-      imageAltText="A generated man"
-      imageSrc={ManYouKnow}
-      text="A canvas-based weirdo generator. Still a work in progress."
-      title="The Man You Know"
-      to="https://tchryssos.github.io/the-man-you-know/"
-      toRepo="https://github.com/tchryssos/the-man-you-know"
     />
     <ProjectBlock
       imageAltText="Banjo the Mind Sculptor"
