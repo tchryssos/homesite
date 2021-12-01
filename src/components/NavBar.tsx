@@ -100,7 +100,11 @@ export const NavBar: React.FC = () => {
     <FlexBox flex={1} justifyContent="center">
       <HeaderWrapper column>
         <FlexBox alignItems="center" justifyContent="space-between" p={16}>
-          <NameLink altText="Troy Chryssos home link" href={HOME_PATH}>
+          <NameLink
+            altText="Troy Chryssos home link"
+            href={HOME_PATH}
+            isInternal
+          >
             <SubTitle italic shadowed>
               Troy Chryssos
             </SubTitle>
@@ -122,13 +126,13 @@ export const NavBar: React.FC = () => {
           @TODO Because there's only one page atm, only show the nav on some other page
           AKA the 404 page
          */}
-        {pathname !== HOME_PATH && (
+        {/* {pathname !== HOME_PATH && (
           <NavWrapper>
             <NavText href={HOME_PATH} pathname={pathname}>
               Back to Home
             </NavText>
           </NavWrapper>
-        )}
+        )} */}
       </HeaderWrapper>
     </FlexBox>
   );

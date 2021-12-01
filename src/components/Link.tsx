@@ -19,6 +19,21 @@ const StyledLink = styled.a<Pick<LinkProps, 'isInternal'>>(({ theme }) => ({
   },
 }));
 
+interface LinkHOCProps extends Pick<LinkProps, 'isInternal' | 'children'> {
+  href: string;
+}
+
+const LinkHOC: React.FC<LinkHOCProps> = ({ isInternal, children, href }) => {
+  if (!isInternal) {
+    return <>{children}</>;
+  }
+  return (
+    <NextLink href={href} passHref>
+      {children}
+    </NextLink>
+  );
+};
+
 export const Link: React.FC<LinkProps> = ({
   href,
   isInternal,
@@ -28,7 +43,7 @@ export const Link: React.FC<LinkProps> = ({
   altText,
 }) =>
   href ? (
-    <NextLink href={href} passHref>
+    <LinkHOC href={href} isInternal={isInternal}>
       <StyledLink
         aria-label={altText}
         className={className}
@@ -38,7 +53,7 @@ export const Link: React.FC<LinkProps> = ({
       >
         {children}
       </StyledLink>
-    </NextLink>
+    </LinkHOC>
   ) : (
     <>{children}</>
   );

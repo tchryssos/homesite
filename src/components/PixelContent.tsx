@@ -7,12 +7,12 @@ import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { ABOUT_PATH, HOME_PATH } from '~/constants/routes';
 import { Sprites } from '~/constants/sprites';
 import AnimationContext from '~/logic/contexts/animation';
-import WindowContext from '~/logic/contexts/window';
 import {
   getWalkAnimationDistance,
   streetDisplayHeight,
 } from '~/logic/util/animation';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
+import { getWindow } from '~/logic/util/window';
 
 import { FlexBox } from './box/FlexBox';
 
@@ -76,26 +76,26 @@ const pathToSprite = (path: string) => {
   }
 };
 
+const setInlineTransform = (translate: number, isAnimating: boolean) => {
+  if (isAnimating) {
+    return {
+      transform: `translateX(${translate}px)`,
+    };
+  }
+  return undefined;
+};
+
 export const PixelContent: React.FC = () => {
   const { pathname } = useRouter();
 
   const { isAnimating } = useContext(AnimationContext);
-  const { windowSize } = useContext(WindowContext);
-  const animationDistance = getWalkAnimationDistance(windowSize);
+  const windowSize = getWindow()?.innerWidth;
+  const animationDistance = getWalkAnimationDistance(windowSize || 0);
 
   const [currentSprite, setCurrentSprite] = useState<Sprites>(
     pathToSprite(pathname),
   );
   const [prevSprite, setPrevSprite] = useState<Sprites | null>(null);
-
-  const setInlineTransform = (translate: number) => {
-    if (isAnimating) {
-      return {
-        transform: `translateX(${translate}px)`,
-      };
-    }
-    return undefined;
-  };
 
   useEffect(() => {
     setPrevSprite(currentSprite);
@@ -107,12 +107,12 @@ export const PixelContent: React.FC = () => {
     <ArtContainer>
       <AnimationScroller
         isAnimating={isAnimating}
-        style={setInlineTransform(animationDistance * -1)}
+        style={setInlineTransform(animationDistance * -1, isAnimating)}
       >
         <SpriteContainer>
           <TroySprite
             isAnimating={isAnimating}
-            style={setInlineTransform(animationDistance)}
+            style={setInlineTransform(animationDistance, isAnimating)}
             type={isAnimating ? Sprites.TROY_RIGHT : Sprites.TROY}
           />
           <ObjectSprite
@@ -122,7 +122,7 @@ export const PixelContent: React.FC = () => {
           {isAnimating && (
             <ObjectSprite
               isAnimating
-              style={setInlineTransform(animationDistance + 64)}
+              style={setInlineTransform(animationDistance + 64, isAnimating)}
               type={currentSprite}
             />
           )}
