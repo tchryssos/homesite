@@ -1,20 +1,23 @@
 import styled from '@emotion/styled';
 
-import { Box } from './Box';
-import { AlignItems, BoxProps, JustifyContent } from './types';
+import { Spacing } from '~/typings/theme';
 
-type FlexBoxProps = BoxProps & {
+import { Box } from './Box';
+import { AlignItemsBase, BoxProps, JustifyContent } from './types';
+
+export type FlexBoxProps = BoxProps & {
   center?: boolean;
   column?: boolean;
   wrap?: boolean;
   inline?: boolean;
   justifyContent?: JustifyContent;
-  alignItems?: AlignItems;
+  alignItems?: AlignItemsBase | 'flex-end' | 'flex-start';
   flex?: number;
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
   flexGrow?: number;
   flexShrink?: number;
+  gap?: Spacing;
 };
 
 const Flex = styled(Box)<FlexBoxProps>(
@@ -31,6 +34,8 @@ const Flex = styled(Box)<FlexBoxProps>(
     flexWrap,
     flexGrow,
     flexShrink,
+    gap = 0,
+    theme,
   }) => ({
     justifyContent,
     alignItems,
@@ -39,6 +44,7 @@ const Flex = styled(Box)<FlexBoxProps>(
     flexWrap,
     flexGrow,
     flexShrink,
+    gap: theme.spacing[gap],
     ...(center && {
       justifyContent: 'center',
       alignItems: 'center',

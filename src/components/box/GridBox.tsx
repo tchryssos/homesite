@@ -3,20 +3,21 @@ import styled from '@emotion/styled';
 import { Spacing } from '~/typings/theme';
 
 import { Box } from './Box';
-import { AlignItems, BoxProps } from './types';
+import { AlignItemsBase, BoxProps } from './types';
 
-type GridBoxProps = BoxProps & {
+export type GridBoxProps = BoxProps & {
   center?: boolean;
   justifyItems?: 'normal' | 'start' | 'end' | 'center';
-  alignItems?: AlignItems;
+  alignItems?: AlignItemsBase | 'end' | 'start';
   inline?: boolean;
   columns?: 1 | 2 | 3 | 4;
   className?: string;
   columnGap?: Spacing;
   rowGap?: Spacing;
+  gridTemplateColumns?: string;
 };
 
-const Grid = styled(Box)<GridBoxProps>(
+export const GridBox = styled(Box)<GridBoxProps>(
   { display: 'grid' },
   ({
     center,
@@ -26,13 +27,13 @@ const Grid = styled(Box)<GridBoxProps>(
     columns = 2,
     columnGap,
     rowGap,
+    gridTemplateColumns,
     theme,
   }) => ({
     justifyItems,
     alignItems,
-    columnGap,
-    rowGap,
-    gridTemplateColumns: '1fr',
+    columnGap: `${(columnGap || 8) / 16}rem`,
+    rowGap: `${(rowGap || 8) / 16}rem`,
     ...(center && {
       justifyItems: 'center',
       alignItems: 'center',
@@ -40,13 +41,10 @@ const Grid = styled(Box)<GridBoxProps>(
     ...(inline && {
       display: 'inline-grid',
     }),
-    [theme.breakpoints.md]: {
-      gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    gridTemplateColumns: gridTemplateColumns || `repeat(${columns}, 1fr)`,
+    [theme.breakpoints.sm]: {
+      rowGap: `${(rowGap || 16) / 16}rem`,
+      columnGap: `${(columnGap || 16) / 16}rem`,
     },
   }),
-);
-
-export const GridBox: React.FC<GridBoxProps> = ({ children, ...rest }) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <Grid {...rest}>{children}</Grid>
 );
