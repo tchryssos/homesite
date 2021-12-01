@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 
 import { BorderWidth, Color, Spacing } from '~/typings/theme';
 
@@ -11,7 +11,7 @@ export type MarginProps = {
 
 export type BoxProps = MarginProps & {
   className?: string;
-  children: React.ReactNode | React.Node[];
+  children?: React.ReactNode | React.Node[];
   p?: Spacing;
   px?: Spacing;
   py?: Spacing;
@@ -47,11 +47,9 @@ export type JustifyContent =
   | 'initial'
   | 'inherit';
 
-export type AlignItems =
+export type AlignItemsBase =
   | 'stretch'
   | 'center'
-  | 'flex-start'
-  | 'flex-end'
   | 'baseline'
   | 'initial'
   | 'inherit';
