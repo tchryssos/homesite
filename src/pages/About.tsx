@@ -1,18 +1,55 @@
+import camelCase from 'lodash.camelcase';
+import { useEffect, useState } from 'react';
+
+import { FlexBox } from '~/components/box/FlexBox';
 import { Layout } from '~/components/meta/Layout';
 import { Body } from '~/components/typography/Body';
-import { Title } from '~/components/typography/Title';
+import { Artwork, UnserializedArtwork } from '~/typings/art';
 
-const Home = () => (
-  <Layout>
-    <Title mb={16}>Hey hey hey, I&apos;m Troy.</Title>
-    <Body mb={16}>
-      I&apos;m a front-end software engineer (and award-winning songwriter) with
-      years of experience in the React ecosystem. I&apos;ve worked with everyone
-      from the biggest corporate conglomos to the smallest independent
-      fishmongers in New York building apps for media sharing, streaming, and
-      creation.
+interface ArtPaneProps {
+  artObj: Artwork;
+}
+const ArtPane: React.FC<ArtPaneProps> = ({ artObj }) => (
+  <FlexBox>
+    <Body>
+      {artObj.artworkName} by {artObj.artist}
     </Body>
-  </Layout>
+  </FlexBox>
 );
 
-export default Home;
+const emptyArr: Artwork[] = [];
+const About: React.FC = () => {
+  const [artList, setArtList] = useState<Artwork[]>(emptyArr);
+
+  useEffect(() => {
+    const fetchArt = async () => {
+      const resp = await fetch('/artlist.json');
+      const artArr: UnserializedArtwork[] = await resp.json();
+      setArtList(
+        artArr.reduce((newArtArr, currArt, i) => {
+          if (currArt.Artist && currArt['Artwork Name']) {
+            const nextArt: Artwork = {} as Artwork;
+            Object.keys(currArt).forEach((key) => {
+              nextArt[camelCase(key) as keyof Artwork] =
+                currArt[key as keyof UnserializedArtwork];
+            });
+            newArtArr.push(nextArt);
+          }
+
+          return newArtArr;
+        }, [] as Artwork[]),
+      );
+    };
+    fetchArt();
+  }, []);
+
+  return (
+    <Layout>
+      {artList.map((art) => (
+        <ArtPane artObj={art} key={`${art.artist}-${art.artworkName}`} />
+      ))}
+    </Layout>
+  );
+};
+
+export default About;
