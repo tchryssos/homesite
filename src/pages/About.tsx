@@ -5,23 +5,36 @@ import { useEffect, useState } from 'react';
 
 import { FlexBox } from '~/components/box/FlexBox';
 import { GridBox } from '~/components/box/GridBox';
+import { Image } from '~/components/Image';
 import { Layout } from '~/components/meta/Layout';
 import { Body } from '~/components/typography/Body';
+import { SubBody } from '~/components/typography/SubBody';
+import { IS_URL } from '~/constants/regex';
+import { pxToRem } from '~/logic/util/styles/pxToRem';
 import { Artwork, UnserializedArtwork } from '~/typings/art';
 
 const ArtFrame = styled(FlexBox)(({ theme }) => ({
-  border: `${theme.colors.primaryHeavy} solid ${theme.border.borderWidth[1]}`,
-  borderRadius: theme.border.borderRadius.rounded,
+  display: 'inline-flex',
+  width: '100%',
+  position: 'relative',
 }));
+
+const ArtImg = styled(Image)`
+  width: 100%;
+  height: ${pxToRem(400)};
+  position: relative;
+  display: block;
+  margin-bottom: ${({ theme }) => theme.spacing[8]};
+`;
 
 interface ArtPaneProps {
   artObj: Artwork;
 }
 const ArtPane: React.FC<ArtPaneProps> = ({ artObj }) => (
-  <ArtFrame p={8}>
-    <Body>
-      {artObj.artworkName} by {artObj.artist}
-    </Body>
+  <ArtFrame column p={8}>
+    <ArtImg layout="fill" objectFit="contain" src={artObj.artworkUrl} />
+    <SubBody mb={4}>{artObj.artworkName}</SubBody>
+    <SubBody>{artObj.artist}</SubBody>
   </ArtFrame>
 );
 
@@ -36,7 +49,12 @@ const About: React.FC = () => {
       setArtList(
         shuffle(
           artArr.reduce((newArtArr, currArt) => {
-            if (currArt.Artist && currArt['Artwork Name']) {
+            if (
+              currArt.Artist &&
+              currArt['Artwork Name'] &&
+              currArt['Artwork Url'] &&
+              IS_URL.test(currArt['Artwork Url'])
+            ) {
               const nextArt: Artwork = {} as Artwork;
               Object.keys(currArt).forEach((key) => {
                 nextArt[camelCase(key) as keyof Artwork] =
@@ -55,7 +73,7 @@ const About: React.FC = () => {
 
   return (
     <Layout>
-      <GridBox columnGap={16} columns={3} rowGap={16}>
+      <GridBox columns={3}>
         {artList.map((art) => (
           <ArtPane artObj={art} key={`${art.artist}-${art.artworkName}`} />
         ))}
