@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { Sprite } from '~/components/Sprite';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
@@ -82,6 +82,7 @@ export const PixelContent: React.FC = () => {
     routeSprites: [prevSprite, currentSprite],
     setRouteSprites,
   } = useContext(AnimationContext);
+
   const windowSize = getWindow()?.innerWidth;
   const animationDistance = getWalkAnimationDistance(windowSize || 0);
 
