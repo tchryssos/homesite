@@ -7,17 +7,17 @@ import { FlexBox } from '~/components/box/FlexBox';
 import { GridBox } from '~/components/box/GridBox';
 import { Image } from '~/components/Image';
 import { Layout } from '~/components/meta/Layout';
-import { Body } from '~/components/typography/Body';
 import { SubBody } from '~/components/typography/SubBody';
 import { IS_URL } from '~/constants/regex';
+import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
 import { Artwork, UnserializedArtwork } from '~/typings/art';
 
-const ArtFrame = styled(FlexBox)(({ theme }) => ({
-  display: 'inline-flex',
-  width: '100%',
-  position: 'relative',
-}));
+const ArtFrame = styled(FlexBox)`
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+`;
 
 const ArtImg = styled(Image)`
   width: 100%;
@@ -32,7 +32,12 @@ interface ArtPaneProps {
 }
 const ArtPane: React.FC<ArtPaneProps> = ({ artObj }) => (
   <ArtFrame column p={8}>
-    <ArtImg layout="fill" objectFit="contain" src={artObj.artworkUrl} />
+    <ArtImg
+      layout="fill"
+      objectFit="scale-down"
+      objectPosition="left bottom"
+      src={artObj.artworkUrl}
+    />
     <SubBody mb={4}>{artObj.artworkName}</SubBody>
     <SubBody>{artObj.artist}</SubBody>
   </ArtFrame>
@@ -41,6 +46,8 @@ const ArtPane: React.FC<ArtPaneProps> = ({ artObj }) => (
 const emptyArr: Artwork[] = [];
 const About: React.FC = () => {
   const [artList, setArtList] = useState<Artwork[]>(emptyArr);
+
+  const isLessThanMd = useBreakpointsLessThan('md');
 
   useEffect(() => {
     const fetchArt = async () => {
@@ -73,7 +80,7 @@ const About: React.FC = () => {
 
   return (
     <Layout>
-      <GridBox columns={3}>
+      <GridBox columns={isLessThanMd ? 2 : 3}>
         {artList.map((art) => (
           <ArtPane artObj={art} key={`${art.artist}-${art.artworkName}`} />
         ))}
