@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Theme, themes } from '~/constants/theme';
-import AnimationContext from '~/logic/contexts/animation';
+import { AnimationContext } from '~/logic/contexts/animation';
 import disableDevTools from '~/logic/util/disableDevTools';
+import { getRouteSprite } from '~/logic/util/routing';
 import { ColorMode } from '~/typings/colorMode';
+import { RouteSprites } from '~/typings/sprites';
 
 import { BreakpointsContext } from '../logic/contexts/breakpointsContext';
 import { BreakpointSize } from '../typings/theme';
@@ -67,7 +69,13 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
     'xxs',
   ]);
   const initializedRef = useRef(false);
+
   const [isAnimating, setIsAnimating] = useState(false);
+  const [routeSprites, setRouteSprites] = useState<RouteSprites>([
+    null,
+    getRouteSprite(pathname),
+  ]);
+
   const [colorMode] = useState<ColorMode>('standard');
   const theme = themes[colorMode];
 
@@ -88,6 +96,7 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
         );
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -102,7 +111,9 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
       <BreakpointsContext.Provider value={windowBreakpoints}>
-        <AnimationContext.Provider value={{ isAnimating }}>
+        <AnimationContext.Provider
+          value={{ isAnimating, routeSprites, setRouteSprites }}
+        >
           <Global styles={createGlobalStyles(theme)} />
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...pageProps} />

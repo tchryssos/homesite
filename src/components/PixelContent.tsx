@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import { Sprite } from '~/components/Sprite';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
-import { ABOUT_PATH, HOME_PATH } from '~/constants/routes';
 import { Sprites } from '~/constants/sprites';
-import AnimationContext from '~/logic/contexts/animation';
+import { AnimationContext } from '~/logic/contexts/animation';
 import {
   getWalkAnimationDistance,
   streetDisplayHeight,
 } from '~/logic/util/animation';
+import { getRouteSprite } from '~/logic/util/routing';
 import { pxToRem } from '~/logic/util/styles/pxToRem';
 import { getWindow } from '~/logic/util/window';
 
@@ -65,17 +65,6 @@ const ObjectSprite = styled(Sprite)<AnimationProps>`
 `;
 // END - STYLED COMPONENTS - END
 
-const pathToSprite = (path: string) => {
-  switch (path) {
-    case HOME_PATH:
-      return Sprites.LAPTOP;
-    case ABOUT_PATH:
-      return Sprites.CANE;
-    default:
-      return Sprites.QUESTIONMAN;
-  }
-};
-
 const setInlineTransform = (translate: number, isAnimating: boolean) => {
   if (isAnimating) {
     return {
@@ -88,18 +77,16 @@ const setInlineTransform = (translate: number, isAnimating: boolean) => {
 export const PixelContent: React.FC = () => {
   const { pathname } = useRouter();
 
-  const { isAnimating } = useContext(AnimationContext);
+  const {
+    isAnimating,
+    routeSprites: [prevSprite, currentSprite],
+    setRouteSprites,
+  } = useContext(AnimationContext);
   const windowSize = getWindow()?.innerWidth;
   const animationDistance = getWalkAnimationDistance(windowSize || 0);
 
-  const [currentSprite, setCurrentSprite] = useState<Sprites>(
-    pathToSprite(pathname),
-  );
-  const [prevSprite, setPrevSprite] = useState<Sprites | null>(null);
-
   useEffect(() => {
-    setPrevSprite(currentSprite);
-    setCurrentSprite(pathToSprite(pathname));
+    setRouteSprites([currentSprite, getRouteSprite(pathname)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
