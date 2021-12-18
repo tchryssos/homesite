@@ -57,6 +57,7 @@ export const Sprite: React.FC<SpriteProps> = ({
         layout="fill"
         objectFit="contain"
         objectPosition="center bottom"
+        priority
         src={spriteSwitch(type)}
         type={type}
       />
