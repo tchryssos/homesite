@@ -1,167 +1,133 @@
-import clsx from 'clsx';
-import React, { useContext } from 'react';
-import { createUseStyles, WithStylesProps } from 'react-jss';
-import { NavLink, useLocation } from 'react-router-dom';
+import styled from '@emotion/styled';
 
-import IconLink from '~/components/IconLink';
-import Email from '~/components/icons/Email';
-import Github from '~/components/icons/Github';
-import LittleTitle from '~/components/typography/LittleTitle';
+// import { useRouter } from 'next/router';
+// import { useContext } from 'react';
+import { IconLink } from '~/components/IconLink';
 import { HOME_PATH } from '~/constants/routes';
-import {
-  MD_MIN_STRING,
-  MD_MIN_VALUE,
-  SM_MIN_STRING,
-} from '~/constants/styles/breakpoints';
-import { black, dimmedWhite, white } from '~/constants/styles/colors';
-import { monoFont } from '~/constants/styles/fonts';
-import AnimationContext from '~/logic/contexts/animation';
-import { useShadowStyles } from '~/logic/util/styles/shadow';
 
-const useStyles = createUseStyles({
-  headerContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  headerWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    maxWidth: MD_MIN_VALUE,
-  },
-  navTopRow: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 16,
-  },
-  nameHomeLink: {
-    textDecoration: 'none',
-  },
-  nameWrapper: {
-    fontStyle: 'italic',
-  },
-  navIcons: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  navWrapper: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    width: '100%',
-    marginBottom: 16,
-    [SM_MIN_STRING]: {
-      paddingLeft: 16,
-      justifyContent: 'flex-start',
-    },
-    [MD_MIN_STRING]: {
-      textShadow: [[2, -2, black]],
-    },
-  },
-  link: {
-    fontFamily: monoFont,
-    color: dimmedWhite,
-    fontSize: 32,
-    textDecoration: 'none',
-    [SM_MIN_STRING]: {
-      marginRight: 16,
-    },
-  },
-  navActive: {
-    textDecoration: [['underline'], '!important'],
-    color: white,
-  },
-  disabledLink: {
-    '&:hover': {
-      cursor: 'wait',
-    },
-  },
-});
-interface Props extends WithStylesProps<typeof useStyles> {
-  to: string;
-  children: React.ReactNode;
-}
+// import { AnimationContext } from '~/logic/contexts/animation';
+// import { pxToRem } from '~/logic/util/styles/pxToRem';
+import { FlexBox } from './box/FlexBox';
+import { Link } from './Link';
+// import { Body } from './typography/Body';
+import { SubTitle } from './typography/SubTitle';
 
-const NavText: React.FC<Props> = ({ to, classes, children }) => {
-  const { pathname } = useLocation();
-  const { isAnimating } = useContext(AnimationContext);
-  if (isAnimating) {
-    return (
-      <p
-        className={clsx(classes.link, classes.disabledLink, {
-          [classes.navActive]: pathname === to,
-        })}
-      >
-        {children}
-      </p>
-    );
-  }
-  return (
-    <NavLink
-      activeClassName={classes.navActive}
-      className={classes.link}
-      exact
-      to={to}
-    >
-      {children}
-    </NavLink>
-  );
-};
+// START - STYLED COMPONENTS - START
+// interface NavTextComponentProps {
+//   isActive: boolean;
+// }
 
-const NavBar: React.FC = () => {
-  const classes = useStyles();
-  const shadowClasses = useShadowStyles();
-  const { pathname } = useLocation();
+// const NavTextText = styled(Body)<NavTextComponentProps>(
+//   ({ theme, isActive }) => ({
+//     color: theme.colors.lighten,
+//     fontSize: theme.fontSize.title,
+//     textDecoration: 'none',
+//     '&:hover': {
+//       cursor: 'wait',
+//     },
+//     [theme.breakpointValues.sm]: {
+//       marginRight: theme.spacing[16],
+//     },
+//     ...(isActive && {
+//       textDecoration: 'underline',
+//       color: theme.colors.text,
+//     }),
+//   }),
+// );
 
-  return (
-    <div className={classes.headerContainer}>
-      <div className={classes.headerWrapper}>
-        <div className={classes.navTopRow}>
-          <NavLink className={classes.nameHomeLink} to={HOME_PATH}>
-            <LittleTitle
-              className={clsx(classes.nameWrapper, shadowClasses.textShadow)}
-            >
-              Troy Chryssos
-            </LittleTitle>
-          </NavLink>
-          <div className={classes.navIcons}>
-            <IconLink to="mailto:troychryssos@gmail.com">
-              {(iconClass, iconColorClass) => (
-                <Email
-                  className={iconClass}
-                  colorClassName={iconColorClass}
-                  title="Email me"
-                  titleId="navMailId"
-                />
-              )}
-            </IconLink>
-            <IconLink to="https://github.com/tchryssos">
-              {(iconClass, iconColorClass) => (
-                <Github
-                  className={iconClass}
-                  colorClassName={iconColorClass}
-                  title="Go to my Github profile"
-                  titleId="navGithubId"
-                />
-              )}
-            </IconLink>
-          </div>
-        </div>
-        {/*
+// const NavTextLink = styled(Link)<NavTextComponentProps>(
+//   ({ theme, isActive }) => ({
+//     color: theme.colors.lighten,
+//     fontSize: theme.fontSize.title,
+//     fontFamily: theme.fontFamily.decorative,
+//     ...(isActive && {
+//       textDecoration: 'underline',
+//       color: theme.colors.text,
+//     }),
+//   }),
+// );
+
+const HeaderWrapper = styled(FlexBox)`
+  width: 100%;
+  max-width: ${({ theme }) => `${theme.breakpointValues.md}px`};
+`;
+
+const NameLink = styled(Link)`
+  text-decoration: none;
+`;
+
+// const NavWrapper = styled(FlexBox)(({ theme }) => ({
+//   width: '100%',
+//   marginBottom: theme.spacing[16],
+//   justifyContent: 'space-evenly',
+//   [theme.breakpoints.sm]: {
+//     paddingLeft: theme.spacing[16],
+//     justifyContent: 'flex-start',
+//   },
+//   [theme.breakpoints.md]: {
+//     textShadow: `${pxToRem(2)} ${pxToRem(-2)} ${theme.colors.background}`,
+//   },
+// }));
+// END - STYLED COMPONENTS - END
+
+// interface NavTextProps {
+//   href: string;
+//   children: string;
+//   pathname: string;
+// }
+
+// const NavText: React.FC<NavTextProps> = ({ href, children, pathname }) => {
+//   const { isAnimating } = useContext(AnimationContext);
+//   const isActive = pathname === href;
+//   if (isAnimating) {
+//     return (
+//       <NavTextText isActive={isActive} variant="decorative">
+//         {children}
+//       </NavTextText>
+//     );
+//   }
+//   return (
+//     <NavTextLink altText={children} href={href} isActive={isActive} isInternal>
+//       <Body variant="decorative">{children}</Body>
+//     </NavTextLink>
+//   );
+// };
+
+export const NavBar: React.FC = () => (
+  // const { pathname } = useRouter();
+
+  <FlexBox flex={1} justifyContent="center">
+    <HeaderWrapper column>
+      <FlexBox alignItems="center" justifyContent="space-between" p={16}>
+        <NameLink altText="Troy Chryssos home link" href={HOME_PATH} isInternal>
+          <SubTitle italic shadowed>
+            Troy Chryssos
+          </SubTitle>
+        </NameLink>
+        <FlexBox alignItems="center">
+          <IconLink
+            altText="Email me"
+            href="mailto:troychryssos@gmail.com"
+            icon="email"
+          />
+          <IconLink
+            altText="Go to my Github profile"
+            href="https://github.com/tchryssos"
+            icon="github"
+          />
+        </FlexBox>
+      </FlexBox>
+      {/*
           @TODO Because there's only one page atm, only show the nav on some other page
           AKA the 404 page
          */}
-        {pathname !== HOME_PATH && (
-          <div className={classes.navWrapper}>
-            <NavText classes={classes} to={HOME_PATH}>
+      {/* {pathname !== HOME_PATH && (
+          <NavWrapper>
+            <NavText href={HOME_PATH} pathname={pathname}>
               Back to Home
             </NavText>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default NavBar;
+          </NavWrapper>
+        )} */}
+    </HeaderWrapper>
+  </FlexBox>
+);

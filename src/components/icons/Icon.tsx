@@ -1,42 +1,27 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-interface Props {
-  className?: string;
-  viewBox?: string;
-  title: string;
-  titleId: string;
-  children: React.ReactNode;
-}
+import { BaseIconProps } from './types';
 
-const useStyles = createUseStyles({
-  svg: {
-    height: '100%',
-    width: '100%',
-  },
-});
+const Svg = styled.svg`
+  height: 100%;
+  width: 100%;
+`;
 
-const Icon: React.FC<Props> = ({
+export const Icon: React.FC<BaseIconProps> = ({
   viewBox = '0 0 24 24',
   title,
   titleId,
   className,
   children,
-}) => {
-  const classes = useStyles();
-  return (
-    <svg
-      aria-labelledby={titleId}
-      className={clsx(classes.svg, className)}
-      role="img"
-      viewBox={viewBox}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title id={titleId}>{title}</title>
-      {children}
-    </svg>
-  );
-};
-
-export default Icon;
+}) => (
+  <Svg
+    aria-labelledby={titleId}
+    className={className}
+    role="img"
+    viewBox={viewBox}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title id={titleId}>{title}</title>
+    {children}
+  </Svg>
+);

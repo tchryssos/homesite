@@ -1,10 +1,6 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { gray, white } from '~/constants/styles/colors';
-
-interface Props {
+interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   isTransparent?: boolean;
@@ -12,44 +8,33 @@ interface Props {
   disabled?: boolean;
 }
 
-const useStyles = createUseStyles({
-  button: {
-    border: [[1, 'solid', white]],
-    borderRadius: 4,
+const StyledButton = styled.button<Pick<ButtonProps, 'isTransparent'>>(
+  ({ theme, isTransparent }) => ({
+    border: isTransparent
+      ? 'none'
+      : `${theme.border.borderWidth[1]} solid ${theme.colors.text}`,
+    borderRadius: theme.border.borderRadius.rounded,
     backgroundColor: 'transparent',
-  },
-  disabled: {
-    borderColor: gray,
-  },
-  transparent: {
-    border: 'none',
-  },
-});
+    '&:disabled': {
+      borderColor: theme.colors.textHover,
+    },
+  }),
+);
 
-const Button: React.FC<Props> = ({
+export const Button: React.FC<ButtonProps> = ({
   children,
   className,
   isTransparent,
   onClick,
   disabled,
-}) => {
-  const classes = useStyles();
-  return (
-    <button
-      className={clsx(
-        classes.button,
-        {
-          [classes.disabled]: disabled,
-          [classes.transparent]: isTransparent,
-        },
-        className,
-      )}
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
-
-export default Button;
+}) => (
+  <StyledButton
+    className={className}
+    disabled={disabled}
+    isTransparent={isTransparent}
+    type="button"
+    onClick={onClick}
+  >
+    {children}
+  </StyledButton>
+);

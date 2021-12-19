@@ -1,7 +1,15 @@
 import { createContext } from 'react';
 
-const AnimationContext = createContext({
-  isAnimating: false,
-});
+import { RouteSprites } from '~/typings/sprites';
 
-export default AnimationContext;
+interface AnimationContextInterface {
+  isAnimating: boolean;
+  routeSprites: RouteSprites;
+  setRouteSprites: (spriteArray: RouteSprites) => void;
+}
+
+export const AnimationContext = createContext<AnimationContextInterface>({
+  isAnimating: false,
+  routeSprites: [null, null],
+  setRouteSprites: () => null,
+});

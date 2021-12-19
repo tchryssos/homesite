@@ -1,11 +1,4 @@
-import React from 'react';
-
-import BanjoJace from '~/static/banjo_jace.png';
-import BaseballIcon from '~/static/baseball.ico';
-import RpgSheetSword from '~/static/rpg_sheet_sword.png';
-import ScreaminNicholas from '~/static/screamin_nicholas.png';
-
-import ProjectBlock from '../ProjectBlock';
+import { ProjectBlock } from '../ProjectBlock';
 import { PortfolioSection } from './PortfolioSection';
 
 export const Experiments: React.FC = () => (
@@ -15,7 +8,7 @@ export const Experiments: React.FC = () => (
   >
     <ProjectBlock
       imageAltText="RPG Sheet sword logo"
-      imageSrc={RpgSheetSword}
+      imageSrc="/rpg_sheet_sword.png"
       text="An online tabletop RPG character sheet tool. Currently supports 'Shadow of the Demon Lord'. Still a work in progress."
       title="rpg sheet dot games"
       to="https://rpgsheet.games"
@@ -24,7 +17,7 @@ export const Experiments: React.FC = () => (
     <ProjectBlock
       hideLink
       imageAltText="Screamin' Nicholas logo"
-      imageSrc={ScreaminNicholas}
+      imageSrc="/screamin_nicholas.png"
       text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot. Still a work in progress."
       title="Screamin' Nicholas"
       to="https://github.com/tchryssos/screamin-nicholas"
@@ -32,7 +25,7 @@ export const Experiments: React.FC = () => (
     />
     <ProjectBlock
       imageAltText="Pixel-art baseball"
-      imageSrc={BaseballIcon}
+      imageSrc="/baseball.ico"
       text="Step up to the plate as a procedurally generated baseball player  and swing for the fences!"
       title="HOME RUN"
       to="https://tchryssos.github.io/homerun/"

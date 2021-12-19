@@ -1,41 +1,15 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { white } from '~/constants/styles/colors';
-import { monoFont, sansFont } from '~/constants/styles/fonts';
+import { MarginProps } from '../box/types';
+import { createTextSharedStyles } from './styles';
+import { TypographyProps } from './types';
 
-interface Props {
-  className?: string;
-  decorative?: boolean;
-  children: React.ReactNode;
-}
+type BodyProps = Pick<MarginProps, 'mb'> & TypographyProps;
 
-const useStyles = createUseStyles({
-  body: {
-    color: white,
-    fontSize: 16,
-    fontFamily: sansFont,
-  },
-  decorative: {
-    fontSize: 20,
-    fontFamily: monoFont,
-  },
-});
-
-const Body: React.FC<Props> = ({ children, className, decorative }) => {
-  const classes = useStyles();
-  return (
-    <p
-      className={clsx(
-        classes.body,
-        { [classes.decorative]: decorative },
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-};
-
-export default Body;
+export const Body = styled.p<BodyProps>(
+  ({ theme, variant = 'normal', ...rest }) => ({
+    ...createTextSharedStyles(theme, { ...rest, variant }),
+    fontSize:
+      variant === 'normal' ? theme.fontSize.body : theme.fontSize.bigBody,
+  }),
+);

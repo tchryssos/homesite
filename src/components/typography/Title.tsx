@@ -1,32 +1,14 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import { white } from '~/constants/styles/colors';
-import { monoFont } from '~/constants/styles/fonts';
-import { useShadowStyles } from '~/logic/util/styles/shadow';
+import { MarginProps } from '../box/types';
+import { createTextSharedStyles } from './styles';
+import { TypographyProps } from './types';
 
-interface Props {
-  className?: string;
-  children: React.ReactNode;
-}
+type TitleProps = Pick<MarginProps, 'mb'> & TypographyProps;
 
-const useStyles = createUseStyles({
-  h3: {
-    color: white,
-    fontSize: 36,
-    fontFamily: monoFont,
-  },
-});
-
-const Title: React.FC<Props> = ({ children, className }: Props) => {
-  const classes = useStyles();
-  const shadowClasses = useShadowStyles();
-  return (
-    <h2 className={clsx(classes.h3, shadowClasses.textShadow, className)}>
-      {children}
-    </h2>
-  );
-};
-
-export default Title;
+export const Title = styled.h1<TitleProps>(
+  ({ theme, variant = 'decorative', shadowed = true, ...rest }) => ({
+    ...createTextSharedStyles(theme, { variant, shadowed, ...rest }),
+    fontSize: theme.fontSize.title,
+  }),
+);

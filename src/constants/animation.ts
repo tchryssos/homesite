@@ -1,1 +1,1 @@
-export const PAGE_TRANSITION_TIME: number = 2000;
+export const PAGE_TRANSITION_TIME = 2000;

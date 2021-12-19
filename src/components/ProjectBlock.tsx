@@ -1,94 +1,14 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
+import styled from '@emotion/styled';
 
-import ExtLink from '~/components/ExtLink';
-import IconLink from '~/components/IconLink';
-import Github from '~/components/icons/Github';
-import Medium from '~/components/icons/Medium';
-import Open from '~/components/icons/Open';
-import Vimeo from '~/components/icons/Vimeo';
-import Body from '~/components/typography/Body';
-import LittleTitle from '~/components/typography/LittleTitle';
-import { black, white } from '~/constants/styles/colors';
-import orNull from '~/logic/util/orNull';
-import { useShadowStyles } from '~/logic/util/styles/shadow';
+import { IconLink, IconType } from '~/components/IconLink';
+import { Image } from '~/components/Image';
+import { Body } from '~/components/typography/Body';
+import { pxToRem } from '~/logic/util/styles/pxToRem';
+import { SubExtends } from '~/typings/util';
 
-const useStyles = createUseStyles({
-  block: {
-    borderRadius: 4,
-    backgroundColor: black,
-    border: [[2, 'solid', white]],
-    display: 'flex',
-    flexDirection: 'column',
-    padding: 8,
-    wordBreak: 'break-word',
-    position: 'relative',
-  },
-  siteLink: {
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 8,
-    width: '100%',
-  },
-  headerLeft: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  image: {
-    height: 40,
-    width: 40,
-    marginRight: 16,
-  },
-  icons: {
-    display: 'flex',
-  },
-});
-
-interface LinkProps {
-  extType: string;
-  extLink: string;
-  extTitle: string;
-}
-const OtherLink: React.FC<LinkProps> = ({ extType, extTitle, extLink }) => {
-  switch (extType) {
-    case 'vimeo':
-      return (
-        <IconLink to={extLink}>
-          {(iconClass, iconColorClass) => (
-            <Vimeo
-              className={iconClass}
-              colorClassName={iconColorClass}
-              title={`Open ${extTitle}`}
-              titleId={`${extLink}OpenId`}
-            />
-          )}
-        </IconLink>
-      );
-    case 'medium':
-      return (
-        <IconLink to={extLink}>
-          {(iconClass, iconColorClass) => (
-            <Medium
-              className={iconClass}
-              colorClassName={iconColorClass}
-              title={`Open ${extTitle}`}
-              titleId={`${extLink}OpenId`}
-            />
-          )}
-        </IconLink>
-      );
-    default:
-      console.warn('This link type is not supported');
-      return null;
-  }
-};
+import { FlexBox } from './box/FlexBox';
+import { Link } from './Link';
+import { SubTitle } from './typography/SubTitle';
 
 interface Props {
   title: string;
@@ -99,13 +19,38 @@ interface Props {
   toRepo?: string;
   hideLink?: boolean;
   toOthers?: {
-    extType: string;
+    extType: SubExtends<IconType, 'medium' | 'vimeo'>;
     extLink: string;
     extTitle: string;
   }[];
 }
 
-const ProjectBlock: React.FC<Props> = ({
+const Block = styled(FlexBox)(({ theme }) => ({
+  borderRadius: theme.border.borderRadius.rounded,
+  backgroundColor: theme.colors.background,
+  border: `${theme.border.borderWidth[2]} solid ${theme.colors.text}`,
+  wordBreak: 'break-word',
+  position: 'relative',
+  boxShadow: `${theme.spacing[4]} ${theme.spacing[4]} ${theme.colors.primaryHeavy}`,
+  '&:hover': {
+    transform: `translate(${pxToRem(-4)}, ${pxToRem(-4)})`,
+    boxShadow: `${theme.spacing[8]} ${theme.spacing[8]} ${theme.colors.primaryHeavy}`,
+  },
+}));
+
+const ProjectLink = styled(Link)`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+`;
+
+const ProjectIcon = styled(Image)`
+  margin-right: ${({ theme }) => theme.spacing[8]};
+`;
+
+export const ProjectBlock: React.FC<Props> = ({
   title,
   text,
   imageAltText,
@@ -114,63 +59,35 @@ const ProjectBlock: React.FC<Props> = ({
   toRepo,
   hideLink,
   toOthers,
-}) => {
-  const classes = useStyles();
-  const shadowClasses = useShadowStyles();
-  return (
-    <div
-      className={clsx(
-        classes.block,
-        shadowClasses.shadow,
-        shadowClasses.hoverShadow,
-      )}
-    >
-      <ExtLink alt={title} className={classes.siteLink} to={to} />
-      <div className={classes.header}>
-        <div className={classes.headerLeft}>
-          <img alt={imageAltText} className={classes.image} src={imageSrc} />
-          <LittleTitle>{title}</LittleTitle>
-        </div>
-        <div className={classes.icons}>
-          {toOthers?.map(({ extType, extLink, extTitle }) => (
-            <OtherLink
-              extLink={extLink}
-              extTitle={extTitle}
-              extType={extType}
-              key={extLink}
-            />
-          ))}
-          {orNull(
-            Boolean(toRepo),
-            <IconLink to={toRepo}>
-              {(iconClass, iconColorClass) => (
-                <Github
-                  className={iconClass}
-                  colorClassName={iconColorClass}
-                  title={`Go to the Github repo for ${title}`}
-                  titleId={`${to}GitRepoId`}
-                />
-              )}
-            </IconLink>,
-          )}
-          {orNull(
-            !hideLink,
-            <IconLink to={to}>
-              {(iconClass, iconColorClass) => (
-                <Open
-                  className={iconClass}
-                  colorClassName={iconColorClass}
-                  title={`Open ${title}`}
-                  titleId={`${to}OpenId`}
-                />
-              )}
-            </IconLink>,
-          )}
-        </div>
-      </div>
-      <Body>{text}</Body>
-    </div>
-  );
-};
-
-export default ProjectBlock;
+}) => (
+  <Block column p={8}>
+    <ProjectLink altText={title} href={to} />
+    <FlexBox alignItems="center" justifyContent="space-between" mb={8}>
+      <FlexBox alignItems="center">
+        <ProjectIcon alt={imageAltText} height={40} src={imageSrc} width={40} />
+        <SubTitle>{title}</SubTitle>
+      </FlexBox>
+      <FlexBox>
+        {toOthers?.map(({ extType, extLink, extTitle }) => (
+          <IconLink
+            altText={extTitle}
+            href={extLink}
+            icon={extType}
+            key={extLink}
+          />
+        ))}
+        {Boolean(toRepo) && (
+          <IconLink
+            altText={`Go to the Github repo for ${title}`}
+            href={toRepo}
+            icon="github"
+          />
+        )}
+        {!hideLink && (
+          <IconLink altText={`Open ${title}`} href={to} icon="open" />
+        )}
+      </FlexBox>
+    </FlexBox>
+    <Body>{text}</Body>
+  </Block>
+);
