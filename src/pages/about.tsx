@@ -1,5 +1,3 @@
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
 import camelCase from 'lodash.camelcase';
 import shuffle from 'lodash.shuffle';
 import { useEffect, useState } from 'react';
