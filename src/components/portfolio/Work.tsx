@@ -5,7 +5,7 @@ export const Work: React.FC = () => (
   <PortfolioSection desc="A selection of professional projects" title="Work">
     <ProjectBlock
       imageAltText="Sparkle emoji"
-      imageSrc="/sparkle.png'"
+      imageSrc="/sparkle.png"
       text="Portfolio website for graphic &amp; UX designer Casey Bradford."
       title="casey&#x0200B;bradford&#x0200B;.club"
       to="https://caseybradford.club/"
