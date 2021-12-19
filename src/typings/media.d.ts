@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable import/no-default-export */
 declare module '*.gif' {
   const value: any;
   export default value;
