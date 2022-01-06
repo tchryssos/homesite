@@ -10,7 +10,7 @@ interface LinkProps {
   altText: string;
 }
 
-const StyledLink = styled.a<Pick<LinkProps, 'isInternal'>>(({ theme }) => ({
+const StyledLink = styled.a(({ theme }) => ({
   color: theme.colors.text,
   display: 'inline-block',
   textDecoration: 'none',
@@ -18,21 +18,6 @@ const StyledLink = styled.a<Pick<LinkProps, 'isInternal'>>(({ theme }) => ({
     cursor: 'pointer',
   },
 }));
-
-interface LinkHOCProps extends Pick<LinkProps, 'isInternal' | 'children'> {
-  href: string;
-}
-
-const LinkHOC: React.FC<LinkHOCProps> = ({ isInternal, children, href }) => {
-  if (!isInternal) {
-    return <>{children}</>;
-  }
-  return (
-    <NextLink href={href} passHref>
-      {children}
-    </NextLink>
-  );
-};
 
 export const Link: React.FC<LinkProps> = ({
   href,
@@ -43,7 +28,7 @@ export const Link: React.FC<LinkProps> = ({
   altText,
 }) =>
   href ? (
-    <LinkHOC href={href} isInternal={isInternal}>
+    <NextLink href={href} passHref>
       <StyledLink
         aria-label={altText}
         className={className}
@@ -53,7 +38,7 @@ export const Link: React.FC<LinkProps> = ({
       >
         {children}
       </StyledLink>
-    </LinkHOC>
+    </NextLink>
   ) : (
     <>{children}</>
   );
