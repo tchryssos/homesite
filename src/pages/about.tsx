@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { ArtPane } from '~/components/ArtPane';
 import { GridBox } from '~/components/box/GridBox';
 import { Layout } from '~/components/meta/Layout';
-import { IS_URL } from '~/constants/regex';
+import { IS_MET_IMAGE, IS_URL } from '~/constants/regex';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { Artwork, UnserializedArtwork } from '~/typings/art';
 
@@ -26,7 +26,10 @@ const About: React.FC = () => {
               currArt.Artist &&
               currArt['Artwork Name'] &&
               currArt['Artwork Url'] &&
-              IS_URL.test(currArt['Artwork Url'])
+              IS_URL.test(currArt['Artwork Url']) &&
+              // Met museum images have separate API
+              // neet to filter those out and make a separate request
+              !IS_MET_IMAGE.test(currArt['Artwork Url'])
             ) {
               const nextArt: Artwork = {} as Artwork;
               Object.keys(currArt).forEach((key) => {
