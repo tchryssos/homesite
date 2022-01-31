@@ -47,7 +47,7 @@ export const ArtPane: React.FC<ArtPaneProps> = ({ artObj, index }) => {
         index={index}
         layout="fill"
         objectFit="scale-down"
-        objectPosition="left bottom"
+        objectPosition="center bottom"
         src={artObj.artworkUrl}
         onLoad={onLoad}
       />

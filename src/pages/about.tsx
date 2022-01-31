@@ -14,6 +14,7 @@ const About: React.FC = () => {
   const [artList, setArtList] = useState<Artwork[]>(emptyArr);
 
   const isLessThanMd = useBreakpointsLessThan('md');
+  const isLessThanSm = useBreakpointsLessThan('sm');
 
   useEffect(() => {
     const fetchArt = async () => {
@@ -49,7 +50,8 @@ const About: React.FC = () => {
 
   return (
     <Layout>
-      <GridBox columns={isLessThanMd ? 2 : 3} mb={256}>
+      {/* eslint-disable-next-line no-nested-ternary */}
+      <GridBox columns={isLessThanSm ? 1 : isLessThanMd ? 2 : 3} mb={256}>
         {artList.map((art, i) => (
           <ArtPane
             artObj={art}
