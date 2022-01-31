@@ -6,17 +6,15 @@ import { useEffect, useRef, useState } from 'react';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Theme, themes } from '~/constants/theme';
 import { AnimationContext } from '~/logic/contexts/animation';
-import disableDevTools from '~/logic/util/disableDevTools';
+import { disableDevTools } from '~/logic/util/disableDevTools';
 import { getRouteSprite } from '~/logic/util/routing';
+import { getWindow } from '~/logic/util/window';
 import { ColorMode } from '~/typings/colorMode';
 import { RouteSprites } from '~/typings/sprites';
 
 import { BreakpointsContext } from '../logic/contexts/breakpointsContext';
 import { BreakpointSize } from '../typings/theme';
 
-if (process.env.NODE_ENV === 'production') {
-  disableDevTools();
-}
 const marPadZero = css`
   margin: 0;
   padding: 0;
@@ -64,6 +62,7 @@ const createGlobalStyles = (theme: Theme) => css`
 
 const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { pathname } = useRouter();
+  const window = getWindow();
 
   const [windowBreakpoints, setWindowBreakpoints] = useState<BreakpointSize[]>([
     'xxs',
@@ -81,23 +80,31 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   useEffect(() => {
     Object.keys(theme.breakpointValues).forEach((key, i, arr) => {
-      const queryAdjective = key === 'xss' ? 'max' : 'min';
-      const query = window.matchMedia(
-        `(${queryAdjective}-width: ${
-          theme.breakpointValues[key as BreakpointSize]
-        }px)`,
-      );
-      if (query.matches) {
-        setWindowBreakpoints(arr.slice(0, i + 1) as BreakpointSize[]);
-      }
-      query.addEventListener('change', (e) => {
-        setWindowBreakpoints(
-          arr.slice(0, e.matches ? i + 1 : i) as BreakpointSize[],
+      if (window) {
+        const queryAdjective = key === 'xss' ? 'max' : 'min';
+        const query = window.matchMedia(
+          `(${queryAdjective}-width: ${
+            theme.breakpointValues[key as BreakpointSize]
+          }px)`,
         );
-      });
+        if (query.matches) {
+          setWindowBreakpoints(arr.slice(0, i + 1) as BreakpointSize[]);
+        }
+        query.addEventListener('change', (e) => {
+          setWindowBreakpoints(
+            arr.slice(0, e.matches ? i + 1 : i) as BreakpointSize[],
+          );
+        });
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [window]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      disableDevTools();
+    }
+  }, [window]);
 
   useEffect(() => {
     if (initializedRef.current) {

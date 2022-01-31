@@ -38,8 +38,8 @@ const spriteSwitch = (type: string) => {
       return '/troy_right.gif';
     case Sprites.LAPTOP:
       return '/laptop.gif';
-    // case Sprites.CANE:
-    //   return dumbCane;
+    case Sprites.CANE:
+      return '/dumbcane.gif';
     default:
       return '/questionman.gif';
   }
@@ -57,6 +57,7 @@ export const Sprite: React.FC<SpriteProps> = ({
         layout="fill"
         objectFit="contain"
         objectPosition="center bottom"
+        priority
         src={spriteSwitch(type)}
         type={type}
       />
