@@ -49,7 +49,7 @@ const About: React.FC = () => {
 
   return (
     <Layout>
-      <GridBox columns={isLessThanMd ? 2 : 3}>
+      <GridBox columns={isLessThanMd ? 2 : 3} mb={256}>
         {artList.map((art, i) => (
           <ArtPane
             artObj={art}

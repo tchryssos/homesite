@@ -45,6 +45,7 @@ const theme = {
     64: '4rem',
     80: '5rem',
     128: '8rem',
+    256: '16rem',
   },
   border: {
     borderRadius: {
