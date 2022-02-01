@@ -20,10 +20,13 @@ const ArtFrame = styled(FlexBox)`
 
 const ArtImg = styled(Image)<IndexProps>`
   width: 100%;
-  height: ${pxToRem(400)};
+  min-height: ${pxToRem(240)};
   position: relative;
   display: block;
   margin-bottom: ${({ theme }) => theme.spacing[8]};
+  ${({ theme }) => theme.breakpoints.sm} {
+    min-height: ${pxToRem(400)};
+  }
 `;
 
 interface ArtPaneProps {
