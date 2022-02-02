@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Theme, themes } from '~/constants/theme';
 import { AnimationContext } from '~/logic/contexts/animation';
+import { HistoryContext } from '~/logic/contexts/history';
 import { disableDevTools } from '~/logic/util/disableDevTools';
 import { getRouteSprite } from '~/logic/util/routing';
 import { getWindow } from '~/logic/util/window';
@@ -67,6 +68,9 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
   const [windowBreakpoints, setWindowBreakpoints] = useState<BreakpointSize[]>([
     'xxs',
   ]);
+  const [history, setHistory] = useState<
+    [string | undefined, string | undefined]
+  >([undefined, undefined]);
   const initializedRef = useRef(false);
 
   const [isAnimating, setIsAnimating] = useState(false);
@@ -115,17 +119,24 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
     }
   }, [pathname]);
 
+  useEffect(() => {
+    setHistory([pathname, history[0]]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
   return (
     <ThemeProvider theme={theme}>
-      <BreakpointsContext.Provider value={windowBreakpoints}>
-        <AnimationContext.Provider
-          value={{ isAnimating, routeSprites, setRouteSprites }}
-        >
-          <Global styles={createGlobalStyles(theme)} />
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Component {...pageProps} />
-        </AnimationContext.Provider>
-      </BreakpointsContext.Provider>
+      <HistoryContext.Provider value={history}>
+        <BreakpointsContext.Provider value={windowBreakpoints}>
+          <AnimationContext.Provider
+            value={{ isAnimating, routeSprites, setRouteSprites }}
+          >
+            <Global styles={createGlobalStyles(theme)} />
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            <Component {...pageProps} />
+          </AnimationContext.Provider>
+        </BreakpointsContext.Provider>
+      </HistoryContext.Provider>
     </ThemeProvider>
   );
 };

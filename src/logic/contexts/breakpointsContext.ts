@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-export const BreakpointsContext = createContext(['xxs']);
+import { BreakpointSize } from '~/typings/theme';
+
+export const BreakpointsContext = createContext<BreakpointSize[]>(['xxs']);
