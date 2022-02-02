@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import { Sprite } from '~/components/Sprite';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Sprites } from '~/constants/sprites';
+import { PIXEL_CONTENT_HEIGHT } from '~/constants/style';
 import { AnimationContext } from '~/logic/contexts/animation';
 import {
   getWalkAnimationDistance,
@@ -29,7 +30,7 @@ interface AnimationProps {
 
 const AnimationScroller = styled.div<AnimationProps>`
   display: flex;
-  height: ${pxToRem(240)};
+  height: ${pxToRem(PIXEL_CONTENT_HEIGHT)};
   transition: ${({ isAnimating }) =>
     isAnimating ? `transform ${PAGE_TRANSITION_TIME}ms linear` : ''};
 `;

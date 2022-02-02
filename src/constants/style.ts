@@ -1,0 +1,1 @@
+export const PIXEL_CONTENT_HEIGHT = 240;
