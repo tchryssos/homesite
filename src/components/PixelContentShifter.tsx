@@ -32,7 +32,7 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
 
     const pixelWrapAround = keyframes`
       from {
-        transform: ${translateDown}
+        transform: ${translateDown};
         visibility: visible;
       }
       50% {
@@ -42,21 +42,21 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
       51% {
         visibility: hidden;
         transform: translateY(${pxToRem(
-          (navHeight + PIXEL_CONTENT_HEIGHT) * -1,
+          (navHeight + PIXEL_CONTENT_HEIGHT) * -1.2,
         )})
-        52% {
-          visibility: visible;
-        }
-        100% {
-          transform: translateY(0);
-        }
       }
-
+      52% {
+        visibility: visible;
+      }
+      100% {
+        transform: translateY(0);
+      }
     `;
 
     const aboutPageStyles = {
-      width: '100%',
       position: 'fixed',
+      width: '100%',
+      backgroundImage: `linear-gradient(to bottom, transparent, ${theme.colors.primary} 10%)`,
       ...(lastRoute === HOME_PATH
         ? {
             animation: `${pixelSlideDown} ${PAGE_TRANSITION_TIME}ms linear forwards`,
@@ -68,14 +68,14 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
 
     const homePageStyles = {
       ...(lastRoute === ABOUT_PATH && {
-        animation: `${pixelWrapAround} ${PAGE_TRANSITION_TIME}ms linear forwards`,
+        animation: `${pixelWrapAround} ${PAGE_TRANSITION_TIME}ms ease-in-out forwards`,
       }),
     } as Record<string, unknown>;
 
     return {
-      zIndex: 2,
       height: '100%',
-      backgroundImage: `linear-gradient(to bottom, transparent, ${theme.colors.primary} 10%)`,
+      position: 'relative',
+      zIndex: 100,
       ...(isAboutPage ? aboutPageStyles : homePageStyles),
     };
   },

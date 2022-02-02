@@ -1,7 +1,7 @@
 import { css, Global, ThemeProvider } from '@emotion/react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Theme, themes } from '~/constants/theme';
@@ -110,7 +110,7 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
     }
   }, [window]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (initializedRef.current) {
       setIsAnimating(true);
       setTimeout(() => setIsAnimating(false), PAGE_TRANSITION_TIME);
@@ -119,7 +119,7 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
     }
   }, [pathname]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHistory([pathname, history[0]]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
