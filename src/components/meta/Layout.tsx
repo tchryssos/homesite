@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useContext, useRef } from 'react';
 
 import { ABOUT_PATH } from '~/constants/routes';
+import { AnimationContext } from '~/logic/contexts/animation';
 import { HistoryContext } from '~/logic/contexts/history';
 import { getWindow } from '~/logic/util/window';
 
@@ -23,10 +24,12 @@ const PixelSection: React.FC<PixelSectionProps> = ({ navHeight }) => {
   const { pathname } = useRouter();
   const [, lastRoute] = useContext(HistoryContext);
   const windowHeight = getWindow()?.innerHeight || 0;
+  const { isAnimating } = useContext(AnimationContext);
 
   return (
     <PixelContentShifter
       isAboutPage={pathname === ABOUT_PATH}
+      isAnimating={isAnimating}
       lastRoute={lastRoute}
       navHeight={navHeight}
       windowHeight={windowHeight}

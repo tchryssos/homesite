@@ -13,10 +13,11 @@ interface ShifterProps {
   windowHeight: number;
   navHeight: number;
   lastRoute: string | undefined;
+  isAnimating: boolean;
 }
 
 export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
-  ({ isAboutPage, windowHeight, navHeight, lastRoute, theme }) => {
+  ({ isAboutPage, windowHeight, navHeight, lastRoute, theme, isAnimating }) => {
     const translateDown = `translateY(${pxToRem(
       windowHeight - navHeight - PIXEL_CONTENT_HEIGHT,
     )})`;
@@ -36,7 +37,7 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
       position: 'fixed',
       width: '100%',
       backgroundImage: `linear-gradient(to bottom, transparent, ${theme.colors.primary} 10%)`,
-      ...(lastRoute === HOME_PATH
+      ...(lastRoute === HOME_PATH && isAnimating
         ? {
             animation: `${slideAnimation} forwards`,
           }
@@ -46,9 +47,10 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
     } as Record<string, unknown>;
 
     const homePageStyles = {
-      ...(lastRoute === ABOUT_PATH && {
-        animation: `${slideAnimation} reverse`,
-      }),
+      ...(lastRoute === ABOUT_PATH &&
+        isAnimating && {
+          animation: `${slideAnimation} reverse`,
+        }),
     } as Record<string, unknown>;
 
     return {
