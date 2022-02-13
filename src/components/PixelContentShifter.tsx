@@ -36,7 +36,7 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
     const aboutPageStyles = {
       position: 'fixed',
       width: '100%',
-      backgroundImage: `linear-gradient(to bottom, transparent, ${theme.colors.primary} 10%)`,
+      backgroundImage: `linear-gradient(to bottom, transparent, ${theme.colors.primary} 14%)`,
       ...(lastRoute === HOME_PATH && isAnimating
         ? {
             animation: `${slideAnimation} forwards`,
