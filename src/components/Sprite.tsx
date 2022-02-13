@@ -36,6 +36,8 @@ const spriteSwitch = (type: string) => {
       return '/troy.gif';
     case Sprites.TROY_RIGHT:
       return '/troy_right.gif';
+    case Sprites.TROY_REVERSE:
+      return '/troy_reverse.gif';
     case Sprites.LAPTOP:
       return '/laptop.gif';
     case Sprites.CANE:

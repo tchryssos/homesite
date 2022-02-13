@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 
 import { Sprite } from '~/components/Sprite';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
+import { ABOUT_PATH } from '~/constants/routes';
 import { Sprites } from '~/constants/sprites';
 import { PIXEL_CONTENT_HEIGHT } from '~/constants/style';
 import { AnimationContext } from '~/logic/contexts/animation';
@@ -92,6 +93,14 @@ export const PixelContent: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+  let troySprite = Sprites.TROY;
+  if (pathname === ABOUT_PATH) {
+    troySprite = Sprites.TROY_REVERSE;
+  }
+  if (isAnimating) {
+    troySprite = Sprites.TROY_RIGHT;
+  }
+
   return (
     <ArtContainer>
       <AnimationScroller
@@ -102,7 +111,7 @@ export const PixelContent: React.FC = () => {
           <TroySprite
             isAnimating={isAnimating}
             style={setInlineTransform(animationDistance, isAnimating)}
-            type={isAnimating ? Sprites.TROY_RIGHT : Sprites.TROY}
+            type={troySprite}
           />
           <ObjectSprite
             isAnimating={false}
