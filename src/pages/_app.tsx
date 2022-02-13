@@ -74,6 +74,8 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
   const initializedRef = useRef(false);
 
   const [isAnimating, setIsAnimating] = useState(false);
+  // When navigating with keyboard, disable animation & effects
+  const [keyboardNavActive, setKeyboardNavActive] = useState(false);
   const [routeSprites, setRouteSprites] = useState<RouteSprites>([
     null,
     getRouteSprite(pathname),
@@ -105,19 +107,29 @@ const Page: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [window]);
 
   useEffect(() => {
+    const listenForTab = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        setKeyboardNavActive(true);
+      }
+    };
+
+    window?.addEventListener('keyup', listenForTab);
+  }, [window]);
+
+  useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       disableDevTools();
     }
   }, [window]);
 
   useLayoutEffect(() => {
-    if (initializedRef.current) {
+    if (initializedRef.current && !keyboardNavActive) {
       setIsAnimating(true);
       setTimeout(() => setIsAnimating(false), PAGE_TRANSITION_TIME);
     } else {
       initializedRef.current = true;
     }
-  }, [pathname]);
+  }, [pathname, keyboardNavActive]);
 
   useLayoutEffect(() => {
     setHistory([pathname, history[0]]);

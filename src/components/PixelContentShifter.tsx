@@ -30,28 +30,7 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
       }
     `;
 
-    const pixelWrapAround = keyframes`
-      from {
-        transform: ${translateDown};
-        visibility: visible;
-      }
-      50% {
-        visibility: visible;
-        transform: translateY(100vh)
-      }
-      51% {
-        visibility: hidden;
-        transform: translateY(${pxToRem(
-          (navHeight + PIXEL_CONTENT_HEIGHT) * -1.2,
-        )})
-      }
-      52% {
-        visibility: visible;
-      }
-      100% {
-        transform: translateY(0);
-      }
-    `;
+    const slideAnimation = `${pixelSlideDown} ${PAGE_TRANSITION_TIME}ms linear`;
 
     const aboutPageStyles = {
       position: 'fixed',
@@ -59,7 +38,7 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
       backgroundImage: `linear-gradient(to bottom, transparent, ${theme.colors.primary} 10%)`,
       ...(lastRoute === HOME_PATH
         ? {
-            animation: `${pixelSlideDown} ${PAGE_TRANSITION_TIME}ms linear forwards`,
+            animation: `${slideAnimation} forwards`,
           }
         : {
             transform: translateDown,
@@ -68,7 +47,7 @@ export const PixelContentShifter = styled(FlexBox)<ShifterProps>(
 
     const homePageStyles = {
       ...(lastRoute === ABOUT_PATH && {
-        animation: `${pixelWrapAround} ${PAGE_TRANSITION_TIME}ms ease-in-out forwards`,
+        animation: `${slideAnimation} reverse`,
       }),
     } as Record<string, unknown>;
 
