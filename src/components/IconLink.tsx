@@ -5,6 +5,7 @@ import { Email } from './icons/Email';
 import { Github } from './icons/Github';
 import { Medium } from './icons/Medium';
 import { Open } from './icons/Open';
+import { Spotify } from './icons/Spotify';
 import { Vimeo } from './icons/Vimeo';
 import { Link } from './Link';
 
@@ -14,6 +15,7 @@ const iconMap = {
   medium: Medium,
   open: Open,
   vimeo: Vimeo,
+  spotify: Spotify,
 };
 
 export type IconType = keyof typeof iconMap;

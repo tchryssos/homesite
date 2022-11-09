@@ -28,18 +28,9 @@ export const Work: React.FC = () => (
     <ProjectBlock
       imageAltText="Quadio transport logo"
       imageSrc="/quadio.jpg"
-      text="A music streaming and sharing app for college creatives."
+      text="A music streaming and sharing app for college creatives (now defunct)."
       title="Quadio"
-      to="https://www.quadio.com/"
-      toOthers={[
-        {
-          extLink:
-            'https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14',
-          extTitle:
-            'Building an audio waveform progress bar for Quadio dev blog',
-          extType: 'medium',
-        },
-      ]}
+      to="https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14"
     />
   </PortfolioSection>
 );

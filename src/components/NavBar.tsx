@@ -115,6 +115,11 @@ export const NavBar: React.FC = () => (
             href="https://github.com/tchryssos"
             icon="github"
           />
+          <IconLink
+            altText="View my Spotify profile"
+            href="https://open.spotify.com/user/tchryssos?si=7ff8a5dcdae64508"
+            icon="spotify"
+          />
         </FlexBox>
       </FlexBox>
       {/*
