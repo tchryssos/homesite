@@ -7,5 +7,5 @@
   },
   "editor.codeActionsOnSaveTimeout": 750,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Chryssos"]
+  "cSpell.words": ["Chryssos", "Screamin"]
 }

@@ -31,13 +31,5 @@ export const Experiments: React.FC = () => (
       to="https://www.troyslist.art"
       toRepo="https://github.com/tchryssos/art-list"
     />
-    <ProjectBlock
-      imageAltText="Pixel-art baseball"
-      imageSrc="/baseball.ico"
-      text="Step up to the plate as a procedurally generated baseball player and swing for the fences!"
-      title="HOME RUN"
-      to="https://tchryssos.github.io/homerun/"
-      toRepo="https://github.com/tchryssos/homerun"
-    />
   </PortfolioSection>
 );

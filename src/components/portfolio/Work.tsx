@@ -28,7 +28,7 @@ export const Work: React.FC = () => (
     <ProjectBlock
       imageAltText="Quadio transport logo"
       imageSrc="/quadio.jpg"
-      text="A music streaming and sharing app for college creatives."
+      text="A music streaming and sharing app for college creatives (now defunct)."
       title="Quadio"
       to="https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14"
     />
