@@ -24,9 +24,17 @@ export const Experiments: React.FC = () => (
       toRepo="https://github.com/tchryssos/screamin-nicholas"
     />
     <ProjectBlock
+      imageAltText="Troy's art list picture emoji logo"
+      imageSrc="/troys_art_list.png"
+      text="A simple photo blog I built to document my favorite art pieces."
+      title="Troy's Art List"
+      to="https://www.troyslist.art"
+      toRepo="https://github.com/tchryssos/art-list"
+    />
+    <ProjectBlock
       imageAltText="Pixel-art baseball"
       imageSrc="/baseball.ico"
-      text="Step up to the plate as a procedurally generated baseball player  and swing for the fences!"
+      text="Step up to the plate as a procedurally generated baseball player and swing for the fences!"
       title="HOME RUN"
       to="https://tchryssos.github.io/homerun/"
       toRepo="https://github.com/tchryssos/homerun"
