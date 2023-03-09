@@ -9,7 +9,7 @@ export const Experiments: React.FC = () => (
     <ProjectBlock
       imageAltText="RPG Sheet sword logo"
       imageSrc="/rpg_sheet_sword.png"
-      text="An online tabletop RPG character sheet tool. Currently supports 'Shadow of the Demon Lord'. Still a work in progress."
+      text='An online tabletop RPG character sheet tool. Currently supports "Shadow of the Demon Lord".'
       title="rpg sheet dot games"
       to="https://rpgsheet.games"
       toRepo="https://github.com/tchryssos/rpg-sheet"
@@ -18,7 +18,7 @@ export const Experiments: React.FC = () => (
       hideLink
       imageAltText="Screamin' Nicholas logo"
       imageSrc="/screamin_nicholas.png"
-      text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot. Still a work in progress."
+      text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot."
       title="Screamin' Nicholas"
       to="https://github.com/tchryssos/screamin-nicholas"
       toRepo="https://github.com/tchryssos/screamin-nicholas"
