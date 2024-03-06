@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import {
   createContext,
   PropsWithChildren,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -38,7 +38,7 @@ export function AnimationContextProvider({
     getRouteSprite(pathname),
   ]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (initializedRef.current) {
       setIsAnimating(true);
       setTimeout(() => setIsAnimating(false), PAGE_TRANSITION_TIME);

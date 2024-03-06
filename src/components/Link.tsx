@@ -1,44 +1,34 @@
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 import NextLink from 'next/link';
+import { ComponentProps } from 'react';
 
-interface LinkProps {
-  href: string | undefined;
+interface LinkProps extends ComponentProps<typeof NextLink> {
+  href: string;
   isInternal?: boolean;
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
-  download?: boolean;
-  altText: string;
+  onClick?: () => void;
 }
 
-const StyledLink = styled.a(({ theme }) => ({
-  color: theme.colors.text,
-  display: 'inline-block',
-  textDecoration: 'none',
-  '&:hover': {
-    cursor: 'pointer',
-  },
-}));
-
-export const Link: React.FC<LinkProps> = ({
+export function Link({
   href,
-  isInternal,
+  isInternal = true,
   children,
   className,
-  download,
-  altText,
-}) =>
-  href ? (
-    <NextLink href={href} passHref>
-      <StyledLink
-        aria-label={altText}
-        className={className}
-        download={download}
-        rel="noopener noreferrer"
-        target={isInternal ? '_self' : '_blank'}
-      >
-        {children}
-      </StyledLink>
+  onClick,
+  ...rest
+}: LinkProps) {
+  return (
+    <NextLink
+      className={clsx(className, 'display-inline-block text-text')}
+      href={href}
+      rel="noopener noreferrer"
+      target={isInternal ? '_self' : '_blank'}
+      onClick={onClick}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
+    >
+      {children}
     </NextLink>
-  ) : (
-    <>{children}</>
   );
+}

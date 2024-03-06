@@ -8,11 +8,13 @@ type LayoutProps = {
   title?: string;
 };
 
-export const Layout: React.FC<LayoutProps> = ({ children, title }) => (
-  <>
-    <Head title={title} />
-    <NavBar />
-    <PixelContent />
-    <PageWrapper>{children}</PageWrapper>
-  </>
-);
+export function Layout({ children, title }: LayoutProps) {
+  return (
+    <>
+      <Head title={title} />
+      <NavBar />
+      <PixelContent />
+      <PageWrapper>{children}</PageWrapper>
+    </>
+  );
+}
