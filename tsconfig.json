@@ -1,11 +1,11 @@
 {
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
     "baseUrl": "./",
     "allowJs": true,
@@ -13,10 +13,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "module": "esnext",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -27,17 +24,10 @@
     "strict": true,
     "target": "esnext",
     "paths": {
-      "~/*": [
-        "src/*"
-      ]
+      "~/*": ["src/*"]
     },
     "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }

@@ -11,7 +11,7 @@
     "dev": "next dev",
     "build": "yarn lint:prune && next build",
     "build:serve": "yarn build && yarn next start -p 3003",
-    "lint": "next lint",
+    "lint": "next lint && npx stylelint '**/*.css'",
     "prepare": "husky",
     "lint:prune": "! ts-prune -i src/pages/* | grep -v -e 'used in module' -e src/pages"
   },
@@ -37,6 +37,10 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "stylelint": "^16.0.2",
+    "stylelint-config-standard": "^35.0.0",
+    "stylelint-order": "^6.0.4",
     "tailwindcss": "^3.4.1",
     "ts-prune": "^0.10.1",
     "typescript": "^5.4.2"
@@ -47,6 +51,9 @@
     ],
     "*.{ts,tsx}": [
       "eslint --fix"
+    ],
+    "*.css": [
+      "stylelint --fix"
     ]
   }
 }
