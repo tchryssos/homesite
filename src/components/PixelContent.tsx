@@ -1,69 +1,13 @@
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 
 import { Sprite } from '~/components/Sprite';
-import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Sprites } from '~/constants/sprites';
 import { AnimationContext } from '~/logic/contexts/animationContext';
-import {
-  getWalkAnimationDistance,
-  streetDisplayHeight,
-} from '~/logic/util/animation';
+import { getWalkAnimationDistance } from '~/logic/util/animation';
 import { getRouteSprite } from '~/logic/util/routing';
-import { pxToRem } from '~/logic/util/styles/pxToRem';
 import { getWindow } from '~/logic/util/window';
-
-import { FlexBox } from './box/FlexBox';
-
-// START - STYLED COMPONENTS - START
-const ArtContainer = styled.div`
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-`;
-
-interface AnimationProps {
-  isAnimating: boolean;
-}
-
-const AnimationScroller = styled.div<AnimationProps>`
-  display: flex;
-  height: ${pxToRem(240)};
-  transition: ${({ isAnimating }) =>
-    isAnimating ? `transform ${PAGE_TRANSITION_TIME}ms linear` : ''};
-`;
-
-const SpriteContainer = styled(FlexBox)`
-  width: 100%;
-  min-width: ${pxToRem(256)};
-  justify-content: center;
-`;
-
-const Sidewalk = styled.div`
-  position: absolute;
-  width: 300%;
-  top: ${pxToRem(124)};
-  height: ${pxToRem(streetDisplayHeight)};
-  background: url('/street_purp_sm.png');
-  background-repeat: repeat;
-  justify-self: flex-start;
-  background-size: contain;
-`;
-
-const TroySprite = styled(Sprite)<AnimationProps>`
-  z-index: 3;
-  transition: ${({ isAnimating }) =>
-    isAnimating ? `transform ${PAGE_TRANSITION_TIME}ms linear` : ''};
-`;
-
-const ObjectSprite = styled(Sprite)<AnimationProps>`
-  z-index: 2;
-  padding-bottom: ${({ theme }) => theme.spacing[16]};
-  position: ${({ isAnimating }) => (isAnimating ? 'absolute' : '')};
-  height: ${({ isAnimating }) => (isAnimating ? '100%' : '')};
-`;
-// END - STYLED COMPONENTS - END
 
 const setInlineTransform = (translate: number, isAnimating: boolean) => {
   if (isAnimating) {
@@ -74,7 +18,7 @@ const setInlineTransform = (translate: number, isAnimating: boolean) => {
   return undefined;
 };
 
-export const PixelContent: React.FC = () => {
+export function PixelContent() {
   const { pathname } = useRouter();
 
   const {
@@ -91,32 +35,36 @@ export const PixelContent: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+  const animationTransitionClassName =
+    isAnimating &&
+    'duration-page-transition-time transition-transform ease-linear';
+
   return (
-    <ArtContainer>
-      <AnimationScroller
-        isAnimating={isAnimating}
+    <div className="relative w-full overflow-hidden">
+      <div
+        className={clsx('flex h-60', animationTransitionClassName)}
         style={setInlineTransform(animationDistance * -1, isAnimating)}
       >
-        <SpriteContainer>
-          <TroySprite
-            isAnimating={isAnimating}
+        <div className="flex w-full min-w-64 justify-center">
+          <Sprite
+            className={clsx('z-[3]', animationTransitionClassName)}
             style={setInlineTransform(animationDistance, isAnimating)}
             type={isAnimating ? Sprites.TROY_RIGHT : Sprites.TROY}
           />
-          <ObjectSprite
-            isAnimating={false}
+          <Sprite
+            className={clsx('z-[2] pb-4', isAnimating && 'absolute h-full')}
             type={isAnimating ? prevSprite : currentSprite}
           />
           {isAnimating && (
-            <ObjectSprite
-              isAnimating
-              style={setInlineTransform(animationDistance + 64, isAnimating)}
+            <Sprite
+              className="absolute z-[2] h-full pb-4"
+              style={setInlineTransform(animationDistance + 64, true)}
               type={currentSprite}
             />
           )}
-        </SpriteContainer>
-        <Sidewalk />
-      </AnimationScroller>
-    </ArtContainer>
+        </div>
+        <div className="absolute top-32 h-street-display-height w-[300%] self-start bg-street bg-contain bg-repeat" />
+      </div>
+    </div>
   );
-};
+}

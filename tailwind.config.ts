@@ -12,6 +12,13 @@ export default {
         'breakpoint-md': '768px',
         'breakpoint-lg': '1024px',
         'breakpoint-xl': '1280px',
+        'street-display-height': '104px',
+      },
+      transitionDuration: {
+        'page-transition-time': '2000ms',
+      },
+      backgroundImage: {
+        street: "url('/street_purp_sm.png')",
       },
     },
     colors: {
