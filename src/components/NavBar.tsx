@@ -7,7 +7,7 @@ import { SubTitle } from './typography/SubTitle';
 export function NavBar() {
   return (
     <div className="flex flex-1 justify-center">
-      <div className="max-w-breakpoint-md flex flex-col">
+      <div className="flex max-w-breakpoint-md flex-col">
         <div className="flex items-center justify-between p-4">
           <Link className="no-underline" href={HOME_PATH} isInternal>
             <SubTitle italic shadowed>
@@ -32,17 +32,6 @@ export function NavBar() {
             />
           </div>
         </div>
-        {/*
-          @TODO Because there's only one page atm, only show the nav on some other page
-          AKA the 404 page
-         */}
-        {/* {pathname !== HOME_PATH && (
-          <NavWrapper>
-            <NavText href={HOME_PATH} pathname={pathname}>
-              Back to Home
-            </NavText>
-          </NavWrapper>
-        )} */}
       </div>
     </div>
   );

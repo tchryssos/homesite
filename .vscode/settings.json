@@ -11,5 +11,11 @@
   },
   "editor.codeActionsOnSaveTimeout": 750,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Chryssos", "clsx", "Screamin", "stylelint", "tailwindcss"]
+  "cSpell.words": ["Chryssos", "clsx", "Screamin", "stylelint", "tailwindcss"],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*ClassName"
+  ]
 }
