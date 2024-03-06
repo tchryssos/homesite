@@ -3,12 +3,9 @@ export type BaseIconProps = {
   viewBox?: string;
   title: string;
   titleId: string;
-  children: React.ReactNode;
 };
 
-export type IconProps = Pick<
-  BaseIconProps,
-  'title' | 'titleId' | 'className'
-> & {
+export type IconBuilderProps = BaseIconProps & {
+  d: string;
   pathClassName?: string;
 };
