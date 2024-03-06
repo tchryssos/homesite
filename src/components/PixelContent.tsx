@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react';
 import { Sprite } from '~/components/Sprite';
 import { PAGE_TRANSITION_TIME } from '~/constants/animation';
 import { Sprites } from '~/constants/sprites';
-import { AnimationContext } from '~/logic/contexts/animation';
+import { AnimationContext } from '~/logic/contexts/animationContext';
 import {
   getWalkAnimationDistance,
   streetDisplayHeight,
