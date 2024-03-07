@@ -44,6 +44,7 @@ export function Sprite({ type, style = {}, className }: SpriteProps) {
             ? 'h-[95%] w-[5.625rem] translate-y-[-0.375rem]'
             : 'h-full w-full',
         )}
+        fill
         priority
         src={spriteSwitch(type)}
         style={{
@@ -54,6 +55,7 @@ export function Sprite({ type, style = {}, className }: SpriteProps) {
           inset: 0,
           position: 'absolute',
           color: 'transparent',
+          ...style,
         }}
       />
     </div>
