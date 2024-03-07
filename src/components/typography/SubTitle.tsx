@@ -10,7 +10,7 @@ export function SubTitle({
   italic,
 }: TypographyProps) {
   return (
-    <h2
+    <h3
       className={clsx(
         'text-xl text-text sm:text-2xl',
         bold && 'font-bold',
@@ -20,6 +20,6 @@ export function SubTitle({
       )}
     >
       {children}
-    </h2>
+    </h3>
   );
 }
