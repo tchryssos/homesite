@@ -5,7 +5,7 @@ import { ComponentProps } from 'react';
 interface LinkProps extends ComponentProps<typeof NextLink> {
   href: string;
   isInternal?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   onClick?: () => void;
 }
