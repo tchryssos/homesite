@@ -12,7 +12,7 @@ export function Body({
   return (
     <p
       className={clsx(
-        'text-base text-text',
+        'font-body text-base text-text',
         bold && 'font-bold',
         shadowed && 'drop-shadow',
         italic && 'italic',

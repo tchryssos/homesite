@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { BaseIconProps } from './types';
 
@@ -13,7 +13,7 @@ export function BaseIcon({
   return (
     <svg
       aria-labelledby={titleId}
-      className={clsx('h-full w-full', className)}
+      className={twMerge('h-full w-full', className)}
       role="img"
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"

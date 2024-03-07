@@ -38,7 +38,7 @@ export function ProjectBlock({
         href={to}
         title={title}
       />
-      <div className="mb-2 flex content-between items-center">
+      <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Image alt={imageAltText} height={40} src={imageSrc} width={40} />
           <SubTitle>{title}</SubTitle>

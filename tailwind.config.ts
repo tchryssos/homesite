@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         mono: ['"JetBrains Mono"', 'monospace'],
+        body: ['"PT Sans"', 'sans-serif'],
       },
       spacing: {
         'breakpoint-xs': '639px',
