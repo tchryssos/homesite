@@ -41,7 +41,7 @@ export function Sprite({ type, style = {}, className }: SpriteProps) {
           // I didn't make them all the same sizes, so now we need to adjust
           // for the TROY_RIGHT sprite
           type === Sprites.TROY_RIGHT
-            ? 'h-[95%] w-[5.625rem] translate-y-[-0.375rem]'
+            ? 'h-[95%] w-[5.625rem] -translate-y-[0.375rem]'
             : 'h-full w-full',
         )}
         fill
@@ -52,6 +52,7 @@ export function Sprite({ type, style = {}, className }: SpriteProps) {
           objectFit: 'contain',
           height: '100%',
           width: '100%',
+          top: 0,
           inset: 0,
           position: 'absolute',
           color: 'transparent',

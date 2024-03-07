@@ -3,7 +3,6 @@ import '../global.css';
 import { AppProps } from 'next/app';
 import { useEffect } from 'react';
 
-import { AnimationContextProvider } from '~/logic/contexts/animationContext';
 import { disableDevTools } from '~/logic/util/disableDevTools';
 import { getWindow } from '~/logic/util/window';
 
@@ -20,10 +19,8 @@ function Page({ Component, pageProps }: AppProps) {
 
   return (
     <BreakpointsContextProvider>
-      <AnimationContextProvider>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
-      </AnimationContextProvider>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Component {...pageProps} />
     </BreakpointsContextProvider>
   );
 }
