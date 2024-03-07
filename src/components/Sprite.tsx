@@ -44,11 +44,17 @@ export function Sprite({ type, style = {}, className }: SpriteProps) {
             ? 'h-[95%] w-[5.625rem] translate-y-[-0.375rem]'
             : 'h-full w-full',
         )}
-        layout="fill"
-        objectFit="contain"
-        objectPosition="center bottom"
         priority
         src={spriteSwitch(type)}
+        style={{
+          objectPosition: 'center bottom',
+          objectFit: 'contain',
+          height: '100%',
+          width: '100%',
+          inset: 0,
+          position: 'absolute',
+          color: 'transparent',
+        }}
       />
     </div>
   ) : null;
