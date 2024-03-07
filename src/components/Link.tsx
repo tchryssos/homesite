@@ -12,7 +12,7 @@ interface LinkProps extends ComponentProps<typeof NextLink> {
 
 export function Link({
   href,
-  isInternal = true,
+  isInternal = false,
   children,
   className,
   onClick,

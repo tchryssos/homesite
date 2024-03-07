@@ -10,19 +10,17 @@ export function Experiments() {
       <ProjectBlock
         imageAltText="RPG Sheet sword logo"
         imageSrc="/rpg_sheet_sword.png"
-        text='An online tabletop RPG character sheet tool. Currently supports "Shadow of the Demon Lord".'
+        text='An online tabletop RPG character sheet tool for "Shadow of the Demon Lord", "Shadow of the Weird Wizard", "Cities Without Number", and "Worlds Without Number".'
         title="rpg sheet dot games"
         to="https://rpgsheet.games"
         toRepo="https://github.com/tchryssos/rpg-sheet"
       />
       <ProjectBlock
-        hideLink
-        imageAltText="Screamin' Nicholas logo"
-        imageSrc="/screamin_nicholas.png"
-        text="A discord bot that can play YouTube video audio in your voice channels, like the late, great Groovy bot."
-        title="Screamin' Nicholas"
-        to="https://github.com/tchryssos/screamin-nicholas"
-        toRepo="https://github.com/tchryssos/screamin-nicholas"
+        imageAltText="Magical sword-wielding warrior"
+        imageSrc="/swordsman.png"
+        text='A tabletop RPG world-building toolkit, with generators for on-the-fly people, places, and maps, as well as campaign world ornamenters like "live" events and faction relationship tracking.'
+        title="BoneWorld Quest"
+        to="https://www.boneworld.quest"
       />
       <ProjectBlock
         imageAltText="Troy's art list picture emoji logo"

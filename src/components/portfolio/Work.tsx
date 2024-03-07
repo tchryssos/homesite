@@ -18,20 +18,23 @@ export function Work() {
         text="A shared virtual desktop workspace for creative teams to view and organize project assets."
         title="Moss Workspace"
         to="https://mossworkspace.com/"
-        toOthers={[
-          {
-            extLink: 'https://vimeo.com/472490067/524a565895',
-            extTitle: 'Moss Vimeo',
-            extType: 'vimeo',
-          },
-        ]}
       />
       <ProjectBlock
+        hideLink
         imageAltText="Quadio transport logo"
         imageSrc="/quadio.jpg"
         text="A music streaming and sharing app for college creatives (now defunct)."
         title="Quadio"
         to="https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14"
+        toOthers={[
+          {
+            extLink:
+              'https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14',
+            extTitle:
+              'Medium article about building the audio waveform progress bar',
+            extType: 'medium',
+          },
+        ]}
       />
     </PortfolioSection>
   );
