@@ -6,6 +6,9 @@ export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
       spacing: {
         'breakpoint-xs': '639px',
         'breakpoint-sm': '640px',

@@ -12,7 +12,7 @@ export function SubTitle({
   return (
     <h3
       className={clsx(
-        'text-xl text-text sm:text-2xl',
+        'font-mono text-xl text-text',
         bold && 'font-bold',
         shadowed && 'drop-shadow',
         italic && 'italic',

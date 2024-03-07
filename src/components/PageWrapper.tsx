@@ -8,7 +8,7 @@ interface PageWrapperProps {
 export function PageWrapper({ children, className }: PageWrapperProps) {
   return (
     <div className={clsx('flex flex-1 justify-around px-4', className)}>
-      <div className="flex w-full max-w-breakpoint-md flex-col">{children}</div>
+      <div className="flex w-full max-w-breakpoint-lg flex-col">{children}</div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { Work } from '~/components/portfolio/Work';
 
 function Home() {
   return (
-    <Layout>
+    <Layout title="Troy Chryssos">
       <CurrentGig />
       <Experiments />
       <Work />

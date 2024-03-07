@@ -32,7 +32,7 @@ export function ProjectBlock({
   toOthers,
 }: Props) {
   return (
-    <div className="relative flex flex-col break-words rounded-s border-2 border-solid border-text bg-background shadow-md shadow-primaryHeavy hover:-translate-x-1 hover:-translate-y-1 hover:shadow-lg">
+    <div className="relative flex flex-col break-words rounded-s border-2 border-solid border-text bg-background p-2 shadow-md shadow-primaryHeavy hover:-translate-x-1 hover:-translate-y-1 hover:shadow-lg">
       <Link
         className="absolute left-0 top-0 h-full w-full"
         href={to}

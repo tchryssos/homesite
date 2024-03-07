@@ -7,7 +7,7 @@ import { SubTitle } from './typography/SubTitle';
 export function NavBar() {
   return (
     <div className="flex flex-1 justify-center">
-      <div className="flex max-w-breakpoint-md flex-col">
+      <div className="flex max-w-breakpoint-lg flex-col">
         <div className="flex items-center justify-between p-4">
           <Link className="no-underline" href={HOME_PATH} isInternal>
             <SubTitle italic shadowed>

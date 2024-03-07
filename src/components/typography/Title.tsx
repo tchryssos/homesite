@@ -12,7 +12,7 @@ export function Title({
   return (
     <h2
       className={clsx(
-        'text-3xl text-text',
+        'font-mono text-2xl text-text',
         bold && 'font-bold',
         shadowed && 'drop-shadow',
         italic && 'italic',

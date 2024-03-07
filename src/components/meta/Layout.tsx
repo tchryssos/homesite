@@ -1,17 +1,20 @@
+import Head from 'next/head';
+
 import { NavBar } from '../NavBar';
 import { PageWrapper } from '../PageWrapper';
 import { PixelContent } from '../PixelContent';
-import { Head } from './Head';
 
 type LayoutProps = {
   children?: React.ReactNode;
-  title?: string;
+  title: string;
 };
 
 export function Layout({ children, title }: LayoutProps) {
   return (
     <>
-      <Head title={title} />
+      <Head>
+        <title>{title}</title>
+      </Head>
       <NavBar />
       <PixelContent />
       <PageWrapper>{children}</PageWrapper>
