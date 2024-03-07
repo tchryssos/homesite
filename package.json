@@ -9,11 +9,11 @@
   "sideEffects": false,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn lint:prune && next build",
+    "build": "yarn lint && next build",
     "build:serve": "yarn build && yarn next start -p 3003",
-    "lint": "next lint && npx stylelint '**/*.css'",
+    "lint": "next lint && npx stylelint '**/*.css' && yarn knip:prune",
     "prepare": "husky",
-    "lint:prune": "! ts-prune -i src/pages/* | grep -v -e 'used in module' -e src/pages"
+    "knip:prune": "knip --include exports,types"
   },
   "dependencies": {
     "clsx": "^2.1.0",
@@ -38,6 +38,7 @@
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "husky": "^9.0.11",
+    "knip": "^5.0.3",
     "lint-staged": "^15.2.2",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
