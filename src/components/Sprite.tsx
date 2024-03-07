@@ -1,34 +1,13 @@
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 
 import { Image } from '~/components/Image';
 import { Sprites } from '~/constants/sprites';
-import { pxToRem } from '~/logic/util/styles/pxToRem';
 
 interface SpriteProps {
   type: Sprites | null;
   style?: Record<string, string | number>;
   className?: string;
 }
-
-const SpriteContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: ${pxToRem(128)};
-  max-height: ${pxToRem(190)};
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-`;
-
-// When I made the sprites a few years ago
-// I didn't make them all the same sizes, so now we need to adjust
-// for the TROY_RIGHT sprite
-const SpriteImage = styled(Image)<Pick<SpriteProps, 'type'>>(({ type }) => ({
-  width: type === Sprites.TROY_RIGHT ? pxToRem(90) : '100%',
-  height: type === Sprites.TROY_RIGHT ? '95%' : '100%',
-  transform: type === Sprites.TROY_RIGHT ? `translateY(${pxToRem(-6)})` : '',
-  position: 'relative',
-}));
 
 const spriteSwitch = (type: string) => {
   switch (type) {
@@ -45,21 +24,41 @@ const spriteSwitch = (type: string) => {
   }
 };
 
-export const Sprite: React.FC<SpriteProps> = ({
-  type,
-  style = {},
-  className,
-}) =>
-  type ? (
-    <SpriteContainer className={className} style={style}>
-      <SpriteImage
+export function Sprite({ type, style = {}, className }: SpriteProps) {
+  return type ? (
+    <div
+      className={clsx(
+        'relative flex h-full max-h-[190px] w-full max-w-32 items-end',
+        className,
+      )}
+      style={style}
+    >
+      <Image
         alt={`A sprite of ${type}`}
-        layout="fill"
-        objectFit="contain"
-        objectPosition="center bottom"
+        className={clsx(
+          'relative',
+          // When I made the sprites a few years ago
+          // I didn't make them all the same sizes, so now we need to adjust
+          // for the TROY_RIGHT sprite
+          type === Sprites.TROY_RIGHT
+            ? 'h-[95%] w-[5.625rem] -translate-y-[0.375rem]'
+            : 'h-full w-full',
+        )}
+        fill
         priority
         src={spriteSwitch(type)}
-        type={type}
+        style={{
+          objectPosition: 'center bottom',
+          objectFit: 'contain',
+          height: '100%',
+          width: '100%',
+          top: 0,
+          inset: 0,
+          position: 'absolute',
+          color: 'transparent',
+          ...style,
+        }}
       />
-    </SpriteContainer>
+    </div>
   ) : null;
+}

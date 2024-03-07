@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 import { useState } from 'react';
 
 import { Email } from './icons/Email';
@@ -23,47 +23,34 @@ export type IconType = keyof typeof iconMap;
 interface Props {
   className?: string;
   icon: IconType;
-  href: string | undefined;
+  href: string;
   altText: string;
 }
 
-const LinkHoverWrapper = styled.span`
-  z-index: 2;
-`;
-
-const StyledLink = styled(Link)(({ theme }) => ({
-  height: theme.spacing[48],
-  width: theme.spacing[48],
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-}));
-
-export const IconLink: React.FC<Props> = ({
-  href,
-  className,
-  icon,
-  altText,
-}) => {
+export function IconLink({ href, className, icon, altText }: Props) {
   const [isHovered, setIsHovered] = useState(false);
 
   const Icon = iconMap[icon];
-  const StyledIcon = styled(Icon)(({ theme }) => ({
-    height: theme.spacing[32],
-    width: theme.spacing[32],
-  }));
   return (
-    <LinkHoverWrapper
+    <span
+      className="z-[2]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <StyledLink altText={altText} className={className} href={href}>
-        <StyledIcon
-          color={isHovered ? 'lighten' : 'text'}
+      <Link
+        className={clsx(
+          'flex h-12 w-12 items-center justify-center',
+          className,
+        )}
+        href={href}
+      >
+        <Icon
+          className="h-8 w-8"
+          pathClassName={isHovered ? 'fill-lighten' : 'fill-text'}
           title={altText}
           titleId={`${altText}-${icon}`}
         />
-      </StyledLink>
-    </LinkHoverWrapper>
+      </Link>
+    </span>
   );
-};
+}

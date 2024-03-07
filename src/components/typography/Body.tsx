@@ -1,15 +1,25 @@
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 
-import { MarginProps } from '../box/types';
-import { createTextSharedStyles } from './styles';
 import { TypographyProps } from './types';
 
-type BodyProps = Pick<MarginProps, 'mb'> & TypographyProps;
-
-export const Body = styled.p<BodyProps>(
-  ({ theme, variant = 'normal', ...rest }) => ({
-    ...createTextSharedStyles(theme, { ...rest, variant }),
-    fontSize:
-      variant === 'normal' ? theme.fontSize.body : theme.fontSize.bigBody,
-  }),
-);
+export function Body({
+  children,
+  className,
+  shadowed,
+  bold,
+  italic,
+}: TypographyProps) {
+  return (
+    <p
+      className={clsx(
+        'font-body text-base text-text',
+        bold && 'font-bold',
+        shadowed && 'drop-shadow',
+        italic && 'italic',
+        className,
+      )}
+    >
+      {children}
+    </p>
+  );
+}

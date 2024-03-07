@@ -1,12 +1,11 @@
 {
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "baseUrl": "./",
     "allowJs": true,
     "alwaysStrict": true,
@@ -14,8 +13,9 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "lib": [
-      "dom",
-      "es2017"
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
     ],
     "module": "esnext",
     "noEmit": true,

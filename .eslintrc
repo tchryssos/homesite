@@ -8,7 +8,7 @@
   "globals": {
     "React": true
   },
-  "plugins": ["@emotion", "@typescript-eslint", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
   "extends": [
     "eslint:recommended",
     "airbnb",

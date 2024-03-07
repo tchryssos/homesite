@@ -4,13 +4,15 @@ import { Experiments } from '~/components/portfolio/Experiments';
 import { Other } from '~/components/portfolio/Other';
 import { Work } from '~/components/portfolio/Work';
 
-const Portfolio = () => (
-  <Layout>
-    <CurrentGig />
-    <Experiments />
-    <Work />
-    <Other />
-  </Layout>
-);
+function Home() {
+  return (
+    <Layout title="Troy Chryssos">
+      <CurrentGig />
+      <Experiments />
+      <Work />
+      <Other />
+    </Layout>
+  );
+}
 
-export default Portfolio;
+export default Home;
