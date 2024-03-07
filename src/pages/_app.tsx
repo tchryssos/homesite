@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import '../global.css';
 
 import { AppProps } from 'next/app';
@@ -5,8 +6,6 @@ import { useEffect } from 'react';
 
 import { disableDevTools } from '~/logic/util/disableDevTools';
 import { getWindow } from '~/logic/util/window';
-
-import { BreakpointsContextProvider } from '../logic/contexts/breakpointsContext';
 
 function Page({ Component, pageProps }: AppProps) {
   const window = getWindow();
@@ -17,12 +16,7 @@ function Page({ Component, pageProps }: AppProps) {
     }
   }, [window]);
 
-  return (
-    <BreakpointsContextProvider>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Component {...pageProps} />
-    </BreakpointsContextProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 // eslint-disable-next-line import/no-default-export
