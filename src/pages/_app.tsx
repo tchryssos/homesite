@@ -1,3 +1,5 @@
+import '../tailwind.css';
+
 import { AppProps } from 'next/app';
 import { useEffect } from 'react';
 
