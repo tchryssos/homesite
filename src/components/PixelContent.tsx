@@ -46,6 +46,7 @@ export function PixelContent() {
         style={setInlineTransform(animationDistance * -1, isAnimating)}
       >
         <div className="flex w-full min-w-64 justify-center">
+          {/* Troy */}
           <Sprite
             className={clsx('z-[3]', animationTransitionClassName)}
             style={setInlineTransform(animationDistance, isAnimating)}

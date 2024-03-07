@@ -28,7 +28,7 @@ export function Sprite({ type, style = {}, className }: SpriteProps) {
   return type ? (
     <div
       className={clsx(
-        'relative flex h-full max-h-[190] w-full max-w-32 items-end',
+        'relative flex h-full max-h-[190px] w-full max-w-32 items-end',
         className,
       )}
       style={style}
