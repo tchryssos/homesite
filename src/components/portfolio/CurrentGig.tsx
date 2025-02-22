@@ -7,10 +7,9 @@ export function CurrentGig() {
       <ProjectBlock
         imageAltText="Codecademy logo"
         imageSrc="/codecademy.svg"
-        text="An online learning platform that has helped over 45 million people learn to code."
+        text="Senior Engineer & Tech Lead for an online learning platform that has helped over 45 million people learn to code."
         title="Codecademy"
         to="https://www.codecademy.com/"
-        toRepo="https://github.com/Codecademy"
       />
     </PortfolioSection>
   );
