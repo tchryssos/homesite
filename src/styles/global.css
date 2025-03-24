@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-mat-blue: #6890ad;
+  --font-serif: 'Instrument Serif', serif;
+}
