@@ -1,10 +1,7 @@
-{
-  "trailingComma": "all",
-  "semi": true,
-  "singleQuote": true,
-  "bracketSpacing": true,
-  "eslintIntegration": true,
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+// .prettierrc.mjs
+/** @type {import("prettier").Config} */
+export default {
+  plugins: ['prettier-plugin-astro', "prettier-plugin-tailwindcss"],
   overrides: [
     {
       files: '*.astro',
@@ -13,4 +10,9 @@
       },
     },
   ],
-}
+	"trailingComma": "es5",
+	"semi": true,
+	"singleQuote": true,
+	"bracketSpacing": true,
+	"eslintIntegration": true
+};

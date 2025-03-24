@@ -1,0 +1,13 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['flex flex-1 justify-around px-4', className]}>
+  <div class="max-w-breakpoint-lg flex w-full flex-col">
+    <slot />
+  </div>
+</div>

@@ -1,6 +1,24 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-mat-blue: #6890ad;
-  --font-serif: 'Instrument Serif', serif;
+  --color-primary: #4f2d35;
+  --color-text: #ffffff;
+  --color-inverse-text: #000000;
+  --color-lighten: rgba(255, 255, 255, 0.6);
+  --color-darken: rgba(0, 0, 0, 0.2);
+  --color-primary-heavy: #301d21;
+  --color-text-hover: #d1d1d1;
+  --color-background: #000000;
+
+  --font-title: 'JetBrains Mono', monospace;
+  --font-body: 'PT Sans', sans-serif;
+
+  --shadow-project-block: 0.25rem 0.25rem var(--color-primary-heavy);
+  --shadow-project-block-hover: 0.5rem 0.5rem var(--color-primary-heavy);
+
+  --spacing-breakpoint-xs: 639px;
+  --spacing-breakpoint-sm: 640px;
+  --spacing-breakpoint-md: 768px;
+  --spacing-breakpoint-lg: 1024px;
+  --spacing-breakpoint-xl: 1280px;
 }

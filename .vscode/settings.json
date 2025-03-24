@@ -1,17 +1,12 @@
 {
   "eslint.validate": ["typescript", "typescriptreact"],
   "eslint.format.enable": false,
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
   "editor.codeActionsOnSaveTimeout": 750,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Chryssos", "clsx", "Screamin", "stylelint", "tailwindcss"],
   "tailwindCSS.classAttributes": [
     "class",
     "className",

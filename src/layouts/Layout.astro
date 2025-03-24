@@ -1,22 +1,71 @@
+---
+import PageWrapper from '../components/PageWrapper.astro';
+
+interface Meta {
+  ignore?: never;
+  description: string;
+  og: {
+    title: string;
+    description: string;
+    type: 'website' | 'article';
+    image?: string;
+    url: string;
+  };
+}
+
+interface Ignore {
+  ignore: true;
+  description?: never;
+  og?: never;
+}
+
+export interface Props {
+  title: string;
+  meta: Meta | Ignore;
+  class?: string | string[];
+}
+
+const { title, meta, class: className, ...rest } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html class:list={['bg-primary flex', className]} lang="en" {...rest}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content={Astro.generator} name="generator" />
+    {
+      Boolean(meta.description) && (
+        <meta content={meta.description} name="description" />
+      )
+    }
+    {
+      Object.entries(meta.og || []).map(([key, val]) => (
+        <meta content={val} property={`og:${key}`} />
+      ))
+    }
+    <meta content="TroyChryssos.com" property="og:site_name" />
+    <link href="/favicon.png" rel="icon" type="image" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col bg-inherit">
+    <PageWrapper>
+      <slot />
+    </PageWrapper>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    min-height: 100%;
+    min-width: 100%;
+  }
 </style>
