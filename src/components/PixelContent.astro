@@ -1,12 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+
+import Laptop from '../assets/laptop.gif';
 import Street from '../assets/street_purp_sm.png';
+import Troy from '../assets/troy.gif';
 ---
 
 <div class="relative w-full overflow-hidden">
   <div class="flex h-60">
-    <div class="flex w-full min-w-64 justify-center">
-      <!-- <Sprite class="z-[3]" type={Sprites.TROY} /> -->
-      <!-- <Sprite class="z-[2] pb-4" type={getRouteSprite(pathname)} /> -->
+    <div class="flex w-full min-w-64 items-baseline justify-center">
+      <Image alt="Troy" class="troy z-20" src={Troy} width={200} />
+      <Image alt="Laptop" class="laptop z-10" src={Laptop} width={200} />
     </div>
     <div
       class="absolute top-32 h-[104px] w-[300%] self-start bg-contain bg-repeat"
@@ -15,3 +19,17 @@ import Street from '../assets/street_purp_sm.png';
     </div>
   </div>
 </div>
+
+<style>
+  .troy {
+    transform: translateY(0.375rem);
+    width: 128px;
+    height: 190px;
+    image-rendering: pixelated;
+  }
+
+  .laptop {
+    width: 128px;
+    height: 88px;
+  }
+</style>
