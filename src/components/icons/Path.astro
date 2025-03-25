@@ -1,0 +1,10 @@
+---
+interface Props {
+  pathClassName?: string;
+  d: string;
+}
+
+const { pathClassName, d, ...rest } = Astro.props;
+---
+
+<path class:list={['fill-text', pathClassName]} d={d} {...rest}></path>

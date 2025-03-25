@@ -1,0 +1,23 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  class?: string;
+  href: string;
+  altText: string;
+  src: ImageMetadata;
+}
+
+const { class: className, href, altText, src, ...rest } = Astro.props;
+---
+
+<a class:list={[className]} href={href} {...rest}>
+  <Image
+    alt={altText}
+    class="fill-text hover:fill-lighten"
+    height={48}
+    src={src}
+    width={48}
+  />
+</a>

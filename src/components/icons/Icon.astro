@@ -1,0 +1,13 @@
+---
+import BaseIcon from './BaseIcon.astro';
+import Path from './Path.astro';
+import type { IconBuilderProps } from './types';
+
+type Props = IconBuilderProps;
+
+const { pathClassName, d, ...rest } = Astro.props;
+---
+
+<BaseIcon {...rest}>
+  <Path d={d} pathClassName={pathClassName} {...rest} />
+</BaseIcon>
