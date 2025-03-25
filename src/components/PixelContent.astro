@@ -2,15 +2,29 @@
 import { Image } from 'astro:assets';
 
 import Laptop from '../assets/laptop.gif';
+import Questionman from '../assets/questionman.gif';
 import Street from '../assets/street_purp_sm.png';
 import Troy from '../assets/troy.gif';
+
+interface Props {
+  useQuestionman?: boolean;
+}
+
+const { useQuestionman } = Astro.props as Props;
+
+const MainChar = useQuestionman ? Questionman : Troy;
+const alt = useQuestionman ? 'Question-man' : 'Troy';
 ---
 
 <div class="relative w-full overflow-hidden">
   <div class="flex h-60">
     <div class="flex w-full min-w-64 items-baseline justify-center">
-      <Image alt="Troy" class="troy z-20" src={Troy} width={200} />
-      <Image alt="Laptop" class="laptop z-10" src={Laptop} width={200} />
+      <Image alt={alt} class="main-char z-20" src={MainChar} width={200} />
+      {
+        !useQuestionman && (
+          <Image alt="Laptop" class="laptop z-10" src={Laptop} width={200} />
+        )
+      }
     </div>
     <div
       class="absolute top-32 h-[104px] w-[300%] self-start bg-contain bg-repeat"
@@ -21,7 +35,7 @@ import Troy from '../assets/troy.gif';
 </div>
 
 <style>
-  .troy {
+  .main-char {
     transform: translateY(0.375rem);
     width: 128px;
     height: 190px;
