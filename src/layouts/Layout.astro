@@ -3,6 +3,7 @@ import '../styles/global.css';
 
 import Nav from '../components/Nav.astro';
 import PageWrapper from '../components/PageWrapper.astro';
+import PixelContent from '../components/PixelContent.astro';
 
 interface Meta {
   ignore?: never;
@@ -66,6 +67,7 @@ const { title, meta, class: className, ...rest } = Astro.props;
   </head>
   <body class="flex flex-col bg-inherit">
     <Nav />
+    <PixelContent />
     <PageWrapper>
       <slot />
     </PageWrapper>
