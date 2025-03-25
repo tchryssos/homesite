@@ -1,8 +1,7 @@
 export type BaseIconProps = {
-  className?: string;
+  class?: string;
   viewBox?: string;
   title: string;
-  titleId: string;
 };
 
 export type IconBuilderProps = BaseIconProps & {

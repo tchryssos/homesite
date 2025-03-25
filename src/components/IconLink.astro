@@ -1,23 +1,52 @@
 ---
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import Email from './icons/Email.astro';
+import Github from './icons/Github.astro';
+import Medium from './icons/Medium.astro';
+import Open from './icons/Open.astro';
+import Spotify from './icons/Spotify.astro';
+import Vimeo from './icons/Vimeo.astro';
+
+const iconMap = {
+  email: Email,
+  github: Github,
+  medium: Medium,
+  open: Open,
+  vimeo: Vimeo,
+  spotify: Spotify,
+};
+
+export type IconType = keyof typeof iconMap;
 
 interface Props {
   class?: string;
   href: string;
   altText: string;
-  src: ImageMetadata;
+  icon: IconType;
 }
 
-const { class: className, href, altText, src, ...rest } = Astro.props;
+const { class: className, href, altText, icon, ...rest } = Astro.props;
+
+const Icon = iconMap[icon];
 ---
 
-<a class:list={[className]} href={href} {...rest}>
-  <Image
-    alt={altText}
-    class="fill-text hover:fill-lighten"
-    height={48}
-    src={src}
-    width={48}
+<a
+  class:list={[className]}
+  href={href}
+  rel="noreferrer nofollow"
+  target="_blank"
+  {...rest}
+>
+  <Icon
+    class="link-icon fill-text hover:fill-lighten max-h-8 max-w-8"
+    pathClassName="icon-fill"
+    title={altText}
   />
 </a>
+
+<style>
+  a:hover {
+    .icon-fill {
+      fill: var(--color-lighten);
+    }
+  }
+</style>

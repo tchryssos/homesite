@@ -1,0 +1,34 @@
+---
+import IconLink from './IconLink.astro';
+---
+
+<div class="flex flex-1 justify-center">
+  <div class="max-w-breakpoint-lg flex w-full flex-col">
+    <div class="flex items-center justify-between p-4">
+      <a
+        class="font-title hover:text-lighten text-xl italic no-underline drop-shadow-sm"
+        href="/"
+        target="_blank"
+      >
+        Troy Chryssos
+      </a>
+      <div class="flex items-center gap-4">
+        <IconLink
+          altText="Email me"
+          href="mailto:troychryssos@gmail.com"
+          icon="email"
+        />
+        <IconLink
+          altText="Go to my Github profile"
+          href="https://github.com/tchryssos"
+          icon="github"
+        />
+        <IconLink
+          altText="View my Spotify profile"
+          href="https://open.spotify.com/user/tchryssos?si=7ff8a5dcdae64508"
+          icon="spotify"
+        />
+      </div>
+    </div>
+  </div>
+</div>
