@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 import PageWrapper from '../components/PageWrapper.astro';
 
 interface Meta {
@@ -6,7 +8,7 @@ interface Meta {
   description: string;
   og: {
     title: string;
-    description: string;
+    description?: string;
     type: 'website' | 'article';
     image?: string;
     url: string;
@@ -29,7 +31,7 @@ const { title, meta, class: className, ...rest } = Astro.props;
 ---
 
 <!doctype html>
-<html class:list={['bg-primary flex', className]} lang="en" {...rest}>
+<html class:list={['bg-primary text-text flex', className]} lang="en" {...rest}>
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -44,6 +46,12 @@ const { title, meta, class: className, ...rest } = Astro.props;
         <meta content={val} property={`og:${key}`} />
       ))
     }
+    {
+      !meta.og?.description && (
+        <meta content={meta.description} property="og:description" />
+      )
+    }
+    {meta.ignore && <meta content="none" name="robots" />}
     <meta content="TroyChryssos.com" property="og:site_name" />
     <link href="/favicon.png" rel="icon" type="image" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -65,7 +73,6 @@ const { title, meta, class: className, ...rest } = Astro.props;
 <style>
   html,
   body {
-    min-height: 100%;
-    min-width: 100%;
+    width: 100%;
   }
 </style>

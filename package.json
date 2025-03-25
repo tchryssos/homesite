@@ -3,6 +3,7 @@
   "version": "5.0.0",
   "type": "module",
   "author": "<troychryssos@gmail.com>",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
@@ -12,7 +13,6 @@
     "prepare": "husky",
     "check": "astro check"
   },
-
   "dependencies": {
     "@tailwindcss/vite": "^4.0.3",
     "astro": "^5.2.3",
@@ -36,10 +36,10 @@
     "typescript-eslint": "^8.24.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,md}": [
+    "*.{ts,md,html,astro}": [
       "prettier --write"
     ],
-    "*.{ts,tsx}": [
+    "*.{ts,astro}": [
       "eslint --fix"
     ]
   }
