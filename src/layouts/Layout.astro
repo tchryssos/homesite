@@ -33,7 +33,11 @@ const { title, meta, class: className, ...rest } = Astro.props;
 ---
 
 <!doctype html>
-<html class:list={['bg-primary text-text flex', className]} lang="en" {...rest}>
+<html
+  class:list={['bg-primary text-text flex pb-4', className]}
+  lang="en"
+  {...rest}
+>
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />

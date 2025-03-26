@@ -29,13 +29,18 @@ const { title, text, imageAltText, image, to, toRepo, hideLink, toOthers } =
 <div
   class="border-text bg-background shadow-project-block hover:shadow-project-block-hover relative flex flex-col rounded border-2 border-solid p-2 break-words hover:-translate-x-1 hover:-translate-y-1"
 >
-  <a class="absolute top-0 left-0 h-full w-full" href={to} title={title}></a>
-  <div class="mb-2 flex items-center justify-between">
+  <a
+    class="absolute top-0 left-0 h-full w-full"
+    href={to}
+    rel="noopener noreferrer"
+    target="_blank"
+    title={title}></a>
+  <div class="mb-2 flex items-start justify-between gap-4">
     <div class="flex items-center gap-2">
       <Image alt={imageAltText} height={40} src={image} width={40} />
       <h3 class="font-title text-xl">{title}</h3>
     </div>
-    <div class="flex">
+    <div class="flex gap-2">
       {
         toOthers?.map(({ extType, extLink, extTitle }) => (
           <IconLink altText={extTitle} href={extLink} icon={extType} />

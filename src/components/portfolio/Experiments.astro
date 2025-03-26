@@ -1,0 +1,36 @@
+---
+import RpgSword from '../../assets/rpg_sheet_sword.png';
+import Swordsman from '../../assets/swordsman.png';
+import TroysArtList from '../../assets/troys_art_list.png';
+import PortfolioSection from '../PortfolioSection.astro';
+import ProjectBlock from '../ProjectBlock.astro';
+---
+
+<PortfolioSection
+  desc="A selection of creative projects I've built to satisfy my own curiosity and/or teach myself something new"
+  title="Experiments"
+>
+  <ProjectBlock
+    image={RpgSword}
+    imageAltText="RPG Sheet sword logo"
+    text='An online tabletop RPG character sheet tool for "Shadow of the Demon Lord", "Shadow of the Weird Wizard", "Cities Without Number", and "Worlds Without Number".'
+    title="rpg sheet dot games"
+    to="https://rpgsheet.games/characters/46"
+    toRepo="https://github.com/tchryssos/rpg-sheet"
+  />
+  <ProjectBlock
+    image={Swordsman}
+    imageAltText="Magical sword-wielding warrior"
+    text='A tabletop RPG world-building toolkit, with generators for on-the-fly people, places, and maps, as well as campaign world ornamenters like "live" events and faction relationship tracking.'
+    title="BoneWorld Quest"
+    to="https://www.boneworld.quest"
+  />
+  <ProjectBlock
+    image={TroysArtList}
+    imageAltText="Troy's art list picture emoji logo"
+    text='A simple "photo" blog I built to document my favorite art pieces.'
+    title="Troy's Art List"
+    to="https://www.troyslist.art"
+    toRepo="https://github.com/tchryssos/art-list"
+  />
+</PortfolioSection>
