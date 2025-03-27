@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+  desc?: string;
+}
+
+const { title, desc } = Astro.props;
+---
+
+<h2 class="font-title text-2xl">{title}</h2>
+<div class="mb-4">{desc && <p class="font-body mt-1 text-base">{desc}</p>}</div>
+<div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <slot />
+</div>

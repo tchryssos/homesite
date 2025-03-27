@@ -1,0 +1,20 @@
+---
+import TroyHead from '../../assets/troy_head.png';
+import PortfolioSection from '../PortfolioSection.astro';
+import ProjectBlock from '../ProjectBlock.astro';
+---
+
+<PortfolioSection
+  desc="Templates, odds and ends, and projects that don't fit anywhere else"
+  title="Other"
+>
+  <ProjectBlock
+    hideLink
+    image={TroyHead}
+    imageAltText="Troy's head"
+    text="Peek behind the curtain of this site. Often used to try out new tech and frameworks."
+    title="troychryssos​.com"
+    to="https://github.com/tchryssos/homesite"
+    toRepo="https://github.com/tchryssos/homesite"
+  />
+</PortfolioSection>

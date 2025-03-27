@@ -1,0 +1,15 @@
+---
+import CodecademySvg from '../../assets/codecademy.svg';
+import PortfolioSection from '../PortfolioSection.astro';
+import ProjectBlock from '../ProjectBlock.astro';
+---
+
+<PortfolioSection title="My current gig">
+  <ProjectBlock
+    image={CodecademySvg}
+    imageAltText="Codecademy logo"
+    text="Senior Engineer & Tech Lead for an online learning platform that has helped over 45 million people learn to code."
+    title="Codecademy"
+    to="https://www.codecademy.com/"
+  />
+</PortfolioSection>

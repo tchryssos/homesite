@@ -1,0 +1,41 @@
+---
+import FunkyFace from '../../assets/funky-face.png';
+import HoneyMorello from '../../assets/honey-morello.png';
+import Quadio from '../../assets/quadio.jpg';
+import PortfolioSection from '../PortfolioSection.astro';
+import ProjectBlock from '../ProjectBlock.astro';
+---
+
+<PortfolioSection desc="A selection of professional projects" title="Work">
+  <ProjectBlock
+    image={HoneyMorello}
+    imageAltText="Honey Morello at the Museum"
+    text="ARG-ish GeoCities-inspired website for Platinum artist Penelope Scott."
+    title="HoneyMorello​.com"
+    to="https://honeymorello.com/"
+  />
+  <ProjectBlock
+    image={FunkyFace}
+    imageAltText="Funky Sake's face"
+    text="Website and blog for sake sommelier and influencer Funky Sake."
+    title="Funky Sake"
+    to="https://www.funkysake.com"
+  />
+  <ProjectBlock
+    hideLink
+    image={Quadio}
+    imageAltText="Quadio transport logo"
+    text="A music streaming and sharing app for college creatives (now defunct)."
+    title="Quadio"
+    to="https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14"
+    toOthers={[
+      {
+        extLink:
+          'https://tchryssos.medium.com/building-an-audio-waveform-progress-bar-with-react-for-quadio-132223928b14',
+        extTitle:
+          'Medium article about building the audio waveform progress bar',
+        extType: 'medium',
+      },
+    ]}
+  />
+</PortfolioSection>

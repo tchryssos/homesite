@@ -1,0 +1,66 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+import type { IconType } from './IconLink.astro';
+import IconLink from './IconLink.astro';
+
+type SubExtends<T, U extends T> = U;
+
+interface Props {
+  title: string;
+  text: string;
+  imageAltText: string;
+  image: ImageMetadata;
+  to: string;
+  toRepo?: string;
+  hideLink?: boolean;
+  toOthers?: {
+    extType: SubExtends<IconType, 'medium' | 'vimeo'>;
+    extLink: string;
+    extTitle: string;
+  }[];
+}
+
+const { title, text, imageAltText, image, to, toRepo, hideLink, toOthers } =
+  Astro.props;
+---
+
+<div
+  class="border-text bg-background shadow-project-block hover:shadow-project-block-hover relative flex flex-col rounded border-2 border-solid p-2 break-words hover:-translate-x-1 hover:-translate-y-1"
+>
+  <a
+    class="absolute top-0 left-0 h-full w-full"
+    href={to}
+    rel="noopener noreferrer"
+    target="_blank"
+    title={title}></a>
+  <div class="mb-2 flex items-start justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <Image alt={imageAltText} height={40} src={image} width={40} />
+      <h3 class="font-title text-xl">{title}</h3>
+    </div>
+    <div class="flex shrink-0 gap-2">
+      {
+        toOthers?.map(({ extType, extLink, extTitle }) => (
+          <IconLink altText={extTitle} href={extLink} icon={extType} />
+        ))
+      }
+      {
+        Boolean(toRepo) && (
+          <IconLink
+            altText={`Go to the Github repo for ${title}`}
+            href={toRepo!}
+            icon="github"
+          />
+        )
+      }
+      {
+        !hideLink && (
+          <IconLink altText={`Open ${title}`} href={to} icon="open" />
+        )
+      }
+    </div>
+  </div>
+  <p class="font-body text-base">{text}</p>
+</div>

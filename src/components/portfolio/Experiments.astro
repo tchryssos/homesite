@@ -1,0 +1,35 @@
+---
+import RpgSword from '../../assets/rpg_sheet_sword.png';
+import Swordsman from '../../assets/swordsman.png';
+import TMYK from '../../assets/tmyk.jpg';
+import PortfolioSection from '../PortfolioSection.astro';
+import ProjectBlock from '../ProjectBlock.astro';
+---
+
+<PortfolioSection
+  desc="A selection of creative projects I've built to satisfy my own curiosity and/or teach myself something new"
+  title="Experiments"
+>
+  <ProjectBlock
+    image={RpgSword}
+    imageAltText="RPG Sheet sword logo"
+    text='An online tabletop RPG character sheet tool for "Shadow of the Demon Lord", "Shadow of the Weird Wizard", "Cities Without Number", and "Worlds Without Number".'
+    title="rpg sheet dot games"
+    to="https://rpgsheet.games/characters/46"
+    toRepo="https://github.com/tchryssos/rpg-sheet"
+  />
+  <ProjectBlock
+    image={TMYK}
+    imageAltText="The Man You Know face"
+    text="An hourly Bluesky bot that pulls quotes from public domain books and assembles random, cartoonish faces to pair with them. Infrequently produces something serendipitously funny or profound."
+    title="The Man You Know Bot"
+    to="https://bsky.app/profile/tmyk.slimedime.world"
+  />
+  <ProjectBlock
+    image={Swordsman}
+    imageAltText="Magical sword-wielding warrior"
+    text='A tabletop RPG world-building toolkit, with generators for on-the-fly people, places, and maps, as well as campaign world ornamenters like "live" events and faction relationship tracking.'
+    title="BoneWorld Quest"
+    to="https://www.boneworld.quest"
+  />
+</PortfolioSection>

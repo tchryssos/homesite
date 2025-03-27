@@ -1,0 +1,26 @@
+---
+import CurrentGig from '../components/portfolio/CurrentGig.astro';
+import Experiments from '../components/portfolio/Experiments.astro';
+import Other from '../components/portfolio/Other.astro';
+import Work from '../components/portfolio/Work.astro';
+import Layout from '../layouts/Layout.astro';
+
+const desc = "Troy Chryssos' portolio";
+---
+
+<Layout
+  meta={{
+    description: desc,
+    og: {
+      title: 'Troy Chryssos',
+      type: 'website',
+      url: 'https://troychryssos.com',
+    },
+  }}
+  title="Troy Chryssos"
+>
+  <CurrentGig />
+  <Work />
+  <Experiments />
+  <Other />
+</Layout>
