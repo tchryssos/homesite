@@ -40,7 +40,7 @@ const { title, text, imageAltText, image, to, toRepo, hideLink, toOthers } =
       <Image alt={imageAltText} height={40} src={image} width={40} />
       <h3 class="font-title text-xl">{title}</h3>
     </div>
-    <div class="flex gap-2">
+    <div class="flex shrink-0 gap-2">
       {
         toOthers?.map(({ extType, extLink, extTitle }) => (
           <IconLink altText={extTitle} href={extLink} icon={extType} />
