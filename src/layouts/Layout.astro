@@ -27,9 +27,10 @@ export interface Props {
   title: string;
   meta: Meta | Ignore;
   class?: string | string[];
+  useQuestionman?: boolean;
 }
 
-const { title, meta, class: className, ...rest } = Astro.props;
+const { title, meta, class: className, useQuestionman, ...rest } = Astro.props;
 ---
 
 <!doctype html>
@@ -71,7 +72,7 @@ const { title, meta, class: className, ...rest } = Astro.props;
   </head>
   <body class="flex flex-col bg-inherit">
     <Nav />
-    <PixelContent />
+    <PixelContent useQuestionman={useQuestionman} />
     <PageWrapper>
       <slot />
     </PageWrapper>
