@@ -16,7 +16,7 @@
   "dependencies": {
     "@mdi/svg": "^7.4.47",
     "@tailwindcss/vite": "^4.0.3",
-    "astro": "^5.2.3",
+    "astro": "^5.15.1",
     "tailwindcss": "^4.0.3"
   },
   "devDependencies": {
